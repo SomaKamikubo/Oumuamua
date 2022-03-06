@@ -1,5 +1,7 @@
 @startuml
-title シーケンス図
-アリス -> ボブ: リクエスト
-ボブ --> アリス: レスポンス
+title クラス図
+move
+jump
+Damage
+status
 @enduml
