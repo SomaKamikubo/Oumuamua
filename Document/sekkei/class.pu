@@ -1,7 +1,7 @@
 @startuml name
 title クラス図
 
-package Player <<Folder>> {
+Folder Player  {
     class PlayerMove {
         void Walk()
         void Dash()
@@ -14,18 +14,19 @@ package Player <<Folder>> {
     class PlayerHP {
         int HP
         void Hart()
-        int getHP()
     }
-    class PlayerCollider {
+    class PlayerCollider 
+    {
         Salary
     }
     class PlayerPosition {
         Vector3 Position
-        Vector3 getPosition()
     }
+    
 }
 
-package Enemy <<Folder>> {
+
+Folder Enemy  {
     class EnemyMove {
         void Walk()
         void Jump()
@@ -46,7 +47,7 @@ package Enemy <<Folder>> {
     }
 }
 
-package Camera <<Folder>> {
+Folder Camera  {
     class CameraMove {
         void Move()
     }
@@ -55,7 +56,7 @@ package Camera <<Folder>> {
     }
     }
 
-    package Sound <<Folder>> {
+    Folder Sound  {
     class BGM {
         void PlayBGM(String BGM_name)
     }
@@ -64,7 +65,7 @@ package Camera <<Folder>> {
     }
 }
 
-package GameManager <<Folder>> {
+Folder GameManager  {
     class Failed {
         void GameOver()
     }
@@ -80,7 +81,8 @@ package GameManager <<Folder>> {
     }
 }
 
-package GUI {
+
+Folder GUI {
     class GameRestart{
         void Restart()
     }
@@ -109,8 +111,8 @@ interface IDamage {
 }
 
 interface IPlayerStatus {
-    Vector3 getPosition()
-    int getHP()
+    Vector3 Position()
+    int HP()
 }
 
 
@@ -135,5 +137,7 @@ PlayerHP --> IDeath
 SwitchBGM -up-> IBGM
 Failed ..up|> IDeath
 BGM ..|> IBGM
+
+
 
 @enduml
