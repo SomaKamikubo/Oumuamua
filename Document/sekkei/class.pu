@@ -1,7 +1,139 @@
-@startuml
+@startuml name
 title クラス図
-move
-jump
-Damage
-status
+
+package Player <<Folder>> {
+    class PlayerMove {
+        void Walk()
+        void Dash()
+        void Jump()
+    }
+    class PlayerAttack {
+        int ATK
+        void Attack()
+    }
+    class PlayerHP {
+        int HP
+        void Hart()
+        int getHP()
+    }
+    class PlayerCollider {
+        Salary
+    }
+    class PlayerPosition {
+        Vector3 Position
+        Vector3 getPosition()
+    }
+}
+
+package Enemy <<Folder>> {
+    class EnemyMove {
+        void Walk()
+        void Jump()
+    }
+    class EnemyAttack {
+        void Attack()
+    }
+    class EnemyHP {
+        int HP
+        void Hart()
+    }
+    class EnemyCollider {
+        Salary
+    }
+    class EnemyPosition {
+        Vector3 Position
+
+    }
+}
+
+package Camera <<Folder>> {
+    class CameraMove {
+        void Move()
+    }
+    class CameraRenderer {
+        void OnBecameVisible()
+    }
+    }
+
+    package Sound <<Folder>> {
+    class BGM {
+        void PlayBGM(String BGM_name)
+    }
+    class SE {
+        void PlaySE(String SE_name)
+    }
+}
+
+package GameManager <<Folder>> {
+    class Failed {
+        void GameOver()
+    }
+    class Clear {
+    
+    }
+
+    class SwitchBGM {
+        void PlayBGM(String BGM_name)
+    }
+    class CalcProgres{
+        void CalcRatio()
+    }
+}
+
+package GUI {
+    class GameRestart{
+        void Restart()
+    }
+    class GameStop{
+        void Stop()
+    }
+    class GameQuit(){
+        void Quit()
+    }
+}
+
+interface ISE {
+    void PlaySE(String SE_name)
+}
+
+interface IBGM {
+    void PlayBGM(String BGM_name)
+}
+
+interface IDeath {
+    void GameOver()
+}
+
+interface IDamage {
+    void Hurt()
+}
+
+interface IPlayerStatus {
+    Vector3 getPosition()
+    int getHP()
+}
+
+
+
+PlayerAttack -up-> IDamage
+PlayerHP ..up|> IDamage
+EnemyAttack -up-> IDamage
+EnemyHP ..up|> IDamage
+
+PlayerAttack -> ISE
+PlayerMove --> ISE
+EnemyAttack --> ISE
+EnemyMove --> ISE
+SE ..|> ISE
+
+CameraMove -up-> IPlayerStatus
+EnemyMove --> IPlayerStatus
+PlayerHP ..|> IPlayerStatus
+PlayerPosition ..|> IPlayerStatus
+
+PlayerHP --> IDeath
+SwitchBGM -up-> IBGM
+Failed ..up|> IDeath
+BGM ..|> IBGM
+
 @enduml
