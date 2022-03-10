@@ -94,6 +94,14 @@ Folder GUI {
     }
 }
 
+Folder Animation {
+    class PlayerMoving {
+        void PlayMove()
+    }
+}
+
+
+
 interface ISE {
     void PlaySE(String SE_name)
 }
@@ -111,8 +119,9 @@ interface IDamage {
 }
 
 interface IPlayerStatus {
-    Vector3 Position()
-    int HP()
+    Vector3 Position
+    int HP
+    bool IsMoving
 }
 
 
