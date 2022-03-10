@@ -4,55 +4,53 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CapsuleCollider2D))]
-public class PlayerMove : MonoBehaviour,IPlayerData
+public class PlayerMove : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb;
     [SerializeField] int moveSpeed;
-    bool isMoving = false;
-    bool isWalking = false;
-    bool isDashing = false;
+    [SerializeField] GameObject player;
+    PlayerStatus player_status;
     // Start is called before the first frame update
     void Start()
     {
-        
+        player_status = player.GetComponent<PlayerStatus>();
     }
 
     // Update is called once per frame
     void Update()
     {
         float horizontal = Input.GetAxis("Horizontal");
-        isMoving = horizontal != 0;
-
-        if (isMoving)
+        if (horizontal != 0)
         {
-            Vector3 scale = gameObject.transform.localScale;
-            if (horizontal < 0 && scale.x > 0 || horizontal > 0 && scale.x < 0)
-            {
-                scale.x *= -1;
-            }
-            gameObject.transform.localScale = scale;
-
+            //”½“]ˆ—
+            Reverse();
 
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
+                Debug.Log("shift");
                 Dash();
+                Debug.Log(player_status.IsDashing);
             }
             if (Input.GetKeyUp(KeyCode.LeftShift))
             {
-                isDashing = false;
+                player_status.IsDashing = false;
             }
 
             else
             {
-                walk();
+                Walk();
             }
-            
+            rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
+            return;
         }
-        
+
+ 
+
         else
         {
-            isWalking = false;
+            player_status.IsWalking = false;
         }
+
 
         //-------------------------
         //—‘z
@@ -72,21 +70,26 @@ public class PlayerMove : MonoBehaviour,IPlayerData
 
     }
 
-    void walk()
+    void Walk()
     {
-        rb.velocity = new Vector2(Input.GetAxis("Horizontal") * moveSpeed, rb.velocity.y);
-        isWalking = true;
+        player_status.IsWalking = true;
     }
 
     void Dash()
     {
-        rb.velocity = new Vector2(Input.GetAxis("Horizontal") * moveSpeed, rb.velocity.y);
-        isDashing = true;
-        isWalking = false;
+        player_status.IsWalking = false;
+        player_status.IsDashing = true;
     }
 
-    
+    void Reverse()
+    {
+        float horizontal = Input.GetAxis("Horizontal");
+        Vector3 scale = gameObject.transform.localScale;
+        if (horizontal < 0 && scale.x > 0 || horizontal > 0 && scale.x < 0)
+        {
+            scale.x *= -1;
+        }
+        gameObject.transform.localScale = scale;
+    }
 
-    public bool IsWalking { get { return isWalking; } }
-    public bool IsDashing { get { return isDashing; } }
 }
