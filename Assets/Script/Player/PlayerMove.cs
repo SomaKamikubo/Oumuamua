@@ -7,49 +7,69 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb;
-    [SerializeField] int moveSpeed;
     [SerializeField] GameObject player;
     PlayerStatus player_status;
-    // Start is called before the first frame update
+    [SerializeField] int WalkSpeed;
+    [SerializeField] int DashSpeed;
+    int Speed;
+    int a;
+
     void Start()
     {
         player_status = player.GetComponent<PlayerStatus>();
+        Speed = 0;
+        a = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        if (horizontal != 0)
+        if (player_status.IsAttacking)
         {
-            //îΩì]èàóù
-            Reverse();
-
-            if (Input.GetKeyDown(KeyCode.LeftShift))
-            {
-                Debug.Log("shift");
-                Dash();
-                Debug.Log(player_status.IsDashing);
-            }
-            if (Input.GetKeyUp(KeyCode.LeftShift))
-            {
-                player_status.IsDashing = false;
-            }
-
-            else
-            {
-                Walk();
-            }
-            rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
+            Debug.Log(a);
+            a += 1;
             return;
         }
 
- 
 
-        else
+        float horizontal = Input.GetAxis("Horizontal");
+        player_status.IsCrouching = Input.GetKey(KeyCode.S);
+
+        if (horizontal == 0)
         {
             player_status.IsWalking = false;
+            player_status.IsDashing = false;
+            return;
         }
+
+        
+        player_status.IsDashing = Input.GetKey(KeyCode.LeftShift);
+
+        if (Input.GetKey(KeyCode.S))
+        {
+            Crouch();
+            return;
+        }
+
+        //îΩì]èàóù
+        Reverse();
+        rb.velocity = new Vector2(horizontal * Speed, rb.velocity.y);
+
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            Dash();
+            Debug.Log(player_status.IsDashing);
+            return;
+        }
+
+        
+
+        player_status.IsDashing = false;
+        Walk();
+
+        
+        
+        
 
 
         //-------------------------
@@ -72,15 +92,20 @@ public class PlayerMove : MonoBehaviour
 
     void Walk()
     {
+        Speed = WalkSpeed;
         player_status.IsWalking = true;
     }
 
     void Dash()
     {
-        player_status.IsWalking = false;
+        Speed = DashSpeed;
         player_status.IsDashing = true;
     }
 
+    void Crouch()
+    {
+        player_status.IsCrouching = Input.GetKey(KeyCode.S);
+    }
     void Reverse()
     {
         float horizontal = Input.GetAxis("Horizontal");

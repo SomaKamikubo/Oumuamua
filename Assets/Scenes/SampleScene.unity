@@ -160,8 +160,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 183091820}
-  moveSpeed: 3
   player: {fileID: 183091817}
+  WalkSpeed: 2
+  DashSpeed: 4
 --- !u!70 &183091819
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -262,7 +263,7 @@ Transform:
   m_LocalScale: {x: 3.0086162, y: 2.8632104, z: 2.6729}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &183091823
 Animator:
@@ -486,7 +487,7 @@ Transform:
   m_LocalScale: {x: 17.837812, y: 0.625, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &588870012
 BoxCollider2D:

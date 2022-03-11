@@ -15,16 +15,20 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            if (Input.GetKeyDown(KeyCode.K) && player_status.IsDashing)
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            if (player_status.IsDashing)
             {
-                GetComponent<Animator>().SetTrigger("DashAttackTrigger");
+                player_status.IsDashAttacking = true;
+                GetComponent<Animator>().SetTrigger("DashAttackTrigger");;
+                return;
             }
-            //else
-            //{
-            //    player_status.IsAttacking = true;
-            //}
+            player_status.IsAttacking = true;
+            
+            return;
+        }
+        player_status.IsAttacking = false;
 
-       
     }
 
 }

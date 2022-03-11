@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class PlayerStatus : MonoBehaviour
 {
-    bool isWalking;
-    bool isDashing;
-    bool isAttacking;
-    bool isDashAttacking;
-    public bool IsWalking { get { return this.isWalking; } set { this.isWalking = value; } }
-    public bool IsDashing { get { return this.isDashing; } set { this.isDashing = value; } }
-    //public bool IsAttacking { get { return this.isAttacking; } set { this.isAttacking = value; } }
-    //public bool IsDashAttacking { get { return this.isDashAttacking; } set { this.isDashAttacking = value; } }
+
+    public bool IsMoving { get; set; }
+    public bool IsWalking { get; set; }
+    public bool IsDashing { get; set; }
+    public bool IsAttacking { get; set; }
+    public bool IsDashAttacking { get; set; }
+    public bool IsCrouching { get; set; }
 }
