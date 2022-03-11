@@ -4,117 +4,130 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CapsuleCollider2D))]
+
+//プレイヤーの動きを実装するクラス
 public class PlayerMove : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb;
-    [SerializeField] GameObject player;
-    PlayerStatus player_status;
     [SerializeField] int WalkSpeed;
     [SerializeField] int DashSpeed;
+    [SerializeField] bool isMoving;
+    [SerializeField] bool isWalking;
+    [SerializeField] bool isDashing;
+    [SerializeField] bool isFalling;
+    [SerializeField] bool isJumping;
+    [SerializeField] bool isCrouching;
     int Speed;
-    int a;
 
     void Start()
     {
-        player_status = player.GetComponent<PlayerStatus>();
         Speed = 0;
-        a = 0;
     }
 
     void Update()
     {
-        if (player_status.IsAttacking)
-        {
-            Debug.Log(a);
-            a += 1;
-            return;
-        }
+        /*
+        --------------
+        毎フレーム実行
+        --------------
+        */
+        //落下中かを判定
+        isFalling = rb.velocity.y < -0.5f;
 
-
+        //左右移動
         float horizontal = Input.GetAxis("Horizontal");
-        player_status.IsCrouching = Input.GetKey(KeyCode.S);
-
-        if (horizontal == 0)
-        {
-            player_status.IsWalking = false;
-            player_status.IsDashing = false;
-            return;
-        }
-
-        
-        player_status.IsDashing = Input.GetKey(KeyCode.LeftShift);
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            Crouch();
-            return;
-        }
-
-        //反転処理
-        Reverse();
         rb.velocity = new Vector2(horizontal * Speed, rb.velocity.y);
 
+        //しゃがんでいるか
+        //GetKeyを直接入れることでtrue,falseの切り替えが楽に。
+        isCrouching = Input.GetKey(KeyCode.S);
 
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            Dash();
-            Debug.Log(player_status.IsDashing);
+        //動いているか
+        isMoving = horizontal != 0;
+
+        //スペースでジャンプ
+        //ジャンプはここでいいのだろうか。。。
+        //落下中ジャンプできるくね？
+        if (Input.GetKeyDown(KeyCode.Space) && !isJumping){
+            Jump();
+        }
+
+        /*
+        --------------------------------
+        条件が合致した場合次のフレームへ
+        --------------------------------
+        */
+        //動いていないならAnimationをIdleにする(init関数とかあるといいのか？)
+        if (!isMoving){
+            StopState();
             return;
         }
 
+        //動いててかがんでるなら
+        if (isCrouching){
+            Sliding();
+            return;
+        }
+
+        //↓以下、動いててかがんでない場合
+
+        //SHIFTがおされたらダッシュするということのため
+        isDashing = Input.GetKey(KeyCode.LeftShift);
         
+        //DashしているならDashするって文としてなんかな、、、
+        if (isDashing){
+            DashState();
+            return;
+        }
 
-        player_status.IsDashing = false;
-        Walk();
-
-        
-        
-        
-
-
-        //-------------------------
-        //理想
-        //if (Input.GetKeyDown(KeyCode.LeftShift))
-        //{
-        //    Dash();
-        //}
-        //if (space)
-        //{
-        //    Junp();
-        //}
-        //if(Move)
-        //{
-        //    walk();
-        //}
-
-
+        //ここまでくると動いててDashしてなくてかがんでいないため、歩きになる？
+        isDashing = false;
+        WalkState();
     }
 
-    void Walk()
+    void StopState()
+    {
+        isWalking = false;
+        isDashing = false;
+    }
+
+    void WalkState()
     {
         Speed = WalkSpeed;
-        player_status.IsWalking = true;
+        isWalking = true;
     }
 
-    void Dash()
+    void DashState()
     {
         Speed = DashSpeed;
-        player_status.IsDashing = true;
+        isDashing = true;
     }
 
-    void Crouch()
+    void Sliding()
     {
-        player_status.IsCrouching = Input.GetKey(KeyCode.S);
+        GetComponent<Animator>().SetTrigger("SlideTrigger");
     }
-    void Reverse()
+
+    void Jump()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        Vector3 scale = gameObject.transform.localScale;
-        if (horizontal < 0 && scale.x > 0 || horizontal > 0 && scale.x < 0)
+        rb.AddForce(Vector2.up * 2f, ForceMode2D.Impulse);
+        isJumping = true;
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Stage"))
         {
-            scale.x *= -1;
+            isJumping = false;
+            isFalling = false;
         }
-        gameObject.transform.localScale = scale;
     }
 
+
+    public bool IsMoving { get { return isMoving; } }
+    public bool IsWalking { get { return isWalking; } }
+    public bool IsDashing { get { return isDashing; } }
+    public bool IsJumping { get { return isJumping; } }
+    public bool IsFalling { get { return isFalling; } }
+    public bool IsCrouching { get { return isCrouching; } }
 }
