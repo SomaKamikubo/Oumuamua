@@ -317,7 +317,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0e705138d66c434ebcf4ea3baf89c8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 183091817}
 --- !u!114 &183091826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,10 +326,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 183091817}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0e705138d66c434ebcf4ea3baf89c8e, type: 3}
+  m_Script: {fileID: 11500000, guid: f66b0d6faac5abf4cbb22b91c3989467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player_attack: {fileID: 183091825}
+  player_move: {fileID: 183091818}
 --- !u!114 &183091827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,7 +367,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.12, y: 0.06}
+  m_Size: {x: 0.12, y: 0.07}
   m_EdgeRadius: 0
 --- !u!1 &519420028
 GameObject:
