@@ -11,6 +11,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
     [SerializeField] int WalkSpeed;
     [SerializeField] int DashSpeed;
+    [SerializeField] int JumpForce;
     [SerializeField] bool isMoving;
     [SerializeField] bool isWalking;
     [SerializeField] bool isDashing;
@@ -110,7 +111,7 @@ public class PlayerMove : MonoBehaviour
 
     void Jump()
     {
-        rb.AddForce(Vector2.up * 2f, ForceMode2D.Impulse);
+        rb.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
         isJumping = true;
     }
 

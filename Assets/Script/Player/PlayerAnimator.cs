@@ -24,6 +24,7 @@ public class PlayerAnimator : MonoBehaviour
         animator.SetBool("IsCrouching", player_status.IsCrouching);
         animator.SetBool("IsJumping", player_status.IsJumping);
         animator.SetBool("IsFalling", player_status.IsFalling);
+        animator.SetBool("IsWallSliding", player_status.IsWallSliding);
         if (player_status.IsAttacking)
         {
             GetComponent<Animator>().SetTrigger("Attack Trigger");
