@@ -1,0 +1,180 @@
+@startuml name
+title クラス図
+
+
+
+Folder Model{
+    Folder PlayerModel  {
+        class PlayerMove {
+            void Walk()
+            void Dash()
+            void Jump()
+        }
+        class PlayerAttack {
+            int _ATK
+            void Attack()
+        }
+        class PlayerHP {
+            event Action OnDeath
+            int HP
+            void Damage()
+        }
+        class PlayerStatus{
+            int HP
+            Vector3 Position
+            bool IsWlaking
+            bool IsDash
+            bool IsAttacking
+        }
+    }
+    Folder EnemyModel{
+        class EnemyMove {
+            void Walk()
+        }
+        class EnemyAttack {
+            int _ATK
+            void Attack()
+        }
+        class EnemyHP {
+            int HP
+            void Damage()
+        }
+        class EnemyStatus{
+            int HP
+            Vector3 Position
+            bool IsWlaking
+            bool IsAttacking
+        }
+    }
+
+    Folder BossModel{
+        class BossMove {
+            void Walk()
+        }
+        class BossAttack1 {
+            int _ATK
+            void Attack()
+        }
+        class BossAttack2 {
+            int _ATK
+            void Attack()
+        }
+        class BossHP {
+            event Action OnClear
+            int HP
+            void Damage()
+        }
+        class BossStatus{
+            int HP
+            Vector3 Position
+            bool IsWlaking
+            bool IsAttacking
+        }
+    }   
+}
+
+Folder ManagerModel  {
+    class Failed {
+        void GameOver()
+    }
+    class Clear {
+        void GameClear()
+    }
+
+    class SwitchBGM {
+        void PlayBGM(String BGM_name)
+    }
+    class CalcProgres{
+        void CalcRatio()
+    }
+}
+
+Folder Presenter{
+class SetAnimation{
+
+}
+}
+
+
+
+
+Folder View{
+    class InputView{
+        event Action OnJump
+        event Action OnCronch
+        event Action OnMove
+        event Action OnWalk
+        event Action OnDash
+        event Action OnAttack
+        event Action OnDamage
+        event Actiopn OnClickButton
+    }
+
+    Folder Camera  {
+        class CameraMove {
+            void Move()
+        }
+        class CameraRenderer {
+            void OnBecameVisible()
+        }
+    }
+
+
+
+    Folder GUI {
+        class GameRestart{
+            void PushButton()
+        }
+        class GameStop{
+            void PushButton()
+        }
+        class GameQuit{
+            void PushButton()
+        }
+    }
+}
+
+interface IAttack{
+    void Attack();
+}
+
+interface IEnemyDamage{
+    void Damage();
+}
+
+interface ICharactorMove{
+    void Walk();
+}
+
+interface ICharaStatus{
+    int HP
+    Vector3 Position
+    bool IsWlaking
+    bool IsAttacking
+}
+
+interface IButtonPush{
+    void PushButton();
+}
+
+
+PlayerHP --|> IAttack
+EnemyAttack ..> IAttack
+BossAttack1 ..> IAttack
+BossAttack2 ..> IAttack
+
+GameRestart ..> IButtonPush
+GameStop ..>  IButtonPush
+GameQuit ..>  IButtonPush
+
+EnemyHP ..|> IEnemyDamage
+BossHP ..|> IEnemyDamage
+PlayerAttack --> IEnemyDamage
+
+
+SetAnimation --> PlayerStatus
+PlayerHP <-- PlayerStatus
+PlayerStatus --> PlayerAttack
+PlayerStatus --> PlayerMove
+
+@enduml
