@@ -21,7 +21,7 @@ public class PlayerAnimator : MonoBehaviour
         animator.SetBool("IsMoving", player_status.IsMoving);
         animator.SetBool("IsWalking",player_status.IsWalking);
         animator.SetBool("IsDashing", player_status.IsDashing);
-        animator.SetBool("IsCrouching", player_status.IsCrouching);
+        //animator.SetBool("IsCrouching", player_status.IsCrouching);
         animator.SetBool("IsJumping", player_status.IsJumping);
         animator.SetBool("IsFalling", player_status.IsFalling);
         animator.SetBool("IsWallSliding", player_status.IsWallSliding);
