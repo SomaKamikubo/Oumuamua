@@ -71,27 +71,27 @@ Folder Model{
             bool IsAttacking
         }
     }   
+    Folder ManagerModel  {
+        class Failed {
+            void GameOver()
+        }
+        class Clear {
+            void GameClear()
+        }
+
+        class SwitchBGM {
+            void PlayBGM(String BGM_name)
+        }
+        class CalcProgres{
+            void CalcRatio()
+        }
+}
 }
 
-Folder ManagerModel  {
-    class Failed {
-        void GameOver()
-    }
-    class Clear {
-        void GameClear()
-    }
 
-    class SwitchBGM {
-        void PlayBGM(String BGM_name)
-    }
-    class CalcProgres{
-        void CalcRatio()
-    }
-}
 
 Folder Presenter{
 class SetAnimation{
-
 }
 }
 
@@ -158,10 +158,10 @@ interface IButtonPush{
 }
 
 
-PlayerHP --|> IAttack
-EnemyAttack ..> IAttack
-BossAttack1 ..> IAttack
-BossAttack2 ..> IAttack
+PlayerHP --up|> IAttack
+EnemyAttack ..up> IAttack
+BossAttack1 ..up> IAttack
+BossAttack2 ..up> IAttack
 
 GameRestart ..> IButtonPush
 GameStop ..>  IButtonPush
