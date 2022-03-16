@@ -27,4 +27,31 @@ public class EnemyView : MonoBehaviour
             OnInputX?.Invoke(false);
         }
     }
+
+    public void InputRight()
+    {
+        OnInputHrizon?.Invoke(1);
+    }
+
+    public void InputLeft()
+    {
+        OnInputHrizon?.Invoke(-1);
+    }
+
+    public void InputIdle()
+    {
+        OnInputHrizon?.Invoke(0);
+    }
+
+    public void InputX()
+    {
+        OnInputX?.Invoke(true);
+    }
+
+    public void OutX()
+    {
+        OnInputX?.Invoke(false);
+    }
+
+
 }

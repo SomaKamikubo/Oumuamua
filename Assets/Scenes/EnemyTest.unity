@@ -332,6 +332,7 @@ GameObject:
   - component: {fileID: 1885185064}
   - component: {fileID: 1885185063}
   - component: {fileID: 1885185062}
+  - component: {fileID: 1885185066}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Untagged
@@ -439,11 +440,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: c980f317a93227d418a12bec936aead8, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &1885185061
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -453,12 +454,12 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 1885185056}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: c980f317a93227d418a12bec936aead8, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.1, y: 0.01}
-  m_Size: {x: 0.5, y: 0.3}
+  m_Offset: {x: 0.1, y: 0}
+  m_Size: {x: 0.6, y: 0.4}
   m_Direction: 0
 --- !u!114 &1885185062
 MonoBehaviour:
@@ -515,3 +516,21 @@ MonoBehaviour:
   rb: {fileID: 1885185060}
   walkSpeed: 3
   attackPower: 5
+--- !u!114 &1885185066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1885185056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 815083fd8542264448551ae489f5aff0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackArea: 5
+  moveArea: 10
+  searchArea: 15
+  posArea: 2
+  Player: {fileID: 0}
+  input_view: {fileID: 1885185062}
