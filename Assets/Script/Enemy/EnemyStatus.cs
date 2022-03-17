@@ -11,6 +11,7 @@ public class EnemyStatus : MonoBehaviour
     bool isDeath = false;
     [SerializeField] Animator animator;
     [SerializeField] EnemyModel EM;
+    int HP;
 
 
 
@@ -37,6 +38,11 @@ public class EnemyStatus : MonoBehaviour
             EM.Move(value);
         }
         anim();
+    }
+
+    public void PLayDamage(int value)
+    {
+        HP = EM.   
     }
 
     public void PlayAttack(bool keyDown)
