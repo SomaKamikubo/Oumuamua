@@ -13,17 +13,18 @@ public class InputView : MonoBehaviour
     public event Action OnSpaceKeyPressedListener;
     public event Action<bool> OnShiftKeyPressedListener;
     public event Action OnKKeyPressedListener;
-    public event Action<float> OnHorizontalPressedListener;
 
     public event Action OnButtonClickedLitener;
     //bool isKeyDownS;
 
-   
+    Subject<bool> _isPressSKey = new Subject<bool>();
+    Subject<float> _isPressHorizontal = new Subject<float>();
     //ReactiveProperty<bool> _isPressSKey = new ReactiveProperty<bool>(false);
     ReactiveProperty<bool> _isPressSpaceKey = new ReactiveProperty<bool>(false);
     ReactiveProperty<float> _horizontalAmount = new ReactiveProperty<float>(0);
 
-    //public IReadOnlyReactiveProperty<bool> OnChangeIsPressSKey { get { return _isPressSKey; } }
+    public IObservable<bool> OnPressSKey { get { return _isPressSKey; } }
+    public IObservable<float> OnPressHorizontalKey { get { return _isPressHorizontal; } }
     public IReadOnlyReactiveProperty<bool> OnPressSpaceKey { get { return _isPressSpaceKey; } }
     public IReadOnlyReactiveProperty<float> OnMove { get { return _horizontalAmount; } }
 
@@ -47,22 +48,9 @@ public class InputView : MonoBehaviour
             .Where(_ => Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.LeftShift))
             .Subscribe(_ => PressingKey("LeftShift", Input.GetKeyDown(KeyCode.LeftShift)));
 
-        //this.UpdateAsObservable()
-        //    .Where(_ => Input.GetAxis("Horizontal") != 0)
-        //    .Subscribe(_ => PassHorizonAmount(Input.GetAxis("Horizontal")));
-        //this.UpdateAsObservable()
-        //    //.Where(_ => Input.GetAxis("Horizontal") != 0)
-        //    .Subscribe(_ =>
-        //    {
-        //        
-        //    });
-        this.UpdateAsObservable()
-            .Subscribe(_ => { OnHorizontalPressedListener?.Invoke(Input.GetAxis("Horizontal")); });
-    }
 
-    void PassHorizonAmount(float amount)
-    {
-        _horizontalAmount.Value = amount;
+        this.UpdateAsObservable()
+            .Subscribe(_ => { _isPressHorizontal.OnNext(Input.GetAxis("Horizontal")); });
     }
 
     void PressKey(string key)

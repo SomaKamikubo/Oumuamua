@@ -56,7 +56,7 @@ public class PlayerMove : MonoBehaviour
         Debug.Log(amount);
         if (amount == 0)
         {
-            Debug.Log("動いていない");
+            //Debug.Log("動いていない");
             SetIsWalking(false);
             return;
             
@@ -68,7 +68,7 @@ public class PlayerMove : MonoBehaviour
         }
         if (_preparationDash)
         {
-            Debug.Log("dash");
+            //Debug.Log("dash");
             _speed = _dashSpeed;
             SetIsDashing(true);
         }
@@ -82,7 +82,7 @@ public class PlayerMove : MonoBehaviour
     }
     public void receiveShift(bool isPressShift)
     {
-        Debug.Log("mreceiveShift");
+        //Debug.Log("mreceiveShift");
         _preparationDash = isPressShift;
         if (isPressShift == false)
         {
@@ -124,7 +124,7 @@ public class PlayerMove : MonoBehaviour
     void SetIsJumping(bool value)
     {
         _isJumping.Value = value;
-        Debug.Log("ジャンプ:"+value);
+        //Debug.Log("ジャンプ:"+value);
     }
     void SetIsFalling(bool value)
     {
@@ -138,12 +138,12 @@ public class PlayerMove : MonoBehaviour
     void SetIsDashing(bool value)
     {
         _isDashing.Value = value;
-        Debug.Log("Dash:" + value);
+        //Debug.Log("Dash:" + value);
     }
     void SetIsWalking(bool value)
     {
         _isWalking.Value = value;
-        Debug.Log("歩く:" + value);
+        //Debug.Log("歩く:" + value);
     }
 
     public bool IsMoving { get { return isMoving; } }

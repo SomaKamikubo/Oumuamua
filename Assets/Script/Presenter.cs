@@ -18,7 +18,6 @@ public class Presenter : MonoBehaviour
         input_view.OnSKeyPressedListener += KeyDownS => { player_move.Crounch(KeyDownS); };
         input_view.OnShiftKeyPressedListener += KeyDownShift => {player_move.receiveShift(KeyDownShift); };
         input_view.OnSpaceKeyPressedListener += () => player_move.Jump();
-        input_view.OnHorizontalPressedListener += amount => player_move.Move(amount);
 
         //modelからviewへ
         //コールバック関数にする
@@ -29,7 +28,8 @@ public class Presenter : MonoBehaviour
         player_move.OnChangeIsCrouching.Subscribe(value => input_view.SetAnimetor("IsCrouching", value));
 
         //viewからmodelへ
-        //input_view.OnMove.Subscribe(amount => player_move.Move(amount));
+        input_view.OnPressHorizontalKey.Subscribe(amount => player_move.Move(amount));
+
         
     }
 
