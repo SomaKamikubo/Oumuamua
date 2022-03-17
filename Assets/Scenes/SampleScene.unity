@@ -593,6 +593,11 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 4043928553495282544, guid: 70dc87432504a654c91787b5ec17a3d1, type: 3}
   m_PrefabInstance: {fileID: 4043928553674015007}
   m_PrefabAsset: {fileID: 0}
+--- !u!50 &1454445057 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 4043928553495282547, guid: 70dc87432504a654c91787b5ec17a3d1, type: 3}
+  m_PrefabInstance: {fileID: 4043928553674015007}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4043928553674015007
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -660,6 +665,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4043928553495282549, guid: 70dc87432504a654c91787b5ec17a3d1, type: 3}
+      propertyPath: _rb
+      value: 
+      objectReference: {fileID: 1454445057}
     - target: {fileID: 4043928553495282549, guid: 70dc87432504a654c91787b5ec17a3d1, type: 3}
       propertyPath: JumpForce
       value: 4
