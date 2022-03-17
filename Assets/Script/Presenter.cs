@@ -14,20 +14,20 @@ public class Presenter : MonoBehaviour
     {
         //input_view.OnSKeyPressedListener += KeyDownS => { animator.SetBool("IsCrouching", KeyDownS); };
 
-        //view‚©‚çƒ†[ƒU[‚Ì“ü—Í‚ª—ˆ‚½‚±‚Æ‚ðŽó‚¯Žæ‚é
+        //viewï¿½ï¿½ï¿½çƒ†ï¿½[ï¿½Uï¿½[ï¿½Ì“ï¿½ï¿½Í‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½ó‚¯Žï¿½ï¿½
         input_view.OnSKeyPressedListener += KeyDownS => { player_move.Crounch(KeyDownS); };
         input_view.OnShiftKeyPressedListener += KeyDownShift => {player_move.receiveShift(KeyDownShift); };
         input_view.OnSpaceKeyPressedListener += () => player_move.Jump();
 
-        //model‚©‚çview‚Ö
-        //ƒR[ƒ‹ƒoƒbƒNŠÖ”Žg‚¢‚½‚¢
+        //modelï¿½ï¿½ï¿½ï¿½viewï¿½ï¿½
+        //ï¿½Rï¿½[ï¿½ï¿½ï¿½oï¿½bï¿½Nï¿½Öï¿½ï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         player_move.OnChangeIsJumping.Subscribe(value => input_view.SetAnimetor("IsJumping", value));
-        player_move.OnChangeIsFalling.Subscribe(value => { input_view.SetAnimetor("IsFalling", value); Debug.Log("isFalling‚ª"+value+"‚É‚È‚Á‚½B"); });
+        player_move.OnChangeIsFalling.Subscribe(value => { input_view.SetAnimetor("IsFalling", value); Debug.Log("isFallingï¿½ï¿½"+value+"ï¿½É‚È‚ï¿½ï¿½ï¿½ï¿½B"); });
         player_move.OnChangeIsWalking.Subscribe(value => input_view.SetAnimetor("IsWalking", value));
         player_move.OnChangeIsDashing.Subscribe(value => input_view.SetAnimetor("IsDashing", value));
         player_move.OnChangeIsCrouching.Subscribe(value => input_view.SetAnimetor("IsCrouching", value));
 
-        //view‚©‚çmodel‚Ö
+        //viewï¿½ï¿½ï¿½ï¿½modelï¿½ï¿½
         input_view.OnMove.Subscribe(amount => player_move.Move(amount));
     }
 

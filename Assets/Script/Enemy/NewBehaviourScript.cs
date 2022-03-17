@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Iupdateframe : MonoBehaviour
+public class NewBehaviourScript : MonoBehaviour
 {
-    //void update(float frame);
+
 }
