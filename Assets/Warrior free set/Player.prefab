@@ -38,7 +38,6 @@ Transform:
   m_LocalScale: {x: 3.0086162, y: 2.8632104, z: 2.6729}
   m_Children:
   - {fileID: 4043928555013059716}
-  - {fileID: 4043928555586550605}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -187,16 +186,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1309ad9c025eb248bf7e9ec117c2e48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 4043928553495282547}
-  WalkSpeed: 2
-  DashSpeed: 4
+  _rb: {fileID: 0}
+  _walkSpeed: 0
+  _dashSpeed: 0
   JumpForce: 4
-  isMoving: 0
-  isWalking: 0
-  isDashing: 0
-  isFalling: 0
-  isJumping: 0
-  isCrouching: 0
 --- !u!114 &4043928553495282543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,7 +242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player_attack: {fileID: 4043928553495282542}
   player_move: {fileID: 4043928553495282549}
-  land: {fileID: 4043928555586550606}
+  land: {fileID: 0}
   wall_slide: {fileID: 4043928555013059717}
 --- !u!1 &4043928555013059717
 GameObject:
@@ -329,66 +322,3 @@ CapsuleCollider2D:
   m_Offset: {x: -0.93, y: -0.45}
   m_Size: {x: 0.17, y: 1}
   m_Direction: 0
---- !u!1 &4043928555586550606
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4043928555586550605}
-  - component: {fileID: 4043928555586550602}
-  - component: {fileID: 4043928555586550604}
-  m_Layer: 0
-  m_Name: LandCollider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4043928555586550605
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4043928555586550606}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.6296353, y: 0.3975681, z: -0.35366338}
-  m_LocalScale: {x: 0.33237872, y: 0.3492583, z: 0.37412548}
-  m_Children: []
-  m_Father: {fileID: 4043928553495282545}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &4043928555586550602
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4043928555586550606}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 4.69, y: -1.88}
-  m_Size: {x: 0.62, y: 0.25}
-  m_Direction: 1
---- !u!114 &4043928555586550604
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4043928555586550606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04928f256b2c64049a66b3380c14e20b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isFalling: 0
-  isJumping: 0
-  rb: {fileID: 0}

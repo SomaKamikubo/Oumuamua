@@ -34,7 +34,6 @@ public class PlayerMove : MonoBehaviour
 
     //[SerializeField] bool isCrouching;
     int _speed;
-    float horizon;
 
     void Start()
     {
