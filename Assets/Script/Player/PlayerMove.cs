@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UniRx;
+using UniRx.Triggers;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CapsuleCollider2D))]
@@ -9,126 +12,143 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb;
-    [SerializeField] int WalkSpeed;
-    [SerializeField] int DashSpeed;
+    [SerializeField] int _walkSpeed;
+    [SerializeField] int _dashSpeed;
     [SerializeField] int JumpForce;
-    [SerializeField] bool isMoving;
-    [SerializeField] bool isWalking;
-    [SerializeField] bool isDashing;
-    [SerializeField] bool isFalling;
-    [SerializeField] bool isJumping;
-    [SerializeField] bool isCrouching;
-    int Speed;
+    bool isMoving;
+    //bool isWalking;
+    //bool isDashing;
+    bool _preparationDash;
+    //[SerializeField] bool isFalling;
+    //[SerializeField] bool isJumping;
+    //public event Action OnFall;
+    ReactiveProperty<bool> _isJumping = new ReactiveProperty<bool>(false);
+    ReactiveProperty<bool> _isFalling = new ReactiveProperty<bool>(false);
+    ReactiveProperty<bool> _isCrouching = new ReactiveProperty<bool>(false);
+    ReactiveProperty<bool> _isWalking = new ReactiveProperty<bool>(false);
+    ReactiveProperty<bool> _isDashing = new ReactiveProperty<bool>(false);
+    public IReadOnlyReactiveProperty<bool> OnChangeIsJumping { get { return _isJumping; } }
+    public IReadOnlyReactiveProperty<bool> OnChangeIsFalling { get { return _isFalling; } }
+    public IReadOnlyReactiveProperty<bool> OnChangeIsWalking { get { return _isWalking; } }
+    public IReadOnlyReactiveProperty<bool> OnChangeIsDashing { get { return _isDashing; } }
+    public IReadOnlyReactiveProperty<bool> OnChangeIsCrouching { get { return _isCrouching; } }
+
+
+
+
+    //[SerializeField] bool isCrouching;
+    int _speed;
+    float horizon;
 
     void Start()
     {
-        Speed = 0;
+        _speed = 0;
+        //this.UpdateAsObservable()
+        //    .Where(_ => rb.velocity.y < -0.5f)
+        //    .Subscribe(_ => { Debug.Log("おちた。" + rb.velocity.y); 　SetIsFalling(true);  });
+        this.UpdateAsObservable()
+            .Subscribe(_ => {horizon = Input.GetAxis("Horizontal"); Move(horizon); });
     }
 
-    void Update()
+
+
+    public void Move(float amount)
     {
-        /*
-        --------------
-        毎フレーム実行
-        --------------
-        */
-        //落下中かを判定
-        isFalling = rb.velocity.y < -0.5f;
-
-        //左右移動
-        float horizontal = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(horizontal * Speed, rb.velocity.y);
-
-        //しゃがんでいるか
-        //GetKeyを直接入れることでtrue,falseの切り替えが楽に。
-        isCrouching = Input.GetKey(KeyCode.S);
-
-        //動いているか
-        isMoving = horizontal != 0;
-
-        //スペースでジャンプ
-        //ジャンプはここでいいのだろうか。。。
-        //落下中ジャンプできるくね？
-        if (Input.GetKeyDown(KeyCode.Space) && !isJumping){
-            Jump();
-        }
-
-        /*
-        --------------------------------
-        条件が合致した場合次のフレームへ
-        --------------------------------
-        */
-        //動いていないならAnimationをIdleにする(init関数とかあるといいのか？)
-        if (!isMoving){
-            StopState();
+        Debug.Log(amount);
+        if (amount == 0)
+        {
+            Debug.Log("動いていない");
+            SetIsWalking(false);
             return;
+            
         }
-
-        //動いててかがんでるなら
-        if (isCrouching){
+        if (_isCrouching.Value)
+        {
             Sliding();
             return;
         }
-
-        //↓以下、動いててかがんでない場合
-
-        //SHIFTがおされたらダッシュするということのため
-        isDashing = Input.GetKey(KeyCode.LeftShift);
-        
-        //DashしているならDashするって文としてなんかな、、、
-        if (isDashing){
-            DashState();
-            return;
+        if (_preparationDash)
+        {
+            Debug.Log("dash");
+            _speed = _dashSpeed;
+            SetIsDashing(true);
         }
+        else
+        {
+            _speed = _walkSpeed;
+            SetIsWalking(true);
+        }
+        rb.velocity = new Vector2(amount * _speed, rb.velocity.y);
 
-        //ここまでくると動いててDashしてなくてかがんでいないため、歩きになる？
-        isDashing = false;
-        WalkState();
     }
-
-    void StopState()
+    public void receiveShift(bool isPressShift)
     {
-        isWalking = false;
-        isDashing = false;
+        Debug.Log("mreceiveShift");
+        _preparationDash = isPressShift;
+        if (isPressShift == false)
+        {
+            SetIsDashing(false);
+        }
     }
-
-    void WalkState()
+    public void Jump()
     {
-        Speed = WalkSpeed;
-        isWalking = true;
+        if (!_isJumping.Value)
+        {
+            rb.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
+            SetIsJumping(true);
+        }
     }
 
-    void DashState()
+    public void Crounch(bool value)
     {
-        Speed = DashSpeed;
-        isDashing = true;
+        SetIsCrouching(value);
     }
 
-    void Sliding()
+    public void Sliding()
     {
         GetComponent<Animator>().SetTrigger("SlideTrigger");
     }
 
-    void Jump()
-    {
-        rb.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
-        isJumping = true;
-    }
-
     void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (collision.CompareTag("Stage"))
         {
-            isJumping = false;
-            isFalling = false;
+            Debug.Log("着地した。");
+            SetIsJumping(false);
+            SetIsFalling(false);
         }
     }
 
+    
+
+    void SetIsJumping(bool value)
+    {
+        _isJumping.Value = value;
+        //Debug.Log(value);
+    }
+    void SetIsFalling(bool value)
+    {
+        _isFalling.Value = value;
+        //Debug.Log(value);
+    }
+    void SetIsCrouching(bool value)
+    {
+        _isCrouching.Value = value;
+    }
+    void SetIsDashing(bool value)
+    {
+        _isDashing.Value = value;
+    }
+    void SetIsWalking(bool value)
+    {
+        _isWalking.Value = value;
+    }
 
     public bool IsMoving { get { return isMoving; } }
-    public bool IsWalking { get { return isWalking; } }
-    public bool IsDashing { get { return isDashing; } }
-    public bool IsJumping { get { return isJumping; } }
-    public bool IsFalling { get { return isFalling; } }
-    public bool IsCrouching { get { return isCrouching; } }
+    public bool IsWalking { get { return _isWalking.Value; } }
+    public bool IsDashing { get { return _isDashing.Value; } }
+    public bool IsJumping { get { return _isJumping.Value; } }
+    public bool IsFalling { get { return _isFalling.Value; } }
+    public bool IsCrouching { get { return _isCrouching.Value; } }
 }

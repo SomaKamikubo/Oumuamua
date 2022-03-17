@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(Animator))]
 
-//ƒvƒŒƒCƒ„[‚ÌƒAƒjƒ[ƒVƒ‡ƒ“‚ğİ’è‚·‚éƒNƒ‰ƒX
+//ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ÌƒAï¿½jï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ’è‚·ï¿½ï¿½Nï¿½ï¿½ï¿½X
 public class PlayerAnimator : MonoBehaviour
 {
     [SerializeField] Animator animator;
@@ -16,14 +16,14 @@ public class PlayerAnimator : MonoBehaviour
     
     void Update()
     {
-        //–ˆ‰ü‘‚­‚Ì–Ê“|AƒCƒ“ƒ^[ƒtƒF[ƒX‚Å‚È‚ñ‚Æ‚©‚È‚ç‚ñ‚©H
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì–Ê“|ï¿½Aï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½Xï¿½Å‚È‚ï¿½Æ‚ï¿½ï¿½È‚ï¿½ñ‚©H
         //IPlayerData player_data = player.GetComponent<IPlayerData>();
-        animator.SetBool("IsMoving", player_status.IsMoving);
-        animator.SetBool("IsWalking",player_status.IsWalking);
-        animator.SetBool("IsDashing", player_status.IsDashing);
-        animator.SetBool("IsCrouching", player_status.IsCrouching);
-        animator.SetBool("IsJumping", player_status.IsJumping);
-        animator.SetBool("IsFalling", player_status.IsFalling);
+        //animator.SetBool("IsMoving", player_status.IsMoving);
+        //animator.SetBool("IsWalking",player_status.IsWalking);
+        //animator.SetBool("IsDashing", player_status.IsDashing);
+        //animator.SetBool("IsCrouching", player_status.IsCrouching);
+        //animator.SetBool("IsJumping", player_status.IsJumping);
+        //animator.SetBool("IsFalling", player_status.IsFalling);
         animator.SetBool("IsWallSliding", player_status.IsWallSliding);
         if (player_status.IsAttacking)
         {

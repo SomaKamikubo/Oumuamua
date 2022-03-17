@@ -15,9 +15,14 @@ Folder Model{
             void Attack()
         }
         class PlayerHP {
-            event Action OnDeath
-            int HP
             void Damage()
+        }
+        class PlayerInfo{
+            event Action OnDeath
+            int _hp
+            Vector3 _position
+            void Damage()
+            void Heal()
         }
         class PlayerStatus{
             int HP
