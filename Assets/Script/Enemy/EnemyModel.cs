@@ -34,7 +34,7 @@ public class EnemyModel : MonoBehaviour
         gameObject.transform.localScale = scale;
     }
     public void Attack() { }
-    public int HP(int damage)
+    public void Damage(int damage)
     {
         int _next = _currentHP;
         _next -= UnityEngine.Random.Range(10, 30);
@@ -42,6 +42,5 @@ public class EnemyModel : MonoBehaviour
         {
             _next = 0;
         }
-        return currentHP;
     }
 }
