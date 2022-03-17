@@ -16,15 +16,8 @@ public class PlayerStatus : MonoBehaviour
     //PlayerAttack player_attack = new PlayerAttack();
 
 
-    public bool IsAttacking { get { return player_attack.IsAttacking; } }
-    public bool IsMoving
-    {
-        get
-        {
-            return player_move.IsMoving;
-}
-    }
-
+    //public bool IsAttacking { get { return player_attack.IsAttacking; } }
+    public bool IsMoving { get {return player_move.IsMoving;}}
     public bool IsWalking { get { return player_move.IsWalking; } }
     public bool IsDashing { get { return player_move.IsDashing; } }
     public bool IsCrouching { get { return player_move.IsCrouching; } }

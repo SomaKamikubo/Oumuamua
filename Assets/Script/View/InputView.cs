@@ -8,7 +8,7 @@ using UniRx.Triggers;
 
 public class InputView : MonoBehaviour
 {
-    [SerializeField] Animator animator;
+    [SerializeField] Animator animetor;
     public event Action<bool> OnShiftKeydownedListener;
 
     Subject<string> _DownKey = new Subject<string>();
@@ -88,8 +88,11 @@ public class InputView : MonoBehaviour
     //アニメーションのbool値をSet
     public void SetAnimetor(string bool_name,bool isActing)
     {
-        animator.SetBool(bool_name, isActing);
+        animetor.SetBool(bool_name, isActing);
     }
 
-    
+    public void SetAnimetorTrigger(string TriggerName)
+    {
+        animetor.SetTrigger(TriggerName);
+    }
 }
