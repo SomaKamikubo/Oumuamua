@@ -54,8 +54,10 @@ public class InputView : MonoBehaviour
         //    //.Where(_ => Input.GetAxis("Horizontal") != 0)
         //    .Subscribe(_ =>
         //    {
-        //        OnHorizontalPressedListener?.Invoke(Input.GetAxis("Horizontal"));
+        //        
         //    });
+        this.UpdateAsObservable()
+            .Subscribe(_ => { OnHorizontalPressedListener?.Invoke(Input.GetAxis("Horizontal")); });
     }
 
     void PassHorizonAmount(float amount)

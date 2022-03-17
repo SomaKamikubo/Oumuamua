@@ -14,21 +14,23 @@ public class Presenter : MonoBehaviour
     {
         //input_view.OnSKeyPressedListener += KeyDownS => { animator.SetBool("IsCrouching", KeyDownS); };
 
-        //view���烆�[�U�[�̓��͂��������Ƃ��󂯎��
+        //viewからイベントを受け取る
         input_view.OnSKeyPressedListener += KeyDownS => { player_move.Crounch(KeyDownS); };
         input_view.OnShiftKeyPressedListener += KeyDownShift => {player_move.receiveShift(KeyDownShift); };
         input_view.OnSpaceKeyPressedListener += () => player_move.Jump();
+        input_view.OnHorizontalPressedListener += amount => player_move.Move(amount);
 
-        //model����view��
-        //�R�[���o�b�N�֐��g������
+        //modelからviewへ
+        //コールバック関数にする
         player_move.OnChangeIsJumping.Subscribe(value => input_view.SetAnimetor("IsJumping", value));
-        player_move.OnChangeIsFalling.Subscribe(value => { input_view.SetAnimetor("IsFalling", value); Debug.Log("isFalling��"+value+"�ɂȂ����B"); });
-        player_move.OnChangeIsWalking.Subscribe(value => input_view.SetAnimetor("IsWalking", value));
+        player_move.OnChangeIsFalling.Subscribe(value => { input_view.SetAnimetor("IsFalling", value);; });
+        player_move.OnChangeIsWalking.Subscribe(value => { input_view.SetAnimetor("IsWalking", value); Debug.Log("歩くアニメーション" + value); });
         player_move.OnChangeIsDashing.Subscribe(value => input_view.SetAnimetor("IsDashing", value));
         player_move.OnChangeIsCrouching.Subscribe(value => input_view.SetAnimetor("IsCrouching", value));
 
-        //view����model��
-        input_view.OnMove.Subscribe(amount => player_move.Move(amount));
+        //viewからmodelへ
+        //input_view.OnMove.Subscribe(amount => player_move.Move(amount));
+        
     }
 
 }

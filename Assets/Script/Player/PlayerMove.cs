@@ -46,8 +46,7 @@ public class PlayerMove : MonoBehaviour
         //this.UpdateAsObservable()
         //    .Where(_ => rb.velocity.y < -0.5f)
         //    .Subscribe(_ => { Debug.Log("おちた。" + rb.velocity.y); 　SetIsFalling(true);  });
-        this.UpdateAsObservable()
-            .Subscribe(_ => {horizon = Input.GetAxis("Horizontal"); Move(horizon); });
+        
     }
 
 
@@ -125,7 +124,7 @@ public class PlayerMove : MonoBehaviour
     void SetIsJumping(bool value)
     {
         _isJumping.Value = value;
-        //Debug.Log(value);
+        Debug.Log("ジャンプ:"+value);
     }
     void SetIsFalling(bool value)
     {
@@ -139,10 +138,12 @@ public class PlayerMove : MonoBehaviour
     void SetIsDashing(bool value)
     {
         _isDashing.Value = value;
+        Debug.Log("Dash:" + value);
     }
     void SetIsWalking(bool value)
     {
         _isWalking.Value = value;
+        Debug.Log("歩く:" + value);
     }
 
     public bool IsMoving { get { return isMoving; } }
