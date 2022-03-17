@@ -34,22 +34,23 @@ public class EnemyStatus : MonoBehaviour
         else
         {
             isWalking = true;
-            EM.Move(value);
         }
+        EM.Move(value);
         anim();
     }
 
-    public void PLayDamage(int value)
-    {
-        EM.Damage(value);
-        if (EM.CurrentHp == 0)
-            isDeath = true;
+    //public void PLayDamage(int value)
+    //{
+    //    EM.Damage(value);
+    //    if (EM.CurrentHp == 0)
+    //        isDeath = true;
 
-        anim();
-    }
+    //    anim();
+    //}
 
     public void PlayAttack(bool keyDown)
     {
+        Debug.Log(keyDown + "ss");
         isAttacking = keyDown;
         anim();
     }
@@ -58,6 +59,6 @@ public class EnemyStatus : MonoBehaviour
     {
         animator.SetBool("IsWalking", isWalking);
         animator.SetBool("IsAttacking", isAttacking);
-        animator.SetBool("IsFalling", isDeath);
+        animator.SetBool("IsDeath", isDeath);
     }
 }

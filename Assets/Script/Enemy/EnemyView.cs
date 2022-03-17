@@ -16,10 +16,12 @@ public class EnemyView : MonoBehaviour
     private void Update()
     {
         value = Input.GetAxis("Horizontal");
-        OnInputHrizon?.Invoke(value);
+        //OnInputHrizon?.Invoke(value);
+
 
         if (Input.GetKey(KeyCode.X))
         {
+            Debug.Log("true");
             OnInputX?.Invoke(true);
         }
         if (Input.GetKeyUp(KeyCode.X))

@@ -39,6 +39,9 @@ public class EnemyController : MonoBehaviour
 
     public void Action()
     {
+        input_view.InputIdle();
+
+
         if ((enePos.x <= (initPosition.x - moveArea)) || (enePos.x >= (initPosition.x + moveArea)))
             if ((playPos.x <= (initPosition.x - moveArea)) || (playPos.x >= (initPosition.x + moveArea)))
             {
@@ -48,10 +51,17 @@ public class EnemyController : MonoBehaviour
         
         
 
-        GoPlayer(); //UŒ‚‚ÌU‚èŒü‚«—p‚Æ‚µ‚Ä‚àg—p‚·‚é
+         //UŒ‚‚ÌU‚èŒü‚«—p‚Æ‚µ‚Ä‚àg—p‚·‚é
 
-        if (Mathf.Abs(initPosition.x - playPos.x) <= attackArea) //UŒ‚”ÍˆÍ“à‚É—ˆ‚½‚çUŒ‚‚·‚é        
+        if (Mathf.Abs(enePos.x - playPos.x) <= attackArea) //UŒ‚”ÍˆÍ“à‚É—ˆ‚½‚çUŒ‚‚·‚é        
+        {
             input_view.InputX();
+        }
+        else
+        {
+            input_view.OutX();
+            GoPlayer();
+        }
 
             
 
@@ -59,15 +69,16 @@ public class EnemyController : MonoBehaviour
 
     public void ReturnPos()
     {
-        if((enePos.x - initPosition.x) < -posArea)
+        input_view.OutX();
+        if ((enePos.x - initPosition.x) < -posArea)
         {
             input_view.InputRight();
         }
-
-        if ((enePos.x - initPosition.x) > posArea)
+        else if((enePos.x - initPosition.x) > posArea)
         {
-            input_view.InputLeft();
-        }
+            input_view.InputLeft(); 
+        }else
+            input_view.InputIdle();
     }
 
     public void GoPlayer()

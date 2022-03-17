@@ -15,7 +15,7 @@ public class EnemyModel : MonoBehaviour
 
     public int CurrentHp { get => _currentHp.Value; set => _currentHp.Value = value; }
     public IObservable<int> CurrentChanged => _currentHp;
-    private readonly ReactiveProperty<int> _currentHp = new();
+    private readonly ReactiveProperty<int> _currentHp;
 
     public void Start()
     {
