@@ -33,7 +33,7 @@ public class Presenter : MonoBehaviour
 
 
         //AtackModelからviewへ
-        //_playerAttack.OnChangeIsAttacking.Subscribe(value => _inputView.SetAnimetorTrigger("AttackTrigger"));
+        _playerAttack.OnAttack.Subscribe(value => _inputView.SetAnimetorTrigger(value));
 
 
         void ProcessKey(string key)

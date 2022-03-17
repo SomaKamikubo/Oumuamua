@@ -566,6 +566,17 @@ MonoBehaviour:
   _inputView: {fileID: 1454445047}
   _playerMove: {fileID: 1454445053}
   _playerAttack: {fileID: 1454445051}
+--- !u!114 &1454445049 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4043928553495282541, guid: 70dc87432504a654c91787b5ec17a3d1, type: 3}
+  m_PrefabInstance: {fileID: 4043928553674015007}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1454445046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f66b0d6faac5abf4cbb22b91c3989467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1454445051 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4043928553495282542, guid: 70dc87432504a654c91787b5ec17a3d1, type: 3}
@@ -609,6 +620,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4043928553495282542, guid: 70dc87432504a654c91787b5ec17a3d1, type: 3}
+      propertyPath: _playerStatus
+      value: 
+      objectReference: {fileID: 1454445049}
     - target: {fileID: 4043928553495282545, guid: 70dc87432504a654c91787b5ec17a3d1, type: 3}
       propertyPath: m_RootOrder
       value: 4
