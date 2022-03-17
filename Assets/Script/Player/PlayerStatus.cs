@@ -27,11 +27,8 @@ public class PlayerStatus : MonoBehaviour
 
     public bool IsWalking { get { return player_move.IsWalking; } }
     public bool IsDashing { get { return player_move.IsDashing; } }
-    //public bool IsCrouching { get { return player_move.IsCrouching; } }
+    public bool IsCrouching { get { return player_move.IsCrouching; } }
     public bool IsJumping { get { return player_move.IsJumping; } }
-    //public bool IsFalling { get { return player_move.IsFalling; } }
-
-    //public bool IsJumping { get { return land.GetComponent<PlayerJump>().IsJumping; } }
-    //public bool IsFalling { get { return land.GetComponent<PlayerJump>().IsFalling; } }
+    public bool IsFalling { get { return player_move.IsFalling; } }
     public bool IsWallSliding { get { return wall_slide.GetComponent<WallSlide>().IsWallSliding; } }
 }

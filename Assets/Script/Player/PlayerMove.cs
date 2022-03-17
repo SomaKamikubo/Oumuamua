@@ -11,17 +11,13 @@ using UniRx.Triggers;
 //プレイヤーの動きを実装するクラス
 public class PlayerMove : MonoBehaviour
 {
-    [SerializeField] Rigidbody2D rb;
+    [SerializeField] Rigidbody2D _rb;
     [SerializeField] int _walkSpeed;
     [SerializeField] int _dashSpeed;
     [SerializeField] int JumpForce;
     bool isMoving;
-    //bool isWalking;
-    //bool isDashing;
     bool _preparationDash;
-    //[SerializeField] bool isFalling;
-    //[SerializeField] bool isJumping;
-    //public event Action OnFall;
+
     ReactiveProperty<bool> _isJumping = new ReactiveProperty<bool>(false);
     ReactiveProperty<bool> _isFalling = new ReactiveProperty<bool>(false);
     ReactiveProperty<bool> _isCrouching = new ReactiveProperty<bool>(false);
@@ -53,7 +49,6 @@ public class PlayerMove : MonoBehaviour
 
     public void Move(float amount)
     {
-        Debug.Log(amount);
         if (amount == 0)
         {
             //Debug.Log("動いていない");
@@ -63,7 +58,8 @@ public class PlayerMove : MonoBehaviour
         }
         if (_isCrouching.Value)
         {
-            Sliding();
+            //時間あるときにやろうかな
+            //Sliding();
             return;
         }
         if (_preparationDash)
@@ -77,7 +73,7 @@ public class PlayerMove : MonoBehaviour
             _speed = _walkSpeed;
             SetIsWalking(true);
         }
-        rb.velocity = new Vector2(amount * _speed, rb.velocity.y);
+        _rb.velocity = new Vector2(amount * _speed, _rb.velocity.y);
 
     }
     public void receiveShift(bool isPressShift)
@@ -93,7 +89,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (!_isJumping.Value)
         {
-            rb.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
+            _rb.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
             SetIsJumping(true);
         }
     }
