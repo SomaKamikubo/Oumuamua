@@ -143,8 +143,8 @@ interface IAttack{
     void Attack();
 }
 
-interface IEnemyDamage{
-    void Damage();
+interface IApplyDamage{
+    void Damage(int ATK);
 }
 
 interface ICharactorMove{

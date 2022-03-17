@@ -7,16 +7,13 @@ using UnityEngine;
 public class PlayerStatus : MonoBehaviour
 {
 
-    [SerializeField] PlayerAttack player_attack;
+
     [SerializeField] PlayerMove player_move;
 
     //Å´Collider
-    [SerializeField] GameObject land;
     [SerializeField] GameObject wall_slide;
-    //PlayerAttack player_attack = new PlayerAttack();
 
 
-    //public bool IsAttacking { get { return player_attack.IsAttacking; } }
     public bool IsMoving { get {return player_move.IsMoving;}}
     public bool IsWalking { get { return player_move.IsWalking; } }
     public bool IsDashing { get { return player_move.IsDashing; } }

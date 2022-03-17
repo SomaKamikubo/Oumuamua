@@ -11,6 +11,7 @@ public class Presenter : MonoBehaviour
     [SerializeField] InputView _inputView;
     [SerializeField] PlayerMove _playerMove;
     [SerializeField] PlayerAttack _playerAttack;
+    [SerializeField] Player _player;
     //[SerializeField] PlayerStatus _status;
 
     private void Start()
@@ -34,6 +35,10 @@ public class Presenter : MonoBehaviour
 
         //AtackModelからviewへ
         _playerAttack.OnAttack.Subscribe(value => _inputView.SetAnimetorTrigger(value));
+
+        //Playerからviewへ
+        _player.OnHurt.Subscribe(value => _inputView.SetAnimetorTrigger(value));
+        _player.OnDeath.Subscribe(value => _inputView.SetAnimetorTrigger(value));
 
 
         void ProcessKey(string key)
