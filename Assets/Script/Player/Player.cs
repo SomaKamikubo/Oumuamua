@@ -5,11 +5,11 @@ using UniRx;
 using UniRx.Triggers;
 using System;
 
+//Player自身のこと（おもにHPや攻撃力関すること）
 public class Player : MonoBehaviour,IApplyDamage
 {
-    [SerializeField]
-    int _hp;
-    int _atk;
+    [SerializeField] int _hp;
+    [SerializeField] int _atk;
 
 
     Subject<string> _isDeath = new Subject<string>();
@@ -23,10 +23,10 @@ public class Player : MonoBehaviour,IApplyDamage
         return this._hp == 0;
     }
 
-    public void Damage(int atk)
+    public void Damage(int enemy_atk)
     {
         _isHurt.OnNext("HurtTrigger");
-        this._hp -= atk;
+        this._hp -= enemy_atk;
         if(this._hp <= 0)
         {
             _isDeath.OnNext("DeathTrigger");
@@ -38,8 +38,13 @@ public class Player : MonoBehaviour,IApplyDamage
         this._hp += heal;
     }
 
+    //プロパティつかえ()
     public int getATK()
     {
         return _atk;
+    }
+    public int getHP()
+    {
+        return _hp;
     }
 }

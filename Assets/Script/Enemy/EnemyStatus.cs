@@ -14,17 +14,6 @@ public class EnemyStatus : MonoBehaviour
 
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void PlayMove(float value)
     {
@@ -36,7 +25,7 @@ public class EnemyStatus : MonoBehaviour
             isWalking = true;
         }
         EM.Move(value);
-        anim();
+        //anim();
     }
 
     //public void PLayDamage(int value)
@@ -52,13 +41,8 @@ public class EnemyStatus : MonoBehaviour
     {
         Debug.Log(keyDown + "ss");
         isAttacking = keyDown;
-        anim();
+        //anim();
     }
 
-    void anim()
-    {
-        animator.SetBool("IsWalking", isWalking);
-        animator.SetBool("IsAttacking", isAttacking);
-        animator.SetBool("IsDeath", isDeath);
-    }
+    
 }

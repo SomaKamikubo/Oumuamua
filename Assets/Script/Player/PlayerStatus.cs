@@ -3,16 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //プレイヤーの状態をまとめる
-//プレイヤーの情報が欲しい場合はここを参照
+//プレイヤーの状態の情報が欲しい場合はここを参照
 public class PlayerStatus : MonoBehaviour
 {
-
-
     [SerializeField] PlayerMove player_move;
 
     //↓Collider
     [SerializeField] GameObject wall_slide;
-
 
     public bool IsMoving { get {return player_move.IsMoving;}}
     public bool IsWalking { get { return player_move.IsWalking; } }

@@ -29,7 +29,7 @@ public class PlayerMove : MonoBehaviour
     public IReadOnlyReactiveProperty<bool> OnChangeIsDashing { get { return _isDashing; } }
     public IReadOnlyReactiveProperty<bool> OnChangeIsCrouching { get { return _isCrouching; } }
 
-
+    ReactiveProperty<float> _vectorY = new ReactiveProperty<float>();
 
 
     //[SerializeField] bool isCrouching;
@@ -39,9 +39,12 @@ public class PlayerMove : MonoBehaviour
     {
         _speed = 0;
         //this.UpdateAsObservable()
-        //    .Where(_ => rb.velocity.y < -0.5f)
-        //    .Subscribe(_ => { Debug.Log("おちた。" + rb.velocity.y); 　SetIsFalling(true);  });
-        
+        //    .Where(_ => _rb.velocity.y < -0.5f)
+        //    .Subscribe(_ => { Debug.Log("おちた。" + _rb.velocity.y); SetIsFalling(true); });
+        //this.UpdateAsObservable()
+        //    .Subscribe(_ => { _vectorY.Value = _rb.velocity.y; });
+        //_vectorY.Subscribe(amount => if (amount < -0.5f) { SetIsFalling(true); } );
+
     }
 
 
@@ -52,6 +55,7 @@ public class PlayerMove : MonoBehaviour
         {
             //Debug.Log("動いていない");
             SetIsWalking(false);
+            SetIsDashing(false);
             return;
             
         }
@@ -95,6 +99,11 @@ public class PlayerMove : MonoBehaviour
 
     public void Crounch(bool value)
     {
+        if (value)
+        {
+            //ちょっとごり押し過ぎる？
+            _rb.velocity = new Vector2(0, _rb.velocity.y);
+        }
         SetIsCrouching(value);
     }
 

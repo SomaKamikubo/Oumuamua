@@ -8,18 +8,29 @@ using UniRx.Triggers;
 //プレイヤーの攻撃を実装するクラス
 public class PlayerAttack : MonoBehaviour
 {
-    [SerializeField] Player player;
+    [SerializeField] Rigidbody2D _rb;
+    [SerializeField] Player _player;
+    [SerializeField] PlayerStatus _ps;
 
+
+
+    //TriggerAnimetion _triAni = new TriggerAnimetion();
     Subject<string> _isAttacking = new Subject<string>();
     public IObservable<string> OnAttack { get { return _isAttacking; } }
     public void Attack()
     {
-        _isAttacking.OnNext("AttackTrigger");
+        if(!_ps.IsFalling && !_ps.IsJumping)
+        {
+            _rb.velocity = new Vector2(0, _rb.velocity.y);
+            //_triAni.AttackAnimation();
+            _isAttacking.OnNext("AttackTrigger");
+        }
+       
 
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        collision.gameObject.GetComponent<IApplyDamage>()?.Damage(player.getATK());
+        collision.gameObject.GetComponent<IApplyDamage>()?.Damage(_player.getATK());
     }
 
 
