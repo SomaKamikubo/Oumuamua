@@ -9,7 +9,7 @@ public class EnemyStatus : MonoBehaviour
     bool isWalking = false;
     bool isAttacking = false;
     bool isDeath = false;
-    [SerializeField] Animator animator;
+    //[SerializeField] Animator animator;
     [SerializeField] EnemyModel EM;
 
 
@@ -24,7 +24,7 @@ public class EnemyStatus : MonoBehaviour
         {
             isWalking = true;
         }
-        EM.Move(value);
+        //EM.Move(value);
         //anim();
     }
 

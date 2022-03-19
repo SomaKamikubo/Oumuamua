@@ -26,24 +26,25 @@ public class Presenter : MonoBehaviour
 
         //MoveModelからviewへ
         //コールバック関数にする
-        _playerMove.OnChangeIsJumping.Subscribe(value => _inputView.SetAnimetor("IsJumping", value));
-        _playerMove.OnChangeIsFalling.Subscribe(value => {_inputView.SetAnimetor("IsFalling", value);; });
-        _playerMove.OnChangeIsWalking.Subscribe(value => { _inputView.SetAnimetor("IsWalking", value);});
-        _playerMove.OnChangeIsDashing.Subscribe(value => _inputView.SetAnimetor("IsDashing", value));
-        _playerMove.OnChangeIsCrouching.Subscribe(value => _inputView.SetAnimetor("IsCrouching", value));
+        _playerMove.OnChangeIsJumping.Subscribe(value => _inputView.SetAnimator("IsJumping", value));
+        _playerMove.OnChangeIsFalling.Subscribe(value => {_inputView.SetAnimator("IsFalling", value);; });
+        _playerMove.OnChangeIsWalking.Subscribe(value => { _inputView.SetAnimator("IsWalking", value);});
+        _playerMove.OnChangeIsDashing.Subscribe(value => _inputView.SetAnimator("IsDashing", value));
+        _playerMove.OnChangeIsCrouching.Subscribe(value => _inputView.SetAnimator("IsCrouching", value));
 
 
         //AtackModelからviewへ
-        _playerAttack.OnAttack.Subscribe(value => _inputView.SetAnimetorTrigger(value));
+        _playerAttack.OnAttack.Subscribe(value => _inputView.SetAnimatorTrigger(value));
 
         //Playerからviewへ
-        _player.OnHurt.Subscribe(value => _inputView.SetAnimetorTrigger(value));
-        _player.OnDeath.Subscribe(value => _inputView.SetAnimetorTrigger(value));
+        _player.OnHurt.Subscribe(value => _inputView.SetAnimatorTrigger(value));
+        _player.OnDeath.Subscribe(value => _inputView.SetAnimatorTrigger(value));
 
 
         void ProcessKey(string key)
         {
-            switch (key){
+            switch (key)
+            {
                 case "K":
                     _playerAttack.Attack();
                     break;
@@ -51,11 +52,8 @@ public class Presenter : MonoBehaviour
                     _playerMove.Jump();
                     break;
             }
-        
-        }
 
-
-        
+        }   
     }
 
 }

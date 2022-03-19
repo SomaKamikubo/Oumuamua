@@ -2,13 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UniRx;
 using UniRx.Triggers;
 
 public class InputView : MonoBehaviour
 {
-    [SerializeField] Animator animetor;
+    [SerializeField] Animator animator;
     public event Action<bool> OnShiftKeydownedListener;
 
     Subject<string> _DownKey = new Subject<string>();
@@ -86,13 +85,13 @@ public class InputView : MonoBehaviour
 
 
     //アニメーションのbool値をSet
-    public void SetAnimetor(string bool_name,bool isActing)
+    public void SetAnimator(string bool_name,bool isActing)
     {
-        animetor.SetBool(bool_name, isActing);
+        animator.SetBool(bool_name, isActing);
     }
 
-    public void SetAnimetorTrigger(string TriggerName)
+    public void SetAnimatorTrigger(string TriggerName)
     {
-        animetor.SetTrigger(TriggerName);
+        animator.SetTrigger(TriggerName);
     }
 }

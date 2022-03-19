@@ -9,26 +9,38 @@ public class EnemyView : MonoBehaviour
     public event Action<float> OnInputHrizon;
     public event Action<bool> OnInputX;
     float value;
+    [SerializeField] Animator animator;
 
-
-
-
-    private void Update()
+    //アニメーションのbool値をSet
+    public void SetAnimetor(string bool_name, bool isActing)
     {
-        value = Input.GetAxis("Horizontal");
-        //OnInputHrizon?.Invoke(value);
-
-
-        if (Input.GetKey(KeyCode.X))
-        {
-            Debug.Log("true");
-            OnInputX?.Invoke(true);
-        }
-        if (Input.GetKeyUp(KeyCode.X))
-        {
-            OnInputX?.Invoke(false);
-        }
+        animator.SetBool(bool_name, isActing);
     }
+
+    public void SetAnimetorTrigger(string TriggerName)
+    {
+        animator.SetTrigger(TriggerName);
+    }
+
+
+
+
+    //private void Update()
+    //{
+    //    value = Input.GetAxis("Horizontal");
+    //    //OnInputHrizon?.Invoke(value);
+
+
+    //    if (Input.GetKey(KeyCode.X))
+    //    {
+    //        Debug.Log("true");
+    //        OnInputX?.Invoke(true);
+    //    }
+    //    if (Input.GetKeyUp(KeyCode.X))
+    //    {
+    //        OnInputX?.Invoke(false);
+    //    }
+    //}
 
     public void InputRight()
     {

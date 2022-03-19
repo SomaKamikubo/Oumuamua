@@ -8,39 +8,60 @@ using UnityEngine;
 
 public class EnemyModel : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private int walkSpeed;
-    [SerializeField] private int _maxHP;
-    private int _currentHP;
+    [SerializeField] private Rigidbody2D _rb;
+    [SerializeField] private int _walkSpeed;
+    [SerializeField] Enemy _enemy;
+    Subject<Unit> _isOutmovement = new Subject<Unit>();
 
-    public int CurrentHp { get => _currentHp.Value; set => _currentHp.Value = value; }
-    public IObservable<int> CurrentChanged => _currentHp;
-    private readonly ReactiveProperty<int> _currentHp;
 
-    public void Start()
+    public void SeekPlayer(float playerPos) 
     {
-        _currentHP = _maxHP;
-    }
-
-    public void Move(float horizontal) 
-    {
-        rb.velocity = new Vector2(horizontal * walkSpeed, rb.velocity.y);
-
+        //îΩì]èàóù
         Vector3 scale = gameObject.transform.localScale;
-        if (horizontal < 0 && scale.x > 0 || horizontal > 0 && scale.x < 0)
+        if (_rb.velocity.x < 0 && scale.x > 0 || _rb.velocity.x > 0 && scale.x < 0)
         {
             scale.x *= -1;
         }
-        gameObject.transform.localScale = scale;
+        transform.localScale = scale;
+
+        //SeekTarget(playerPos);
+        
+
+        //èâä˙ílÇ…ñﬂÇÈ
+
+        //SeekTarget(_enemy.getFirstPosition().x);
+        
+
+        
+
+
     }
-    public void Attack() { }
-    public void Damage(int damage)
+
+    public IEnumerator SeePlayer(float target)
     {
-        int _next = _currentHP;
-        _next -= UnityEngine.Random.Range(10, 30);
-        if (_next < 0)
+        float diff_x;
+        while (transform.position.x > _enemy.getEnableMovement())
         {
-            _next = 0;
+            diff_x = target - transform.position.x;
+            _walkSpeed = diff_x < 0 ? _walkSpeed * -1 : _walkSpeed;
+            transform.Translate(0.01f * _walkSpeed, 0, 0);
+            yield return new WaitForSeconds(0.01f);
         }
     }
+
+    IEnumerator ReturneFirstPosition(float target)
+    {
+        float diff_x = target - transform.position.x;
+        while (diff_x != 0)
+        {
+            diff_x = target - transform.position.x;
+            _walkSpeed = diff_x < 0 ? _walkSpeed * -1 : _walkSpeed;
+            transform.Translate(0.01f * _walkSpeed, 0, 0);
+            yield return new WaitForSeconds(0.01f);
+        }
+    }
+
+
+
+
 }

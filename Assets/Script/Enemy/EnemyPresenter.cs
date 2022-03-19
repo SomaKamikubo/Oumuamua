@@ -1,15 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UniRx;
+using UniRx.Triggers;
 public class EnemyPresenter : MonoBehaviour
 {
 
-    [SerializeField] EnemyView input_view;
-    [SerializeField] EnemyStatus ES;
+   // [SerializeField] EnemyView input_view;
+    [SerializeField] NoticePlayer _noticePlayer;
+    //[SerializeField] EnemyStatus ES;
+    [SerializeField] EnemyModel _enemyModel;
+
     private void Start()
     {
-        input_view.OnInputX += KeyDownX => { ES.PlayAttack(KeyDownX); };
-        input_view.OnInputHrizon += value => { ES.PlayMove(value);};
+        _noticePlayer.OnFoundPlayer.Subscribe(_isFoundPlayer => {
+            //if (_isFoundPlayer)
+            //{
+            //    _enemyModel.Move(player_posiotion
+            //}
+        }
+        );
     }
 }
