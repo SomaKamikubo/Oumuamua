@@ -1,22 +1,48 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UniRx;
+using UniRx.Triggers;
 
 //プレイヤーの攻撃を実装するクラス
 public class PlayerAttack : MonoBehaviour
 {
-    bool isAttacking;
+    [SerializeField] Rigidbody2D _rb;
+    [SerializeField] Player _player;
+    [SerializeField] PlayerStatus _ps;
 
-    void Update()
+
+
+    //TriggerAnimetion _triAni = new TriggerAnimetion();
+    Subject<string> _isAttacking = new Subject<string>();
+    public IObservable<string> OnAttack { get { return _isAttacking; } }
+
+    //AudioSource source;
+    //[SerializeField] AudioClip[] clips;
+
+    public void Start()
     {
-        if (Input.GetKeyDown(KeyCode.K))
+        //source = GetComponents<AudioSource>()[0];
+    }
+    public void Attack()
+    {
+        if(!_ps.IsFalling && !_ps.IsJumping)
         {
-            isAttacking = true;
-            return;
+            _rb.velocity = new Vector2(0, _rb.velocity.y);
+            //_triAni.AttackAnimation();
+            _isAttacking.OnNext("AttackTrigger");
         }
-        isAttacking = false;
+       
+
+    }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        collision.gameObject.GetComponent<IApplyDamage>()?.Damage(_player.getATK());
     }
 
-    public bool IsAttacking { get { return isAttacking; } }
+
+
+
 
 }

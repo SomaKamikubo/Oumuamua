@@ -11,17 +11,13 @@ using UniRx.Triggers;
 //プレイヤーの動きを実装するクラス
 public class PlayerMove : MonoBehaviour
 {
-    [SerializeField] Rigidbody2D rb;
+    [SerializeField] Rigidbody2D _rb;
     [SerializeField] int _walkSpeed;
     [SerializeField] int _dashSpeed;
     [SerializeField] int JumpForce;
     bool isMoving;
-    //bool isWalking;
-    //bool isDashing;
     bool _preparationDash;
-    //[SerializeField] bool isFalling;
-    //[SerializeField] bool isJumping;
-    //public event Action OnFall;
+
     ReactiveProperty<bool> _isJumping = new ReactiveProperty<bool>(false);
     ReactiveProperty<bool> _isFalling = new ReactiveProperty<bool>(false);
     ReactiveProperty<bool> _isCrouching = new ReactiveProperty<bool>(false);
@@ -33,37 +29,40 @@ public class PlayerMove : MonoBehaviour
     public IReadOnlyReactiveProperty<bool> OnChangeIsDashing { get { return _isDashing; } }
     public IReadOnlyReactiveProperty<bool> OnChangeIsCrouching { get { return _isCrouching; } }
 
-
+    ReactiveProperty<float> _vectorY = new ReactiveProperty<float>();
 
 
     //[SerializeField] bool isCrouching;
     int _speed;
-    float horizon;
 
     void Start()
     {
         _speed = 0;
         //this.UpdateAsObservable()
-        //    .Where(_ => rb.velocity.y < -0.5f)
-        //    .Subscribe(_ => { Debug.Log("おちた。" + rb.velocity.y); 　SetIsFalling(true);  });
-        
+        //    .Where(_ => _rb.velocity.y < -0.5f)
+        //    .Subscribe(_ => { Debug.Log("おちた。" + _rb.velocity.y); SetIsFalling(true); });
+        //this.UpdateAsObservable()
+        //    .Subscribe(_ => { _vectorY.Value = _rb.velocity.y; });
+        //_vectorY.Subscribe(amount => if (amount < -0.5f) { SetIsFalling(true); } );
+
     }
 
 
 
     public void Move(float amount)
     {
-        Debug.Log(amount);
         if (amount == 0)
         {
             //Debug.Log("動いていない");
             SetIsWalking(false);
+            SetIsDashing(false);
             return;
             
         }
         if (_isCrouching.Value)
         {
-            Sliding();
+            //時間あるときにやろうかな
+            //Sliding();
             return;
         }
         if (_preparationDash)
@@ -77,7 +76,7 @@ public class PlayerMove : MonoBehaviour
             _speed = _walkSpeed;
             SetIsWalking(true);
         }
-        rb.velocity = new Vector2(amount * _speed, rb.velocity.y);
+        _rb.velocity = new Vector2(amount * _speed, _rb.velocity.y);
 
     }
     public void receiveShift(bool isPressShift)
@@ -93,13 +92,18 @@ public class PlayerMove : MonoBehaviour
     {
         if (!_isJumping.Value)
         {
-            rb.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
+            _rb.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
             SetIsJumping(true);
         }
     }
 
     public void Crounch(bool value)
     {
+        if (value)
+        {
+            //ちょっとごり押し過ぎる？
+            _rb.velocity = new Vector2(0, _rb.velocity.y);
+        }
         SetIsCrouching(value);
     }
 
