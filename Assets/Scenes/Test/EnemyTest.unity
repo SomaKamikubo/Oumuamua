@@ -240,8 +240,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ccbd2353f0f7ac4bbcae20318ec1b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input_view: {fileID: 678875517}
-  animator: {fileID: 678875523}
+  _inputView: {fileID: 0}
+  _playerMove: {fileID: 0}
+  _playerAttack: {fileID: 0}
+  _player: {fileID: 0}
 --- !u!114 &678875517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,11 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d8548f2d39969e418e139ab2114556b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &678875523 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 4043928553495282544, guid: 70dc87432504a654c91787b5ec17a3d1, type: 3}
-  m_PrefabInstance: {fileID: 881791570}
-  m_PrefabAsset: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!1 &844457329
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,7 +703,6 @@ GameObject:
   - component: {fileID: 1885185065}
   - component: {fileID: 1885185064}
   - component: {fileID: 1885185063}
-  - component: {fileID: 1885185062}
   - component: {fileID: 1885185066}
   m_Layer: 0
   m_Name: Skeleton
@@ -835,18 +832,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0.1, y: 0}
   m_Size: {x: 0.6, y: 0.4}
   m_Direction: 0
---- !u!114 &1885185062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1885185056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 011c48086298dc24fae1c9c91291aec5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1885185063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -859,7 +844,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64f2fddf1d01a3240ba6c08ac20278ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 1885185059}
   EM: {fileID: 1885185065}
 --- !u!114 &1885185064
 MonoBehaviour:
@@ -873,8 +857,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a889728f1796da241b66d2b9dc73c3dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input_view: {fileID: 1885185062}
-  ES: {fileID: 1885185063}
+  _noticePlayer: {fileID: 0}
+  _enemyModel: {fileID: 0}
 --- !u!114 &1885185065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -887,9 +871,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d095e3ca1c32a6740ac35ab03f7a45b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 1885185060}
-  walkSpeed: 3
-  _maxHP: 0
+  _rb: {fileID: 0}
+  _walkSpeed: 0
+  _enemy: {fileID: 0}
 --- !u!114 &1885185066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -907,7 +891,7 @@ MonoBehaviour:
   searchArea: 5
   posArea: 2
   Player: {fileID: 678875515}
-  input_view: {fileID: 1885185062}
+  input_view: {fileID: 0}
 --- !u!1 &2136692286
 GameObject:
   m_ObjectHideFlags: 0

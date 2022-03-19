@@ -139,6 +139,16 @@ Folder View{
     }
 }
 
+Folder Sound {
+    class PlaySE{
+
+    }
+}
+
+class SoundPresentor{
+
+}
+
 interface IAttack{
     void Attack();
 }

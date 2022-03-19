@@ -60,6 +60,7 @@ public class EnemyView : MonoBehaviour
     public void InputX()
     {
         OnInputX?.Invoke(true);
+        SetAnimetor("",true);
     }
 
     public void OutX()

@@ -17,6 +17,14 @@ public class PlayerAttack : MonoBehaviour
     //TriggerAnimetion _triAni = new TriggerAnimetion();
     Subject<string> _isAttacking = new Subject<string>();
     public IObservable<string> OnAttack { get { return _isAttacking; } }
+
+    //AudioSource source;
+    //[SerializeField] AudioClip[] clips;
+
+    public void Start()
+    {
+        //source = GetComponents<AudioSource>()[0];
+    }
     public void Attack()
     {
         if(!_ps.IsFalling && !_ps.IsJumping)

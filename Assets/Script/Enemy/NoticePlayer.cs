@@ -12,19 +12,12 @@ public class NoticePlayer : MonoBehaviour
     public IObservable<float> OnFoundPlayer { get { return _isNoticePlayer; } }
 
    
-    void OnTriggerEnter2D(Collider other)
+    //‚±‚ê‚¾‚ÆƒvƒŒƒCƒ„[‚ª•¡”‚¢‚½‚Æ‚«‚É‘Î‰‚Å‚«‚È‚¢
+    void OnTriggerStay2D(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            //_isNoticePlayer.Value = true;
-        }
-    }
-
-    void OnTriggerExit2D(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            //_isNoticePlayer.Value = false;
+            _isNoticePlayer.Value = other.gameObject.transform.position.x;
         }
     }
 }
