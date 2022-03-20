@@ -11,6 +11,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] Rigidbody2D _rb;
     [SerializeField] Player _player;
     [SerializeField] PlayerStatus _ps;
+    [SerializeField]GameObject _attackCollider;
+
 
 
 
@@ -32,15 +34,13 @@ public class PlayerAttack : MonoBehaviour
             _rb.velocity = new Vector2(0, _rb.velocity.y);
             //_triAni.AttackAnimation();
             _isAttacking.OnNext("AttackTrigger");
+            _attackCollider.GetComponent<CapsuleCollider2D>().enabled = true;
         }
        
 
     }
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        collision.gameObject.GetComponent<IApplyDamage>()?.Damage(_player.getATK());
-    }
-
+    
+    
 
 
 
