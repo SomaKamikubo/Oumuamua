@@ -28,6 +28,7 @@ public class EnemyPresenter : MonoBehaviour
         //_enemy.OnHurt.Subscribe(value => _enemyView.SetAnimatorTrigger(value));
         _enemy.OnDeath.Subscribe(value => { _enemyView.SetAnimator("IsDeath", value); });
         _enemy.OnDeath.Subscribe(value => _enemyModel.Death());
+        _enemyModel.OnAttack.Subscribe(value => _enemyView.SetAnimatorTrigger(value));
 
     }
 }

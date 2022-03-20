@@ -10,12 +10,17 @@ public class EnemyModel : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private int _walkSpeed;
+    [SerializeField] GameObject _attackCollider;
     //[SerializeField] Enemy _enemy;
-    
+
 
     ReactiveProperty<bool> _isWalking = new ReactiveProperty<bool>(false);
+    ReactiveProperty<bool> _isActing = new ReactiveProperty<bool>(true);
 
     public IReadOnlyReactiveProperty<bool> OnChangeIsWalking { get { return _isWalking; } }
+
+    Subject<string> _isAttacking = new Subject<string>();
+    public IObservable<string> OnAttack { get { return _isAttacking; } }
 
     public void Reverse()
     {
@@ -28,28 +33,35 @@ public class EnemyModel : MonoBehaviour
     //めんどいのでとりあえずごり押し
     public void Death()
     {
-        _isWalking.Value = false;
+        _isActing.Value = false;
     }
 
     public IEnumerator Walk()
     {
-        _isWalking.Value = true;
+        
         int vec = 0;
 
-        while (_isWalking.Value)
+        while (_isActing.Value)
         {
-            if (transform.localScale.x > 0)
-            {
-                vec = 1;
+            _isWalking.Value = true;
+            //方向を毎回計算するのかい
+            //せっかく振り向きのクラスがあるのだからそこから、、、
+            for (int i = 0; i < 10; i++) {
+                yield return new WaitForSeconds(0.2f);
+                vec = transform.localScale.x > 0 ? vec = 1 : vec = -1;
+                _rb.velocity = new Vector2(vec * _walkSpeed, _rb.velocity.y);
+                
             }
-            else if(transform.localScale.x < 0)
-            {
-                vec = -1;
-            }
-            //transform.Translate(0.01f * _walkSpeed * vec, 0, 0);
-            _rb.velocity = new Vector2(vec, _rb.velocity.y);
-            yield return new WaitForSeconds(0.1f);
-            //Debug.Log(_isWalking.Value);
+            // Debug.Log("attack");
+            _isWalking.Value = false;
+            _rb.velocity = new Vector2(0, _rb.velocity.y);
+            _isAttacking.OnNext("AttackTrigger");
+            //ハードコーディング
+            yield return new WaitForSeconds(0.5f);
+            _attackCollider.GetComponent<CapsuleCollider2D>().enabled = true;
+            yield return new WaitForSeconds(1.0f);
+            _attackCollider.GetComponent<CapsuleCollider2D>().enabled = false;
+
         }
     }
 
