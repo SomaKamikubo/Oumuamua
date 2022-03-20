@@ -67,6 +67,14 @@ public class EnemyModel : MonoBehaviour
         }
     }
 
+    //å„Ç≈Ç»ÇÒÇ©çlÇ¶ÇÊ
+    //ÇﬂÇÒÇ«Ç¢ÇÃÇ≈Ç∆ÇËÇ†Ç¶Ç∏Ç≤ÇËâüÇµ
+    public void Death()
+    {
+        _isWalking.Value = false;
+        Debug.Log("ÇµÇÒÇæ");
+    }
+
     public IEnumerator SeeKPlayer(float targetX)
     {
         float diff_x;

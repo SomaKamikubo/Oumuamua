@@ -5,10 +5,8 @@ using UniRx;
 using UniRx.Triggers;
 public class EnemyPresenter : MonoBehaviour
 {
-
-   // [SerializeField] EnemyView input_view;
     [SerializeField] NoticePlayer _noticePlayer;
-    //[SerializeField] EnemyStatus ES;
+    [SerializeField] Enemy _enemy;
     [SerializeField] EnemyModel _enemyModel;
     [SerializeField] EnemyReverse _enemyReverse;
     [SerializeField] EnemyView _enemyView;
@@ -26,6 +24,10 @@ public class EnemyPresenter : MonoBehaviour
 
         //model‚©‚çview‚Ö
         _enemyModel.OnChangeIsWalking.Subscribe(value => { _enemyView.SetAnimator("IsWalking", value); });
+
+        //_enemy.OnHurt.Subscribe(value => _enemyView.SetAnimatorTrigger(value));
+        _enemy.OnDeath.Subscribe(value => { _enemyView.SetAnimator("IsDeath", value); Debug.Log("Ž€‚Ì’Ê’m"); });
+        _enemy.OnDeath.Subscribe(value => _enemyModel.Death());
 
     }
 }
