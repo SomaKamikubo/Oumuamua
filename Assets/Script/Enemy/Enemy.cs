@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour, IApplyDamage
     [SerializeField] int _maxHp;
     [SerializeField] int _atk;
     [SerializeField] int _enableDist;
+    [SerializeField] Rigidbody2D _rb;
     int _hp;
     Vector3 _position;
 

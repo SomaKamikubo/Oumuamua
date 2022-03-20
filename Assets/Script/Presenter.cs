@@ -4,8 +4,6 @@ using UnityEngine;
 using UniRx;
 using System;
 
-[RequireComponent(typeof(Animator))]
-
 public class Presenter : MonoBehaviour
 {
     [SerializeField] InputView _inputView;

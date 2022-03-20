@@ -39,7 +39,7 @@ public class EnemyStatus : MonoBehaviour
 
     public void PlayAttack(bool keyDown)
     {
-        Debug.Log(keyDown + "ss");
+       
         isAttacking = keyDown;
         //anim();
     }
