@@ -14142,6 +14142,14 @@ PrefabInstance:
       propertyPath: _uiView
       value: 
       objectReference: {fileID: 2053800900}
+    - target: {fileID: 2053800913, guid: 70dc87432504a654c91787b5ec17a3d1, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053800913, guid: 70dc87432504a654c91787b5ec17a3d1, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a0ccf843739d246488646fb85b0fbe36, type: 3}
     - target: {fileID: 2053800914, guid: 70dc87432504a654c91787b5ec17a3d1, type: 3}
       propertyPath: clips.Array.size
       value: 5
@@ -14161,7 +14169,7 @@ PrefabInstance:
     - target: {fileID: 2053800914, guid: 70dc87432504a654c91787b5ec17a3d1, type: 3}
       propertyPath: clips.Array.data[4]
       value: 
-      objectReference: {fileID: 8300000, guid: a0ccf843739d246488646fb85b0fbe36, type: 3}
+      objectReference: {fileID: 8300000, guid: 853af7be6e55cf34e9ffb97496a128f0, type: 3}
     - target: {fileID: 4043928553495282545, guid: 70dc87432504a654c91787b5ec17a3d1, type: 3}
       propertyPath: m_RootOrder
       value: 0
