@@ -10,8 +10,10 @@ public class Enemy : MonoBehaviour, IApplyDamage
     [SerializeField] int _atk;
     [SerializeField] int _enableDist;
     [SerializeField] Rigidbody2D _rb;
+    [SerializeField] SpriteRenderer sp;
     int _hp;
     Vector3 _position;
+    bool _temp;//CountSecondで保存されるやつ、使われないときはfalseがはいるので使う前はtrueにする
 
     Subject<bool> _isDeath = new Subject<bool>();
     Subject<string> _isHurt = new Subject<string>();
@@ -37,7 +39,30 @@ public class Enemy : MonoBehaviour, IApplyDamage
         if (this._hp <= 0)
         {
             _isDeath.OnNext(true);
+            return;
         }
+        StartCoroutine("Damaged");
+        StartCoroutine("CountSecoond",2.0f);
+        sp.color = new Color(1f, 1f, 1f, 1);
+    }
+
+    IEnumerator Damaged()
+    {
+        _temp = true;
+        while (_temp)
+        {
+            yield return new WaitForSeconds(0.1f);
+            float level = Mathf.Abs(Mathf.Sin(Time.time * 10));
+            sp.color = new Color(1f, 1f, 1f, level);
+            //Debug.Log("点滅中");
+        }
+        
+    }
+
+    IEnumerator CountSecoond(float count)
+    {
+        yield return new WaitForSeconds(count);
+        _temp = false;
     }
 
     //プロパティつかえ()
