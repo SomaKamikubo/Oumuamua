@@ -9,17 +9,19 @@ public class Enemy : MonoBehaviour, IApplyDamage
     [SerializeField] int _maxHp;
     [SerializeField] int _atk;
     [SerializeField] int _enableDist;
+    [SerializeField] Rigidbody2D _rb;
     int _hp;
     Vector3 _position;
 
-    Subject<string> _isDeath = new Subject<string>();
+    Subject<bool> _isDeath = new Subject<bool>();
     Subject<string> _isHurt = new Subject<string>();
-    public IObservable<string> OnDeath { get { return _isDeath; } }
+    public IObservable<bool> OnDeath { get { return _isDeath; } }
     public IObservable<string> OnHurt { get { return _isHurt; } }
 
     void Start()
     {
         _position = transform.position;
+        _hp = _maxHp;
     }
     public void Initialized()
     {
@@ -31,9 +33,10 @@ public class Enemy : MonoBehaviour, IApplyDamage
     {
         _isHurt.OnNext("HurtTrigger");
         this._hp -= player_atk;
+        Debug.Log("HP‚ª" + _hp + "‚É‚È‚Á‚½");
         if (this._hp <= 0)
         {
-            _isDeath.OnNext("DeathTrigger");
+            _isDeath.OnNext(true);
         }
     }
 

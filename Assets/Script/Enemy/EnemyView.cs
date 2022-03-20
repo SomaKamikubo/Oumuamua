@@ -2,7 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
+
+[RequireComponent(typeof(Animator))]
 
 public class EnemyView : MonoBehaviour
 {
@@ -12,12 +13,12 @@ public class EnemyView : MonoBehaviour
     [SerializeField] Animator animator;
 
     //アニメーションのbool値をSet
-    public void SetAnimetor(string bool_name, bool isActing)
+    public void SetAnimator(string bool_name, bool isActing)
     {
         animator.SetBool(bool_name, isActing);
     }
 
-    public void SetAnimetorTrigger(string TriggerName)
+    public void SetAnimatorTrigger(string TriggerName)
     {
         animator.SetTrigger(TriggerName);
     }
@@ -60,7 +61,7 @@ public class EnemyView : MonoBehaviour
     public void InputX()
     {
         OnInputX?.Invoke(true);
-        SetAnimetor("",true);
+        //SetAnimetor("", true);
     }
 
     public void OutX()
