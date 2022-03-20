@@ -12,6 +12,8 @@ public class EnemyReverse : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("‚Ô‚Â‚©‚Á‚½");
+    
        
         if (collision.tag =="Stage")
         {

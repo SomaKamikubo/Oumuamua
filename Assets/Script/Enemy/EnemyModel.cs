@@ -19,8 +19,9 @@ public class EnemyModel : MonoBehaviour
 
     public void Reverse()
     {
-
-        transform.localScale *= transform.localScale.x * -1;
+        Vector3 scale = gameObject.transform.localScale;
+        scale.x *= -1;
+        gameObject.transform.localScale = scale;   
     }
 
     void OnBecameVisible()
@@ -47,7 +48,7 @@ public class EnemyModel : MonoBehaviour
     {
         _isWalking.Value = true;
         int vec = 0;
-        Debug.Log("ï‡Ç¢ÇƒÇ¢Ç‹Ç∑");
+        //Debug.Log("ï‡Ç¢ÇƒÇ¢Ç‹Ç∑");
         //ñ⁄ïWílÇÊÇËâEë§Ç…Ç¢ÇÈèÍçá
         while (_isWalking.Value)
         {
@@ -60,9 +61,9 @@ public class EnemyModel : MonoBehaviour
                 vec = -1;
             }
             //transform.Translate(0.01f * _walkSpeed * vec, 0, 0);
-            _rb.velocity = new Vector2(-1, _rb.velocity.y);
+            _rb.velocity = new Vector2(vec, _rb.velocity.y);
             yield return new WaitForSeconds(0.1f);
-            Debug.Log(_isWalking.Value);
+            //Debug.Log(_isWalking.Value);
         }
     }
 
