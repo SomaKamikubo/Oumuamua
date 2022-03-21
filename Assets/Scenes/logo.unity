@@ -237,7 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundTime: 1
-  fadeOutTime: 5
+  fadeOutTime: 6
   panel: {fileID: 816695053}
 --- !u!4 &613849662
 Transform:
