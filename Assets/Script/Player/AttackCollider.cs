@@ -12,29 +12,9 @@ public class AttackCollider : MonoBehaviour
         //_attackCollider = _attackCollider.GetComponent<CapsuleCollider>();
 
     }
-    void ColliderReset()
-    {
-
-        _attackCollider.GetComponent<CapsuleCollider2D>().enabled = false;
-
-    }
-
-    //void OnTriggerEnter2D(Collision2D collision)
-    //{
-    //    Debug.Log("aa");
-    //    collision.gameObject.GetComponent<IApplyDamage>()?.Damage(1);
-    //    Invoke("ColliderReset", 0.3f);
-    //}
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-       // Debug.Log("aa");
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("aa");
         collision.gameObject.GetComponent<IApplyDamage>()?.Damage(1);
-        Invoke("ColliderReset", 0.3f);
+       
     }
 }

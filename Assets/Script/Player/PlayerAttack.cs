@@ -20,27 +20,32 @@ public class PlayerAttack : MonoBehaviour
     Subject<string> _isAttacking = new Subject<string>();
     public IObservable<string> OnAttack { get { return _isAttacking; } }
 
-    //AudioSource source;
-    //[SerializeField] AudioClip[] clips;
 
-    public void Start()
-    {
-        //source = GetComponents<AudioSource>()[0];
-    }
+
     public void Attack()
     {
         if(!_ps.IsFalling && !_ps.IsJumping)
         {
+            //‚²‚è‰Ÿ‚µ‰ß‚¬‚¢‚¢‚¢‚¢ww
             _rb.velocity = new Vector2(0, _rb.velocity.y);
             //_triAni.AttackAnimation();
             _isAttacking.OnNext("AttackTrigger");
             _attackCollider.GetComponent<CapsuleCollider2D>().enabled = true;
+            Invoke("ColliderReset", 0.3f);
+
         }
        
 
     }
-    
-    
+
+    void ColliderReset()
+    {
+
+        _attackCollider.GetComponent<CapsuleCollider2D>().enabled = false;
+
+    }
+
+
 
 
 

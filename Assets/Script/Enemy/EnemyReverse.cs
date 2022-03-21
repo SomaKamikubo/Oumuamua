@@ -15,7 +15,7 @@ public class EnemyReverse : MonoBehaviour
         Debug.Log("‚Ô‚Â‚©‚Á‚½");
     
        
-        if (collision.tag =="Stage")
+        if (collision.tag =="Stage" || collision.tag == "Enemy")
         {
             _collideStage.OnNext(Unit.Default);
         }
