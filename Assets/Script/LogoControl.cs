@@ -42,14 +42,14 @@ public class LogoControl : MonoBehaviour
         if (fadeOutTime < nowTime)
         {
             //フェードアウトが終わったらシーン遷移させる
-            if (color.a == 1.0f)
+            if (color.a == 2.0f)
             {
                 SceneManager.LoadScene("Title");
             }
             //アルファ値が1を超過する場合は丸め込む
-            else if (color.a + Time.deltaTime > 1.0f)
+            else if (color.a + Time.deltaTime > 1.5f)
             {
-                color.a = 1.0f;
+                color.a = 2.0f;
             }
             //アルファ値を加算する
             else
