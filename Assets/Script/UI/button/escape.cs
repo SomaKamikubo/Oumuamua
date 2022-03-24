@@ -9,5 +9,6 @@ public class escape : MonoBehaviour
     {
         Time.timeScale = 1;
         menu.SetActive(false);
+
     }
 }
