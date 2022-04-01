@@ -26,7 +26,6 @@ public class Presenter : MonoBehaviour
 
 
         //MoveModelからviewへ
-        //コールバック関数にする
         _playerMove.OnChangeIsJumping.Subscribe(value => _inputView.SetAnimator("IsJumping", value));
         _playerMove.OnChangeIsFalling.Subscribe(value => { _inputView.SetAnimator("IsFalling", value); ; });
         _playerMove.OnChangeIsWalking.Subscribe(value => { _inputView.SetAnimator("IsWalking", value); });

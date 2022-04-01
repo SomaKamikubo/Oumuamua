@@ -43,7 +43,6 @@ public class Enemy : MonoBehaviour, IApplyDamage
         }
         StartCoroutine("Damaged");
         StartCoroutine("CountSecoond",2.0f);
-        sp.color = new Color(1f, 1f, 1f, 1);
     }
 
     IEnumerator Damaged()
@@ -56,7 +55,8 @@ public class Enemy : MonoBehaviour, IApplyDamage
             sp.color = new Color(1f, 1f, 1f, level);
             //Debug.Log("“_–Å’†");
         }
-        
+        sp.color = new Color(1f, 1f, 1f, 1);
+
     }
 
     IEnumerator CountSecoond(float count)
