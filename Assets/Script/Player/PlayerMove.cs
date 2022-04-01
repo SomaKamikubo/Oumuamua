@@ -63,6 +63,8 @@ public class PlayerMove : MonoBehaviour
         {
             //ŽžŠÔ‚ ‚é‚Æ‚«‚É‚â‚ë‚¤‚©‚È
             //Sliding();
+            SetIsWalking(true);
+            _rb.velocity = new Vector2(amount * _speed, _rb.velocity.y);
             return;
         }
         if (_preparationDash)
