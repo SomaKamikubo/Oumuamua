@@ -1,0 +1,26 @@
+class BossHP {
+    event Action OnClear
+    int HP
+    void Damage()
+}
+class EnemyHP {
+    int HP
+    void Damage()
+}
+class Player{
+    IObservable<string> OnDeath
+    IObservable<string> OnHurt
+    int _hp
+    int _ATK
+    Vector3 _position
+    void Damage()
+    void Heal()
+}
+
+interface IApplyDamage{
+    void Damage()
+    
+}
+EnemyHP ..up|> IApplyDamage
+BossHP ..up|> IApplyDamage
+Player ..up|> IApplyDamage

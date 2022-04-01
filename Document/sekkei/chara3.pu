@@ -1,0 +1,136 @@
+ @startuml
+Folder Model{
+    Folder Player  {
+        class PlayerMove {
+            IReadOnlyReactiveProperty<bool> OnChangeIsJumping
+            IReadOnlyReactiveProperty<bool> OnChangeIsFalling
+            IReadOnlyReactiveProperty<bool> OnChangeIsDashing
+            IReadOnlyReactiveProperty<bool> OnChangeIsCrouching
+            void ReceaiveShift()
+            void Move()
+            void Jump()
+            void Crounch()
+        }
+        class PlayerStatus{
+            int _dashSpeed
+        }
+        class PlayerWindow{
+            int HP
+            Vector3 Position
+            bool IsWlaking
+            bool IsDash
+            bool IsAttacking
+        }
+    }
+    Folder Enemy{
+        class EnemyStatus{
+            Vector3 _position
+            float _noticeErea
+        }
+
+        class EnemyWindow{
+
+        }
+        
+    }
+    Folder Charactor{
+        class CharactorMove {
+            IReadOnlyReactiveProperty<bool> OnChangeIsWalking
+            void Walk()
+        }
+
+        class CharactorAttack{
+            IObservable<string> OnAttack
+            void Attack()
+        }
+
+        class CharactorHP{
+            IReadOnlyReactiveProperty<bool> OnDeath
+            IReadOnlyReactiveProperty<bool> OnHurt
+            void Damage()
+            void Heal()
+        }
+
+        class CharactorStatus{
+            int _hp
+            int _atk
+            int _walkSpeed
+        }
+        abstract CharactorWindow{
+            int _hp
+            int _atk
+            IReadOnlyReactiveProperty<bool> OnDeath
+            IReadOnlyReactiveProperty<bool> OnHurt
+            IReadOnlyReactiveProperty<bool> OnChangeIsWalking
+            IObservable<string> OnAttack
+        }
+            
+    }
+
+}
+
+class EnemyController{
+
+}
+
+Folder Prsenter{
+    class InputPresenter{
+        view から model
+        OnDownKey --> Attack(), Jump()
+        OnDownSKey --> Crounch()
+        OnDownHorizontalKey --> Move()
+    }
+    class AnimatorPresenter{
+        model から view
+        OnChange~ --> SetAnimator()
+        OnAttack --> SetAnimatorTrigger()
+
+    }
+
+
+}
+
+
+Folder View{
+    class InputView{
+         IObservable<string> OnDownKey
+         IObservable<bool> OnDownSKey
+         IObservable<float> OnDownHorizontalKey
+         IReadOnlyReactiveProperty<bool> OnDownShiftKey    
+    }
+
+    class AnimatorView{
+        void SetAnimator()
+        void SetAnimatorTrigger()
+    }
+   
+}
+
+Player ..|> Charactor
+Enemy ..|> Charactor
+
+
+EnemyWindow ..|> CharactorWindow
+PlayerWindow ..|> CharactorWindow
+
+CharactorAttack --> CharactorStatus
+CharactorHP --> CharactorStatus
+CharactorMove --> CharactorStatus
+
+
+InputPresenter --up> InputView
+InputPresenter --> EnemyWindow
+InputPresenter --> PlayerWindow
+InputPresenter --ri> EnemyController
+
+
+AnimatorPresenter --> PlayerWindow
+AnimatorPresenter --> EnemyWindow
+AnimatorPresenter --up> AnimatorView
+
+
+
+
+
+
+@enduml

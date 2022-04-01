@@ -6,20 +6,25 @@ title クラス図
 Folder Model{
     Folder PlayerModel  {
         class PlayerMove {
-            void Walk()
-            void Dash()
+            IReadOnlyReactiveProperty<bool> OnChangeIsJumping
+            IReadOnlyReactiveProperty<bool> OnChangeIsFalling
+            IReadOnlyReactiveProperty<bool> OnChangeIsWalking
+            IReadOnlyReactiveProperty<bool> OnChangeIsDashing
+            IReadOnlyReactiveProperty<bool> OnChangeIsCrouching
+            void ReceaiveShift()
+            void Move()
             void Jump()
+            void Crounch()
         }
         class PlayerAttack {
-            int _ATK
+            IObservable<string> OnAttack
             void Attack()
         }
-        class PlayerHP {
-            void Damage()
-        }
-        class PlayerInfo{
-            event Action OnDeath
+        class Player{
+            IObservable<string> OnDeath
+            IObservable<string> OnHurt
             int _hp
+            int _ATK
             Vector3 _position
             void Damage()
             void Heal()
@@ -96,7 +101,17 @@ Folder Model{
 
 
 Folder Presenter{
-class SetAnimation{
+class InputPresenter{
+    view から model
+    OnDownKey --> Attack(), Jump()
+    OnDownSKey --> Crounch()
+    OnDownHorizontalKey --> Move()
+}
+class PlayerPresenter{
+    model から view
+    OnChange~ --> SetAnimator()
+    OnAttack --> SetAnimatorTrigger()
+
 }
 }
 
@@ -105,14 +120,15 @@ class SetAnimation{
 
 Folder View{
     class InputView{
-        event Action OnJump
-        event Action OnCronch
-        event Action OnMove
-        event Action OnWalk
-        event Action OnDash
-        event Action OnAttack
-        event Action OnDamage
-        event Actiopn OnClickButton
+         IObservable<string> OnDownKey
+         IObservable<bool> OnDownSKey
+         IObservable<float> OnDownHorizontalKey
+         IReadOnlyReactiveProperty<bool> OnDownShiftKey    
+    }
+
+    class PlayerView{
+        void SetAnimator()
+        void SetAnimatorTrigger()
     }
 
     Folder Camera  {
@@ -149,23 +165,9 @@ class SoundPresentor{
 
 }
 
-interface IAttack{
-    void Attack();
-}
 
 interface IApplyDamage{
     void Damage(int ATK);
-}
-
-interface ICharactorMove{
-    void Walk();
-}
-
-interface ICharaStatus{
-    int HP
-    Vector3 Position
-    bool IsWlaking
-    bool IsAttacking
 }
 
 interface IButtonPush{
@@ -173,23 +175,31 @@ interface IButtonPush{
 }
 
 
-PlayerHP --up|> IAttack
-EnemyAttack ..up> IAttack
-BossAttack1 ..up> IAttack
-BossAttack2 ..up> IAttack
+EnemyAttack ..up> IApplyDamage
+BossAttack1 ..up> IApplyDamage
+BossAttack2 ..up> IApplyDamage
 
 GameRestart ..> IButtonPush
 GameStop ..>  IButtonPush
 GameQuit ..>  IButtonPush
 
-EnemyHP ..|> IEnemyDamage
-BossHP ..|> IEnemyDamage
-PlayerAttack --> IEnemyDamage
+EnemyHP ..up|> IApplyDamage
+BossHP ..up|> IApplyDamage
+Player ..up|> IApplyDamage
+PlayerAttack --> IApplyDamage
+
+InputPresenter --> InputView
+InputPresenter --> PlayerMove
+InputPresenter --> PlayerAttack
+
+PlayerPresenter --> Player
+PlayerPresenter --> PlayerMove
+PlayerPresenter --> PlayerAttack
+
+PlayerPresenter --> PlayerView
 
 
-SetAnimation --> PlayerStatus
-PlayerHP <-- PlayerStatus
-PlayerStatus --> PlayerAttack
-PlayerStatus --> PlayerMove
+' PlayerStatus --> PlayerAttack
+' PlayerStatus --> PlayerMove
 
 @enduml
