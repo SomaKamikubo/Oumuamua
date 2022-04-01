@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class soundTest : MonoBehaviour
+public class SwitchBGM : MonoBehaviour
 {
-    // Start is called before the first frame update
     AudioSource source;
     [SerializeField] AudioClip[] clips;
 
@@ -15,7 +14,14 @@ public class soundTest : MonoBehaviour
     }
     public void A(int index)
     {
-       
-       source.PlayOneShot(clips[index]);
+        source.Stop();
+
+        //ループ切り替え(clear,deathは非ループ)
+        if (index <= 2)
+            source.loop = true;
+        else
+            source.loop = false;
+
+        source.PlayOneShot(clips[index]);
     }
 }
