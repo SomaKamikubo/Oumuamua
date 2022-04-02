@@ -23,6 +23,7 @@ public class PlayerMoveModel :CharactorMove
 
 
     int _moveSpeed = 0;
+    Vector3 _tempScale;
 
     void Start()
     {
@@ -40,6 +41,13 @@ public class PlayerMoveModel :CharactorMove
 
     public void Move(float amount)
     {
+
+        _tempScale = gameObject.transform.localScale;
+        if (amount < 0 && _tempScale.x > 0 || amount > 0 && _tempScale.x < 0)
+        {
+            _tempScale.x *= -1;
+        }
+        gameObject.transform.localScale = _tempScale;
         if (amount == 0)
         {
             //Debug.Log("“®‚¢‚Ä‚¢‚È‚¢");

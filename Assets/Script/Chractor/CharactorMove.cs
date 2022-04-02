@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
-using System;
+[RequireComponent(typeof(Rigidbody2D))]
 
 public abstract class CharactorMove : MonoBehaviour
 {
@@ -14,10 +14,18 @@ public abstract class CharactorMove : MonoBehaviour
     public IReadOnlyReactiveProperty<bool> OnChangeIsWalking { get { return _isWalking; } }
 
     int _speed = 0;
+    Vector3 _scale;
 
 
     public virtual void Walk(float amount)
     {
+        _scale = gameObject.transform.localScale;
+        if (amount < 0 && _scale.x > 0 || amount > 0 && _scale.x < 0)
+        {
+            _scale.x *= -1;
+        }
+        gameObject.transform.localScale = _scale;
+
         if (amount == 0)
         {
             //Debug.Log("“®‚¢‚Ä‚¢‚È‚¢");
