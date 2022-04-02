@@ -6,14 +6,17 @@ using System;
 
 public class InputPresentor : MonoBehaviour
 {
+    //[SerializeField] CharactorWindow _charactorWindow;
     [SerializeField] InputView _inputView;
     [SerializeField] PlayerWindow _playerWindow;
 
     void Start()
     {
         //horizontal‚Ì•û‚àOnDownKey‚É‚Ü‚Æ‚ß‚½‚¢
-        _inputView.OnDownHorizontalKey.Subscribe(value => _playerWindow.Walk(value));
+        _inputView.OnDownHorizontalKey.Subscribe(value => _playerWindow.Move(value));
         _inputView.OnDownKey.Subscribe(key => ProcessKey(key));
+        _inputView.OnDownSKey.Subscribe(isKeyPressS => _playerWindow.Crounch(isKeyPressS));
+        _inputView.OnDownShiftKey.Subscribe(isKeyPressShift => _playerWindow.receiveShift(isKeyPressShift));
     }
 
     void ProcessKey(string key)
@@ -24,7 +27,7 @@ public class InputPresentor : MonoBehaviour
                 _playerWindow.Attack();
                 break;
             case "Space":
-                //_playerWindow.Jump();
+                _playerWindow.Jump();
                 break;
         }
 

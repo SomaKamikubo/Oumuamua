@@ -4,9 +4,9 @@ using UnityEngine;
 using UniRx;
 using System;
 
-public class CharactorHP : MonoBehaviour
+public abstract class CharactorHP : MonoBehaviour
 {
-    [SerializeField] CharactorStatus _charactorStatus;
+    protected CharactorStatus _charactorStatus;
 
 
     Subject<string> _isDeath = new Subject<string>();

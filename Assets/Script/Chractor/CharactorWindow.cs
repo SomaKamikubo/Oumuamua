@@ -4,12 +4,12 @@ using UnityEngine;
 using UniRx;
 using System;
 
-public abstract class CharactorWindow : MonoBehaviour
+public class CharactorWindow : MonoBehaviour
 {
-    [SerializeField] CharactorStatus _charactorStatus;
-    [SerializeField] CharactorHP _charactorHP;
-    [SerializeField] CharactorMove _charactorMove;
-    [SerializeField] CharactorAttack _charactorAttack;
+    protected CharactorStatus _charactorStatus;
+    protected CharactorHP _charactorHP;
+    protected CharactorMove _charactorMove;
+    protected CharactorAttack _charactorAttack;
     
     //キャラクターのステータス
     public int getHp(){ return _charactorHP.getHp(); }
@@ -30,13 +30,13 @@ public abstract class CharactorWindow : MonoBehaviour
     public void Attack() { _charactorAttack.Attack(); }
     
     
-    private void Start()
+    protected void CharactorEvent()
     {
         //Moveのboolを受け取る
         _charactorMove.OnChangeIsWalking.Subscribe(value => {_isWalking.Value = value; Debug.Log(value); });
 
         //attackからのイベントを受け取る
-        _charactorAttack.OnAttack.Subscribe(value => _isAttacking.OnNext(value));
+        _charactorAttack.OnAttack.Subscribe(value => { _isAttacking.OnNext(value); Debug.Log("kougeki"); });
     }
 
 

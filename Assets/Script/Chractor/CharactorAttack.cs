@@ -4,10 +4,10 @@ using UnityEngine;
 using UniRx;
 using System;
 
-public class CharactorAttack : MonoBehaviour
+public abstract class CharactorAttack : MonoBehaviour
 {
 
-    [SerializeField] GameObject _attackCollider;
+    protected GameObject _attackCollider;
 
     //TriggerAnimetion _triAni = new TriggerAnimetion();
     Subject<string> _isAttacking = new Subject<string>();

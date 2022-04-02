@@ -4,10 +4,10 @@ using UnityEngine;
 using UniRx;
 using System;
 
-public class CharactorMove : MonoBehaviour
+public abstract class CharactorMove : MonoBehaviour
 {
-    [SerializeField] Rigidbody2D _rb;
-    [SerializeField] CharactorStatus _charactorStatus;
+    [SerializeField] protected Rigidbody2D _rb;
+    protected CharactorStatus _charactorStatus;
 
 
     ReactiveProperty<bool> _isWalking = new ReactiveProperty<bool>(false);
@@ -16,7 +16,7 @@ public class CharactorMove : MonoBehaviour
     int _speed = 0;
 
 
-    public void Walk(float amount)
+    public virtual void Walk(float amount)
     {
         if (amount == 0)
         {
@@ -31,7 +31,7 @@ public class CharactorMove : MonoBehaviour
     }
 
 
-    void SetIsWalking(bool value)
+    protected void SetIsWalking(bool value)
     {
         _isWalking.Value = value;
     }

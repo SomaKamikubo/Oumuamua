@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
-[RequireComponent(typeof(Animator))]
 public class InputView : MonoBehaviour
 {
     [SerializeField] Animator animator;
