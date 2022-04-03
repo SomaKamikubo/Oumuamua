@@ -14,6 +14,7 @@ public class SwitchBGM : MonoBehaviour
     }
     public void A(int index)
     {
+        Debug.Log("BGM" + index);
         source.Stop();
 
         //ループ切り替え(clear,deathは非ループ)
