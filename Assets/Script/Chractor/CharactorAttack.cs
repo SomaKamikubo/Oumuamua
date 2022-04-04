@@ -21,7 +21,7 @@ public abstract class CharactorAttack : MonoBehaviour
         _isAttacking.OnNext("AttackTrigger");
         Debug.Log("attack");
         _attackCollider.GetComponent<CapsuleCollider2D>().enabled = true;
-        Invoke("ColliderReset", 0.3f);
+        Invoke("ColliderReset", 3f);
 
     }
 

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6716896300642961905}
   - component: {fileID: 898618422321570504}
+  - component: {fileID: 189056853}
   m_Layer: 0
   m_Name: AttackCollider
   m_TagString: Untagged
@@ -44,9 +45,21 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.15, y: 0}
-  m_Size: {x: 0.2, y: 0.37}
+  m_Offset: {x: 0.19, y: 0}
+  m_Size: {x: 0.33, y: 0.0001}
   m_Direction: 0
+--- !u!114 &189056853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 65179930142141471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5fa245800129d14cb82a95e945f163c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &828271870673682670
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,6 +169,7 @@ GameObject:
   - component: {fileID: 1621479660}
   - component: {fileID: 1621479662}
   - component: {fileID: 1621479663}
+  - component: {fileID: 240123829}
   m_Layer: 0
   m_Name: Model
   m_TagString: Player
@@ -258,6 +272,7 @@ MonoBehaviour:
   _playerHP: {fileID: 1621479660}
   _playerMove: {fileID: 1621479663}
   _playerAttack: {fileID: 1621479662}
+  _playerHurt: {fileID: 240123829}
 --- !u!114 &1621479659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,7 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f66b0d6faac5abf4cbb22b91c3989467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHp: 1
+  _maxHp: 3
   _atk: 1
   _walkSpeed: 2
   _dashSpeed: 4
@@ -315,6 +330,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rb: {fileID: 3074904904382962422}
   _playerStatus: {fileID: 1621479659}
+--- !u!114 &240123829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4133432240858940741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f53f18aa3599b5d4c9fb92d5cf243dde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP1: {fileID: 0}
+  HP2: {fileID: 0}
+  HP3: {fileID: 0}
 --- !u!1 &5585355748533134467
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,7 +402,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d8548f2d39969e418e139ab2114556b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
 --- !u!1 &6279839086429304050
 GameObject:
   m_ObjectHideFlags: 0
@@ -634,7 +663,7 @@ GameObject:
   - component: {fileID: 9134984070398655676}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
