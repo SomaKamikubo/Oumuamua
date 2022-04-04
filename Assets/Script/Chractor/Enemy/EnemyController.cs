@@ -45,7 +45,7 @@ public class EnemyController : MonoBehaviour
 
     public void Action()
     {
-        Debug.Log(enePos);
+        //Debug.Log(enePos);
 
        _isDownHorizontal.OnNext(0);
 
@@ -67,7 +67,7 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            Debug.Log("gogogog"+ (enePos.x - playPos.x));
+            //Debug.Log("gogogog"+ (enePos.x - playPos.x));
             GoPlayer();
         }
 
