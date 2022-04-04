@@ -12,9 +12,8 @@ public class SwitchBGM : MonoBehaviour
         // アタッチしたオーディオソースのうち1番目を使用する
         source = GetComponents<AudioSource>()[0];
     }
-    public void A(int index)
+    public void PlayBGM(int index)
     {
-        Debug.Log("BGM" + index);
         source.Stop();
 
         //ループ切り替え(clear,deathは非ループ)

@@ -13,11 +13,11 @@ public class SoundPresenter : MonoBehaviour
     {
         //_sBGM‚ÌƒŠƒXƒg 0:title 1:stage 2:boss 3:clear 4:death
 
-        _sBGM.A(1);
+        _sBGM.PlayBGM(1);
 
-        _playerWindow.OnDeath.Subscribe(_ =>_sBGM.A(4));
+        _playerWindow.OnDeath.Subscribe(_ =>_sBGM.PlayBGM(4));
 
-        _vsBosstrig.VsBossTrigger.Subscribe(_ => _sBGM.A(2));
+        _vsBosstrig.VsBossTrigger.Subscribe(_ => _sBGM.PlayBGM(2));
 
     }
 

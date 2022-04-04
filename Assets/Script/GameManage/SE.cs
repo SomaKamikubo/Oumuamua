@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class soundTest : MonoBehaviour
+public class SE : MonoBehaviour
 {
     // Start is called before the first frame update
     AudioSource source;
@@ -13,7 +13,7 @@ public class soundTest : MonoBehaviour
         // アタッチしたオーディオソースのうち1番目を使用する
         source = GetComponents<AudioSource>()[0];
     }
-    public void A(int index)
+    public void playSE(int index)
     {
        
        source.PlayOneShot(clips[index]);
