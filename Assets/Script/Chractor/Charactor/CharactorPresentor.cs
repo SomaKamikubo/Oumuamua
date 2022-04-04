@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 
-public class CharactorPresentor : MonoBehaviour
+public abstract class CharactorPresentor : MonoBehaviour
 {
     protected CharactorWindow _charactorWindow;
     protected AnimatorView _animatorView;
     protected CharactorInput _charactorInput;
+
+    protected bool _canAttack = true;
 
     protected virtual void Start()
     {
@@ -17,9 +19,12 @@ public class CharactorPresentor : MonoBehaviour
 
         //window‚©‚çview
         _charactorWindow.OnChangeIsWalking.Subscribe(value => { _animatorView.SetAnimator("IsWalking", value); });
-        _charactorWindow.OnAttack.Subscribe(value => { _animatorView.SetAnimatorTrigger(value); _animatorView.StartCoroutine("PlayAnimation", "Attack"); });
+        _charactorWindow.OnAttack.Subscribe(value => { _canAttack = true; _animatorView.SetAnimatorTrigger(value); _animatorView.StartCoroutine("PlayAnimation", "attack2"); });
         _charactorWindow.OnDeath.Subscribe(value => _animatorView.SetAnimatorTrigger(value));
         _charactorWindow.OnHurt.Subscribe(value => _animatorView.SetAnimatorTrigger(value));
+
+        //view‚©‚ç‚±‚±
+        _animatorView.OnFinish.Subscribe(_ => _canAttack = true);
 
 
         
@@ -30,7 +35,10 @@ public class CharactorPresentor : MonoBehaviour
         switch (key)
         {
             case "K":
-                _charactorWindow.Attack();
+                if (_canAttack)
+                {
+                    _charactorWindow.Attack();
+                }
                 break;
         }
 

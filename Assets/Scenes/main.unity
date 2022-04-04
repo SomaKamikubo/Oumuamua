@@ -121201,6 +121201,10 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 1877726232}
+    - target: {fileID: 125010832, guid: fe91db507a18fbb4f86e61cb78d019aa, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 240123829, guid: fe91db507a18fbb4f86e61cb78d019aa, type: 3}
       propertyPath: HP1
       value: 
@@ -121213,6 +121217,10 @@ PrefabInstance:
       propertyPath: HP3
       value: 
       objectReference: {fileID: 1501522386}
+    - target: {fileID: 1202658977, guid: fe91db507a18fbb4f86e61cb78d019aa, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1621479658, guid: fe91db507a18fbb4f86e61cb78d019aa, type: 3}
       propertyPath: _playerMove
       value: 
@@ -121299,6 +121307,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69b662a2587771f4f81f81c4b25e2310, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1202658975 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 916549380, guid: fe91db507a18fbb4f86e61cb78d019aa, type: 3}
+  m_PrefabInstance: {fileID: 1202658973}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d8548f2d39969e418e139ab2114556b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1202658976 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 828271870673682670, guid: fe91db507a18fbb4f86e61cb78d019aa, type: 3}
+  m_PrefabInstance: {fileID: 1202658973}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1202658980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202658976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aa1fad330e65ca45bcda98d0f7bcc65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerWindow: {fileID: 1202658974}
+  _playerAnimatorView: {fileID: 1839159318}
+  _inputView: {fileID: 1202658975}
 --- !u!1001 &1209388629
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -121316,11 +121355,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2475365343598969178, guid: 36acc7408d7784a40a6f37c6f8bd09f4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 60.57
+      value: 19.63
       objectReference: {fileID: 0}
     - target: {fileID: 2475365343598969178, guid: 36acc7408d7784a40a6f37c6f8bd09f4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.64
+      value: -1.48
       objectReference: {fileID: 0}
     - target: {fileID: 2475365343598969178, guid: 36acc7408d7784a40a6f37c6f8bd09f4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -121357,10 +121396,6 @@ PrefabInstance:
     - target: {fileID: 2475365343598969252, guid: 36acc7408d7784a40a6f37c6f8bd09f4, type: 3}
       propertyPath: m_Name
       value: Skelton
-      objectReference: {fileID: 0}
-    - target: {fileID: 2475365343598969252, guid: 36acc7408d7784a40a6f37c6f8bd09f4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36acc7408d7784a40a6f37c6f8bd09f4, type: 3}
@@ -122144,6 +122179,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1776595698}
   m_CullTransparentMesh: 1
+--- !u!114 &1839159318 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1185481256941109946, guid: fe91db507a18fbb4f86e61cb78d019aa, type: 3}
+  m_PrefabInstance: {fileID: 1202658973}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37558428312f997498c960b646b8bd98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &1877726232 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 1497883488260795043, guid: fe91db507a18fbb4f86e61cb78d019aa, type: 3}
@@ -122280,10 +122326,6 @@ PrefabInstance:
     - target: {fileID: 7331003631042635862, guid: 548f73efd9d05c347b069f7158eb90fb, type: 3}
       propertyPath: m_Name
       value: Boss
-      objectReference: {fileID: 0}
-    - target: {fileID: 7331003631042635862, guid: 548f73efd9d05c347b069f7158eb90fb, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7331003631042635944, guid: 548f73efd9d05c347b069f7158eb90fb, type: 3}
       propertyPath: m_RootOrder

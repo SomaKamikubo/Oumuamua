@@ -1,10 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UniRx;
+using System;
 public class AnimatorView : MonoBehaviour
 {
     [SerializeField] Animator animator;
+
+    
+
+    protected Subject<Unit> _isFinished = new Subject<Unit>();
+    public IObservable<Unit> OnFinish { get { return _isFinished; } }
+
     public void SetAnimator(string bool_name, bool istriggerNameing)
     {
         animator.SetBool(bool_name, istriggerNameing);
@@ -23,6 +30,7 @@ public class AnimatorView : MonoBehaviour
         // 終了するまで待つ
         yield return new WaitWhile(() => animator.GetCurrentAnimatorStateInfo(0).IsName(animationName));
         Debug.Log(animationName + "アニメーション 終わったよ。");
+        _isFinished.OnNext(Unit.Default);
     }
 
 }
