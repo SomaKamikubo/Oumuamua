@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-[CustomEditor(typeof(Player))]
+[CustomEditor(typeof(PlayerHP))]
 public class Damagetest : Editor
 {
     [ContextMenu("PrivateMethod")]
@@ -13,7 +13,7 @@ public class Damagetest : Editor
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
-        var t = target as Player; //<===ボタンを表示させるコンポーネント(Class
+        var t = target as PlayerHP; //<===ボタンを表示させるコンポーネント(Class
 
         GUILayout.Space(20);
         EditorGUILayout.BeginHorizontal();
