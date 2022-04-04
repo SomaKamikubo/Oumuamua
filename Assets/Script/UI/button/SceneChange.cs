@@ -14,4 +14,13 @@ public class SceneChange : MonoBehaviour
     {
         SceneManager.LoadScene("main");
     }
+
+    public void ChangeSceneGameOver()
+    {
+        SceneManager.LoadScene("GameOver");
+    }
+    public void ChangeSceneClear()
+    {
+        SceneManager.LoadScene("Clear");
+    }
 }
