@@ -4,17 +4,12 @@ using UnityEngine;
 
 public class AttackCollider : MonoBehaviour
 {
-    //[SerializeField] CapsuleCollider _attackCollider;
-    [SerializeField]GameObject _attackCollider;
-
-    private void Start()
-    {
-        //_attackCollider = _attackCollider.GetComponent<CapsuleCollider>();
-
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("‚ ‚½‚Á‚½");
         collision.gameObject.GetComponent<IApplyDamage>()?.Damage(1);
+        
        
     }
+
 }

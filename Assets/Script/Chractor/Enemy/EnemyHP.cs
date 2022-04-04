@@ -5,8 +5,10 @@ using UnityEngine;
 public class EnemyHP : CharactorHP 
 {
     [SerializeField] EnemyStatus _enemyStatus;
-    private void Start()
+    protected override void Start()
     {
         _charactorStatus = _enemyStatus;
+        base.Start();
+        
     }
 }

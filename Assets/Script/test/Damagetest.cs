@@ -8,7 +8,7 @@ public class Damagetest : Editor
     [ContextMenu("PrivateMethod")]
 
 
-   
+
 
     public override void OnInspectorGUI()
     {

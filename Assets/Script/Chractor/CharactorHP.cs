@@ -4,7 +4,7 @@ using UnityEngine;
 using UniRx;
 using System;
 
-public abstract class CharactorHP : MonoBehaviour
+public abstract class CharactorHP : MonoBehaviour,IApplyDamage
 {
     protected CharactorStatus _charactorStatus;
 
@@ -14,23 +14,25 @@ public abstract class CharactorHP : MonoBehaviour
     public IObservable<string> OnDeath { get { return _isDeath; } }
     public IObservable<string> OnHurt { get { return _isHurt; } }
 
-    int _nowHp;
+    protected int _nowHp;
 
-    private void Start()
+    protected virtual void Start()
     {
         _nowHp = _charactorStatus.getMaxHp();
     }
 
-
+    //–¼‘O•Ï‚¦‚é
     bool isZero()
     {
-        return _nowHp == 0;
+        return _nowHp <= 0;
     }
 
     public void Damage(int enemy_atk)
     {
         _nowHp -= enemy_atk;
+        
         _isHurt.OnNext("HurtTrigger");
+        Debug.Log("HP"+_nowHp);
         if (isZero())
         {
             Death();
@@ -40,6 +42,7 @@ public abstract class CharactorHP : MonoBehaviour
     public void Death()
     {
         _isDeath.OnNext("DeathTrigger");
+        Debug.Log("sinda");
     }
 
     public void Heal(int heal)

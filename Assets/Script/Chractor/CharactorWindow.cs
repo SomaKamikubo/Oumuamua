@@ -25,6 +25,13 @@ public class CharactorWindow : MonoBehaviour
     Subject<string> _isAttacking = new Subject<string>();
     public IObservable<string> OnAttack { get { return _isAttacking; } }
 
+
+    //HPから
+    Subject<string> _isDeath = new Subject<string>();
+    Subject<string> _isHurt = new Subject<string>();
+    public IObservable<string> OnDeath { get { return _isDeath; } }
+    public IObservable<string> OnHurt { get { return _isHurt; } }
+
     //キャラクターが持つメソッドたち
     public void Walk(float amount) { _charactorMove.Walk(amount); }
     public void Attack() { _charactorAttack.Attack(); }
@@ -33,10 +40,14 @@ public class CharactorWindow : MonoBehaviour
     protected void CharactorEvent()
     {
         //Moveのboolを受け取る
-        _charactorMove.OnChangeIsWalking.Subscribe(value => {_isWalking.Value = value; Debug.Log(value); });
+        _charactorMove.OnChangeIsWalking.Subscribe(value => {_isWalking.Value = value;});
 
         //attackからのイベントを受け取る
-        _charactorAttack.OnAttack.Subscribe(value => { _isAttacking.OnNext(value); Debug.Log("kougeki"); });
+        _charactorAttack.OnAttack.Subscribe(value => { _isAttacking.OnNext(value); });
+
+        //Hpからのイベント
+        _charactorHP.OnHurt.Subscribe(value => { _isHurt.OnNext(value); });
+        _charactorHP.OnDeath.Subscribe(value => { _isDeath.OnNext(value); });
     }
 
 

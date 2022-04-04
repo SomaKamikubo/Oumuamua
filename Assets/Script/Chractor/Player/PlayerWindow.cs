@@ -10,6 +10,7 @@ public class PlayerWindow :CharactorWindow
     [SerializeField] PlayerHP _playerHP;
     [SerializeField] PlayerMoveModel _playerMove;
     [SerializeField] PlayerAttack _playerAttack;
+    [SerializeField] PlayerHurt _playerHurt;
 
     ReactiveProperty<bool> _isJumping = new ReactiveProperty<bool>(false);
     ReactiveProperty<bool> _isFalling = new ReactiveProperty<bool>(false);
@@ -33,6 +34,9 @@ public class PlayerWindow :CharactorWindow
     public void Jump() { _playerMove.Jump(); }
     public void Crounch(bool value) { _playerMove.Crounch(value); }
     public void receiveShift(bool isPressShift) { _playerMove.receiveShift(isPressShift); }
+
+    //hurt
+    public void ViewHurt(int hp) { _playerHurt.ViewHurt(hp); }
 
 
     private void Awake()

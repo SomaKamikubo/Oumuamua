@@ -11,5 +11,7 @@ public class CharactorAnimatorPresentor : MonoBehaviour
     {
         _charactorWindow.OnChangeIsWalking.Subscribe(value => { _animatorView.SetAnimator("IsWalking", value); });
         _charactorWindow.OnAttack.Subscribe(value => { _animatorView.SetAnimatorTrigger(value); });
+        _charactorWindow.OnDeath.Subscribe(value => _animatorView.SetAnimatorTrigger(value));
+        _charactorWindow.OnHurt.Subscribe(value => _animatorView.SetAnimatorTrigger(value));
     }
 }

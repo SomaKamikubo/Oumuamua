@@ -11,15 +11,15 @@ public class PlayerHurt : MonoBehaviour
     //Ç†ÇŸÉRÅ[Éh
     public void ViewHurt(int hp)
     {
-        if (hp == 3)
+        if (hp == 2)
         {
             HP3.SetActive(false);
         }
-        if (hp == 2)
+        if (hp == 1)
         {
             HP2.SetActive(false);
         }
-        if (hp == 1)
+        if (hp == 0)
         {
             HP1.SetActive(false);
         }
