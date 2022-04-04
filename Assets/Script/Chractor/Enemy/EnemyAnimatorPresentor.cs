@@ -13,9 +13,5 @@ public class EnemyAnimatorPresentor :CharactorAnimatorPresentor
         _animatorView = _enemyAnimatorView;
         _charactorWindow = _enemyWindow;
     }
-    protected override void Start()
-    {
-        base.Start();
-       
-    }
+
 }

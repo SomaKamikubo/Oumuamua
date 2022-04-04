@@ -15,8 +15,6 @@ public class PlayerInputPresentor : MonoBehaviour
         _inputView.OnDownKey.Subscribe(key => ProcessKey(key));
         _inputView.OnDownSKey.Subscribe(isKeyPressS => _playerWindow.Crounch(isKeyPressS));
         _inputView.OnDownShiftKey.Subscribe(isKeyPressShift => _playerWindow.receiveShift(isKeyPressShift));
-
-
     }
 
     void ProcessKey(string key)
@@ -25,6 +23,8 @@ public class PlayerInputPresentor : MonoBehaviour
         {
             case "K":
                 _playerWindow.Attack();
+                Debug.Log("k");
+
                 break;
             case "Space":
                 _playerWindow.Jump();
@@ -32,6 +32,8 @@ public class PlayerInputPresentor : MonoBehaviour
         }
 
     }
+
+
 
 
 

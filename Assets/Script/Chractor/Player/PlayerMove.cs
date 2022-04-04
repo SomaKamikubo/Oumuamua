@@ -50,7 +50,7 @@ public class PlayerMove : CharactorMove
         gameObject.transform.localScale = _tempScale;
         if (amount == 0)
         {
-            Debug.Log("“®‚¢‚Ä‚¢‚È‚¢");
+            //Debug.Log("“®‚¢‚Ä‚¢‚È‚¢");
             SetIsWalking(false);
             SetIsDashing(false);
             return;
@@ -70,7 +70,7 @@ public class PlayerMove : CharactorMove
         }
         else
         {
-            Debug.Log("walk"+amount);
+            //Debug.Log("walk"+amount);
             _moveSpeed = _playerStatus.getWalkSpeed();
             SetIsWalking(true);
         }
@@ -81,7 +81,7 @@ public class PlayerMove : CharactorMove
     //walk‚ª‚¤‚Ü‚­‚¢‚©‚È‚©‚Á‚½‚Ì‚ÅMove‚É”C‚¹‚é
     public override void Walk(float amount)
     {
-        Debug.Log(amount);
+        Move(amount);
     }
     public void receiveShift(bool isPressShift)
     {
