@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
-using System;
+
+
 
 public class InputPresentor : MonoBehaviour
 {
     //[SerializeField] CharactorWindow _charactorWindow;
     [SerializeField] InputView _inputView;
     [SerializeField] PlayerWindow _playerWindow;
+    [SerializeField] EnemyController _enemyController;
     [SerializeField] EnemyWindow _enemyWindow;
 
     void Start()
@@ -19,8 +21,9 @@ public class InputPresentor : MonoBehaviour
         _inputView.OnDownSKey.Subscribe(isKeyPressS => _playerWindow.Crounch(isKeyPressS));
         _inputView.OnDownShiftKey.Subscribe(isKeyPressShift => _playerWindow.receiveShift(isKeyPressShift));
 
-        _inputView.OnDownHorizontalKey.Subscribe(value => _enemyWindow.Walk(value));
-        _inputView.OnDownKey.Subscribe(key => ProcessKey(key));
+        _enemyController.OnDownHorizontalKey.Subscribe(value => _enemyWindow.Walk(value));
+        _enemyController.OnDownKey.Subscribe(key => _enemyWindow.Attack());
+    
         
     }
 
