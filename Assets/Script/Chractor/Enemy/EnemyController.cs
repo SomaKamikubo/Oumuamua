@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 using System;
+using UniRx.Triggers;
 
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] float attackArea; //????????????U??
-    [SerializeField] float moveArea;  //?s?????????
-    [SerializeField] float searchArea; //?s???J?n??????
     [SerializeField] float posArea;  //??@??????iinitPos??????L????j
     [SerializeField] GameObject Player;
+    [SerializeField] EnemySearch _enemySearch;
+
+    bool canMove = false;
 
 
     Subject<string> _DownKey = new Subject<string>();
@@ -28,37 +30,22 @@ public class EnemyController : MonoBehaviour
     {
         initPosition = transform.position;
         playPos = Player.transform.position;
+
+        _enemySearch.EnemyMove.Subscribe(value => canMove = value);
+
+        this.UpdateAsObservable().Where(_ => canMove).Subscribe(_ => Action());
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        playPos = Player.transform.position;
-        enePos = transform.position;
 
-        if (Mathf.Abs(initPosition.x - playPos.x) > searchArea)
-            ReturnPos();
-        else
-            Action();
-
-    }
 
     public void Action()
     {
         //Debug.Log(enePos);
+        playPos = Player.transform.position;
+        enePos = transform.position;
 
-       _isDownHorizontal.OnNext(0);
-
-        if ((enePos.x <= (initPosition.x - moveArea)) || (enePos.x >= (initPosition.x + moveArea)))
-            if ((playPos.x <= (initPosition.x - moveArea)) || (playPos.x >= (initPosition.x + moveArea)))
-            {
-               _isDownHorizontal.OnNext(0);
-                return;
-            }
-
-
-
-        //?U??????U??????p???????g?p????
+        _isDownHorizontal.OnNext(0);
 
         if (Mathf.Abs(enePos.x - playPos.x) <= attackArea) //?U?????????????U??????        
         {
@@ -67,7 +54,7 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            //Debug.Log("gogogog"+ (enePos.x - playPos.x));
+            Debug.Log("gogogog"+ (enePos.x - playPos.x));
             GoPlayer();
         }
 
