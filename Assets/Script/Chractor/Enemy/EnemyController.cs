@@ -5,7 +5,7 @@ using UniRx;
 using System;
 using UniRx.Triggers;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : CharactorInput
 {
     [SerializeField] float attackArea; //????????????U??
     [SerializeField] float posArea;  //??@??????iinitPos??????L????j
@@ -14,12 +14,6 @@ public class EnemyController : MonoBehaviour
 
     bool canMove = false;
 
-
-    Subject<string> _DownKey = new Subject<string>();
-    Subject<float> _isDownHorizontal = new Subject<float>();
-
-    public IObservable<string> OnDownKey { get { return _DownKey; } }
-    public IObservable<float> OnDownHorizontalKey { get { return _isDownHorizontal; } }
 
 
 

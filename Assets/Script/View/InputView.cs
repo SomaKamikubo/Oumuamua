@@ -4,24 +4,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
-public class InputView : MonoBehaviour
+public class InputView : CharactorInput
 {
-    //[SerializeField] Animator animator;
     public event Action<bool> OnShiftKeydownedListener;
 
-    Subject<string> _DownKey = new Subject<string>();
-    Subject<float> _isDownHorizontal = new Subject<float>();
     ReactiveProperty<bool> _isDownSKey = new ReactiveProperty<bool>();
     ReactiveProperty<bool> _isDownShiftKey = new ReactiveProperty<bool>();
-    ReactiveProperty<bool> _isDownSpaceKey = new ReactiveProperty<bool>(false);
-    ReactiveProperty<float> _horizontalAmount = new ReactiveProperty<float>(0);
 
-    public IObservable<string> OnDownKey { get { return _DownKey; } }
+
     public IObservable<bool> OnDownSKey { get { return _isDownSKey; } }
     public IReadOnlyReactiveProperty<bool> OnDownShiftKey { get { return _isDownShiftKey; } }
-    public IObservable<float> OnDownHorizontalKey { get { return _isDownHorizontal; } }
-    public IReadOnlyReactiveProperty<bool> OndownSpaceKey { get { return _isDownSpaceKey; } }
-    public IReadOnlyReactiveProperty<float> OnMove { get { return _horizontalAmount; } }
+
 
 
     void Start()
@@ -82,15 +75,4 @@ public class InputView : MonoBehaviour
         return "keyが見つかりません。";
     }
 
-
-    //アニメーションのbool値をSet
-    //public void SetAnimator(string bool_name,bool isActing)
-    //{
-    //    animator.SetBool(bool_name, isActing);
-    //}
-
-    //public void SetAnimatorTrigger(string TriggerName)
-    //{
-    //    animator.SetTrigger(TriggerName);
-    //}
 }

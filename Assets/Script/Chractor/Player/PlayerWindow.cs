@@ -8,7 +8,7 @@ public class PlayerWindow :CharactorWindow
 {
     [SerializeField] PlayerStatus _playerStatus;
     [SerializeField] PlayerHP _playerHP;
-    [SerializeField] PlayerMoveModel _playerMove;
+    [SerializeField] PlayerMove _playerMove;
     [SerializeField] PlayerAttack _playerAttack;
     [SerializeField] PlayerHurt _playerHurt;
 
@@ -39,7 +39,7 @@ public class PlayerWindow :CharactorWindow
     public void ViewHurt(int hp) { _playerHurt.ViewHurt(hp); }
 
 
-    private void Awake()
+    protected void Awake()
     {
         //‰Šú‰»
         _charactorAttack = _playerAttack;
@@ -47,9 +47,9 @@ public class PlayerWindow :CharactorWindow
         _charactorStatus = _playerStatus;
         _charactorHP = _playerHP;
     }
-    private void Start()
+    protected override void Start()
     {
-        CharactorEvent();
+        base.Start();
         _playerMove.OnChangeIsJumping.Subscribe(value => _isJumping.Value = value);
         _playerMove.OnChangeIsFalling.Subscribe(value =>  _isFalling.Value = value);
         _playerMove.OnChangeIsDashing.Subscribe(value => _isDashing.Value = value);

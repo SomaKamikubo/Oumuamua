@@ -8,12 +8,11 @@ public class EnemyWindow : CharactorWindow
     [SerializeField] EnemyHP _enemyHP;
     [SerializeField] EnemyMove _enemyMove;
     [SerializeField] EnemyAttack _enemyAttack;
-    private void Awake()
+    protected void Awake()
     {
         _charactorAttack = _enemyAttack;
         _charactorMove = _enemyMove;
         _charactorStatus = _enemyStatus;
         _charactorHP = _enemyHP;
-        CharactorEvent();
     }
 }
