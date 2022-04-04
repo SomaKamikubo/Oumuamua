@@ -70,7 +70,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5005162951269778571}
   - component: {fileID: 125010832}
-  - component: {fileID: 1611344217}
   m_Layer: 0
   m_Name: Presentor
   m_TagString: Untagged
@@ -106,22 +105,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerWindow: {fileID: 1621479658}
   _playerAnimatorView: {fileID: 1185481256941109946}
---- !u!114 &1611344217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 828271870673682670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5aa5af55fd25e8c4b9758bbb0f99436d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _inputView: {fileID: 916549380}
-  _playerWindow: {fileID: 1621479658}
-  _enemyController: {fileID: 0}
-  _enemyWindow: {fileID: 0}
 --- !u!1 &1540268980625717260
 GameObject:
   m_ObjectHideFlags: 0

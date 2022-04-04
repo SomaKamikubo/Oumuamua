@@ -41,7 +41,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4858327426899792428}
   - component: {fileID: 5542828171372199772}
-  - component: {fileID: 1847924985}
   m_Layer: 0
   m_Name: View
   m_TagString: Untagged
@@ -76,23 +75,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 5212412092203931461}
---- !u!114 &1847924985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1233022314735589733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 766fb4d7f7e5c7c4aa0f1de47c8dadb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackArea: 5
-  moveArea: 50
-  searchArea: 100
-  posArea: 2
-  Player: {fileID: 0}
 --- !u!1 &2475365343598969252
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,6 +446,7 @@ GameObject:
   - component: {fileID: 6604159725360487581}
   - component: {fileID: 6474779697003001675}
   - component: {fileID: 3462371309146561460}
+  - component: {fileID: 1901252343}
   m_Layer: 0
   m_Name: Model
   m_TagString: Player
@@ -621,3 +604,20 @@ MonoBehaviour:
   _enemyHP: {fileID: 4208798707818444747}
   _enemyMove: {fileID: 6604159725360487581}
   _enemyAttack: {fileID: 1089409472127605071}
+--- !u!114 &1901252343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7332808590756575395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766fb4d7f7e5c7c4aa0f1de47c8dadb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackArea: 5
+  moveArea: 20
+  searchArea: 100
+  posArea: 2
+  Player: {fileID: 0}

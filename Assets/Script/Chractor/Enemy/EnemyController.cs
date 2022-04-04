@@ -45,6 +45,7 @@ public class EnemyController : MonoBehaviour
 
     public void Action()
     {
+        Debug.Log(enePos);
 
        _isDownHorizontal.OnNext(0);
 
@@ -61,10 +62,12 @@ public class EnemyController : MonoBehaviour
 
         if (Mathf.Abs(enePos.x - playPos.x) <= attackArea) //?U?????????????U??????        
         {
+            Debug.Log("kougeki");
             _DownKey.OnNext("K");
         }
         else
         {
+            Debug.Log("gogogog"+ (enePos.x - playPos.x));
             GoPlayer();
         }
 

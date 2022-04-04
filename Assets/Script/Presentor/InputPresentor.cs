@@ -33,7 +33,7 @@ public class InputPresentor : MonoBehaviour
         {
             case "K":
                 _playerWindow.Attack();
-                _enemyWindow.Attack();
+                //_enemyWindow.Attack();
                 break;
             case "Space":
                 _playerWindow.Jump();
