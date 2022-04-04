@@ -8,11 +8,14 @@ public class PlayerAnimatorPresentor : CharactorAnimatorPresentor
     [SerializeField] PlayerWindow _playerWindow;
     [SerializeField] AnimatorView _playerAnimatorView;
 
-    void Start()
+    protected void Awake()
     {
         _charactorWindow = _playerWindow;
         _animatorView = _playerAnimatorView;
-        CharactorAnimeEvent();
+    }
+    protected override void Start()
+    {
+        base.Start();
         _playerWindow.OnChangeIsJumping.Subscribe(value => _animatorView.SetAnimator("IsJumping", value));
         _playerWindow.OnChangeIsFalling.Subscribe(value => { _animatorView.SetAnimator("IsFalling", value); });
         _playerWindow.OnChangeIsDashing.Subscribe(value => _animatorView.SetAnimator("IsDashing", value));

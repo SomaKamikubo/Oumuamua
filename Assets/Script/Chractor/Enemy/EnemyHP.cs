@@ -5,10 +5,15 @@ using UnityEngine;
 public class EnemyHP : CharactorHP 
 {
     [SerializeField] EnemyStatus _enemyStatus;
-    protected override void Start()
+
+    protected void Awake()
     {
         _charactorStatus = _enemyStatus;
-        base.Start();
-        
+    }
+
+    public override void Death()
+    {
+        base.Death();
+        Destroy(gameObject, 3f);
     }
 }

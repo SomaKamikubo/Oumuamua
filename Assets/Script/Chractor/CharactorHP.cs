@@ -32,17 +32,15 @@ public abstract class CharactorHP : MonoBehaviour,IApplyDamage
         _nowHp -= enemy_atk;
         
         _isHurt.OnNext("HurtTrigger");
-        Debug.Log("HP"+_nowHp);
         if (isZero())
         {
             Death();
         }
     }
 
-    public void Death()
+    public virtual void Death()
     {
         _isDeath.OnNext("DeathTrigger");
-        Debug.Log("sinda");
     }
 
     public void Heal(int heal)

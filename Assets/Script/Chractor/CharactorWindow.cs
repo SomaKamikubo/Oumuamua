@@ -37,7 +37,7 @@ public class CharactorWindow : MonoBehaviour
     public void Attack() { _charactorAttack.Attack(); }
     
     
-    protected void CharactorEvent()
+    protected virtual void Start()
     {
         //Move‚Ìbool‚ðŽó‚¯Žæ‚é
         _charactorMove.OnChangeIsWalking.Subscribe(value => {_isWalking.Value = value;});

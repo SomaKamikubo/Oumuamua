@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerHP : CharactorHP
 {
     [SerializeField] PlayerStatus _playerStatus;
-    protected override void Start()
+
+    protected void Awake()
     {
         _charactorStatus = _playerStatus;
-        base.Start();
     }
 }

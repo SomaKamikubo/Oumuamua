@@ -7,10 +7,15 @@ public class EnemyAnimatorPresentor :CharactorAnimatorPresentor
     [SerializeField] EnemyWindow _enemyWindow;
     [SerializeField] AnimatorView _enemyAnimatorView;
 
-    void Start()
+
+    protected void Awake()
     {
         _animatorView = _enemyAnimatorView;
         _charactorWindow = _enemyWindow;
-        CharactorAnimeEvent();
+    }
+    protected override void Start()
+    {
+        base.Start();
+       
     }
 }

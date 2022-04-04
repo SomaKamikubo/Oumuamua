@@ -84,13 +84,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2475365343598969178}
+  - component: {fileID: 768702423442403729}
   m_Layer: 0
   m_Name: Skelton
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2475365343598969178
 Transform:
   m_ObjectHideFlags: 0
@@ -108,6 +109,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &768702423442403729
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2475365343598969252}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &3492948007686733619
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,6 +356,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7764418855346589505}
   - component: {fileID: 2110595406}
+  - component: {fileID: 1114958484}
   m_Layer: 0
   m_Name: Presentor
   m_TagString: Untagged
@@ -369,6 +392,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyWindow: {fileID: 3462371309146561460}
   _enemyAnimatorView: {fileID: 5542828171372199772}
+--- !u!114 &1114958484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3503956234100386524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb0ee793aea8e42478ca227454ef673f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyController: {fileID: 1901252343}
+  _enemyWindow: {fileID: 3462371309146561460}
 --- !u!1 &6663120710634459641
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,7 +475,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5845687813841139122}
-  - component: {fileID: 8517425712153192208}
   - component: {fileID: 1757378591707601042}
   - component: {fileID: 193549657316796053}
   - component: {fileID: 1089409472127605071}
@@ -470,27 +506,6 @@ Transform:
   m_Father: {fileID: 2475365343598969178}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &8517425712153192208
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7332808590756575395}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!70 &1757378591707601042
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -571,7 +586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c0bbd28feb39aa429c2f079aeb0a8ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rb: {fileID: 8517425712153192208}
+  _rb: {fileID: 768702423442403729}
   _enemyStatus: {fileID: 6474779697003001675}
 --- !u!114 &6474779697003001675
 MonoBehaviour:

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
-[RequireComponent(typeof(Rigidbody2D))]
+//[RequireComponent(typeof(Rigidbody2D))]
 
 public abstract class CharactorMove : MonoBehaviour
 {
@@ -28,7 +28,6 @@ public abstract class CharactorMove : MonoBehaviour
 
         if (amount == 0)
         {
-            //Debug.Log("“®‚¢‚Ä‚¢‚È‚¢");
             SetIsWalking(false);
             return;
         }
