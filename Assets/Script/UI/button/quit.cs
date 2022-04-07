@@ -6,7 +6,7 @@ public class quit : MonoBehaviour
 {
     public void OnButtonPressed()
     {
-        UnityEditor.EditorApplication.isPlaying = false;
+        //UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();
     }
 }

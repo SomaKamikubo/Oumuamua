@@ -686,7 +686,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &968340571
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1108,7 +1108,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "K \u653B\u6483"
+  m_Text: "Z \u653B\u6483"
 --- !u!222 &1268398200
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1419,7 +1419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.89411765, g: 0.77254903, b: 0.79607844, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1593,7 +1593,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "A\u3000\u5DE6\u306B\u79FB\u52D5\u3000\nD\u3000\u53F3\u306B\u79FB\u52D5"
+  m_Text: "\u2190\u3000\u5DE6\u306B\u79FB\u52D5\u3000\n\u2192\u3000\u53F3\u306B\u79FB\u52D5"
 --- !u!222 &1988020447
 CanvasRenderer:
   m_ObjectHideFlags: 0

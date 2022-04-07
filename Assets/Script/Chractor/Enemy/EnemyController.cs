@@ -88,7 +88,7 @@ public class EnemyController : CharactorInput
 
             if (_enemyCanAttack.getCanAttack() && _finishCoolDown)
             {
-                _DownKey.OnNext("K");
+                _DownKey.OnNext("Z");
                 _finishCoolDown = false;
                 StartCoroutine("CoolTime");
             }

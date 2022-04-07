@@ -40,7 +40,7 @@ public abstract class CharactorPresentor : MonoBehaviour
     {
         switch (key)
         {
-            case "K":
+            case "Z":
                 if (_canAttack)
                 {
                     _charactorWindow.Attack();

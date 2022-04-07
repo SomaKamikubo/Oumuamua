@@ -31,12 +31,9 @@ public class PleyerPresentor : CharactorPresentor
 
     protected override void ProcessKey(string key)
     {
+        base.ProcessKey(key);
         switch (key)
         {
-            case "K":
-                _playerWindow.Attack();
-
-                break;
             case "Space":
                 _playerWindow.Jump();
                 break;
