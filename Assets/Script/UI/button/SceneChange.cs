@@ -7,11 +7,14 @@ public class SceneChange : MonoBehaviour
 {
     public void ChangeSceneTitle()
     {
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene("Title");
+
     }
 
     public void ChangeSceneMain()
     {
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene("main");
     }
 
