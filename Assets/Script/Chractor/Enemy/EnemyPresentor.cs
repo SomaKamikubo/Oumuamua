@@ -9,6 +9,7 @@ public class EnemyPresentor : CharactorPresentor
     [SerializeField] AnimatorView _enemyAnimatorView;
     [SerializeField] EnemyController _enemyController;
     [SerializeField] EnemyHPVer _ehb;
+    [SerializeField] VsBoss _vsBossTrig;
 
 
     protected void Awake()
@@ -20,7 +21,12 @@ public class EnemyPresentor : CharactorPresentor
     protected override void Start()
     {
         base.Start();
+
+        //HPƒo[‚Ì•\Ž¦
         _enemyWindow.OnHurt.Subscribe(_ => _ehb.HPbar());
+        _vsBossTrig.VsBossTrigger.Subscribe(_ => { _ehb.SetActive(true); Debug.Log("boss"); });
+
+
     }
 
 

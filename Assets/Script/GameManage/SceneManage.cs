@@ -28,7 +28,7 @@ public class SceneManage : MonoBehaviour
     void Start()
     {
         //ボスが死んだらクリア
-       // _enemyWin.OnDeath.Subscribe(_ => _sceneChange.ChangeSceneClear());
+        _enemyWin.OnDeath.Subscribe(_ => { Time.timeScale = 0.3f; Invoke("gameclea", 2f); });
 
         //プレイヤーが死んだらアニメーション再生
         _playerWin.OnDeath.Subscribe(_ => playDeathFlag = true);
@@ -65,5 +65,9 @@ public class SceneManage : MonoBehaviour
         }
     }
 
+    void gameclea()
+    {
+        _sceneChange.ChangeSceneClear();
+    }
 
 }

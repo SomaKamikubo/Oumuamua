@@ -22,7 +22,6 @@ public class AttackCollider : MonoBehaviour
     //Enterの方を使うと止まっている間は攻撃を受けないため、Stayを使う
     void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log(collision.CompareTag("Enemy"));
         //一つの攻撃であたえられるダメージは一回のみのため
         if (!_isGiveDamage)
         {

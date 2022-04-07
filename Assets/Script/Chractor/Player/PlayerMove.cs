@@ -32,7 +32,7 @@ public class PlayerMove : CharactorMove
     {
         _charactorStatus = _playerStatus;
         this.UpdateAsObservable()
-            .Where(_ => _isGraunding.Value == false && _rb.velocity.y < -0.5f)
+            .Where(_ => _isGraunding.Value == false && _rb.velocity.y < -0.1f)
             .Subscribe(_ => { SetIsFalling(true); });
 
     }

@@ -17,7 +17,7 @@ public abstract class CharactorWindow : MonoBehaviour
 
     //---------------------------------------
     //キャラクターのステータス
-    public int getMaxHp(){ return _charactorHP.getHp(); }
+    public int getMaxHp(){ return _charactorStatus.getMaxHp(); }
     public int getATK() { return _charactorStatus.getATK(); }
     public int getWalkSpeed() { return _charactorStatus.getWalkSpeed(); }
     public int getHp() { return _charactorHP.getHp(); }

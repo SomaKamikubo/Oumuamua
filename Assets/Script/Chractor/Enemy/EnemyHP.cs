@@ -6,6 +6,7 @@ using UniRx;
 public class EnemyHP : CharactorHP 
 {
     [SerializeField] EnemyStatus _enemyStatus;
+
     
 
     protected void Awake()

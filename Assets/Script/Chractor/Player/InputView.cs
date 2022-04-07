@@ -22,7 +22,6 @@ public class InputView : CharactorInput
         //key‚ª‰Ÿ‚³‚ê‚½‚ç
         this.UpdateAsObservable()
             .Where(_ => Input.anyKeyDown)
-            .ThrottleFirst(TimeSpan.FromMilliseconds(500), Scheduler.MainThread)
             .Subscribe(_ => { 
                 _DownKey.OnNext(InputKey()); 
             });
@@ -67,8 +66,7 @@ public class InputView : CharactorInput
         {
             if (Input.GetKeyDown(code))
             {
-                //ˆ—‚ğ‘‚­
-                Debug.Log(code);
+                
                 return code.ToString();
             }
         }
