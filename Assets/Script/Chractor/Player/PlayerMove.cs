@@ -32,7 +32,7 @@ public class PlayerMove : CharactorMove
     {
         _charactorStatus = _playerStatus;
         this.UpdateAsObservable()
-            .Where(_ => _isGraunding.Value == false && _rb.velocity.y < -0.1f)
+            .Where(_ => _isGraunding.Value == false && _rb.velocity.y < -1.0f)
             .Subscribe(_ => { SetIsFalling(true); });
 
     }
@@ -118,14 +118,11 @@ public class PlayerMove : CharactorMove
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-
-        if (collision.CompareTag("Stage"))
-        {
             Debug.Log("íÖínÇµÇΩÅB");
             SetIsJumping(false);
             SetIsFalling(false);
             _isGraunding.Value = true;
-        }
+        
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

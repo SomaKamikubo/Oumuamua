@@ -45,7 +45,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.71, y: 0}
+  m_Offset: {x: 0.69, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -263,11 +263,11 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 71f74e2fd43257c49a2e01cd4e9c9784, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -534,6 +534,8 @@ MonoBehaviour:
   _enemyWindow: {fileID: 3462371309146561460}
   _enemyAnimatorView: {fileID: 5542828171372199772}
   _enemyController: {fileID: 1901252343}
+  _ehb: {fileID: 571713254}
+  _vsBossTrig: {fileID: 0}
 --- !u!1 &6663120710634459641
 GameObject:
   m_ObjectHideFlags: 0
@@ -579,8 +581,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.32, y: 0.18}
-  m_Size: {x: 0.69, y: 0.57}
+  m_Offset: {x: 0.41, y: 0.18}
+  m_Size: {x: 0.66, y: 0.72}
   m_Direction: 1
 --- !u!114 &1700552856
 MonoBehaviour:
@@ -611,6 +613,7 @@ GameObject:
   - component: {fileID: 6474779697003001675}
   - component: {fileID: 3462371309146561460}
   - component: {fileID: 1901252343}
+  - component: {fileID: 571713254}
   m_Layer: 0
   m_Name: Model
   m_TagString: Player
@@ -662,7 +665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa8a1380a375b7946b389f75538f15d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startCollide: 0.5
+  _startCollide: 0.7
   _finishCollide: 1.2
   _attackCollider: {fileID: 1700552856}
 --- !u!114 &4208798707818444747
@@ -705,7 +708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64f2fddf1d01a3240ba6c08ac20278ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHp: 3
+  _maxHp: 5
   _atk: 1
   _walkSpeed: 2
 --- !u!114 &3462371309146561460
@@ -741,3 +744,17 @@ MonoBehaviour:
   Player: {fileID: 0}
   _enemySearch: {fileID: 1347313838}
   _enemyCanAttack: {fileID: 17134506}
+--- !u!114 &571713254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7332808590756575395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e4ea741850789f489d725de2ff1c20c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slider: {fileID: 0}
+  _enemyWindow: {fileID: 3462371309146561460}

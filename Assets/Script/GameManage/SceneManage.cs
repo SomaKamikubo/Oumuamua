@@ -67,6 +67,7 @@ public class SceneManage : MonoBehaviour
 
     void gameclea()
     {
+        Time.timeScale = 1f;
         _sceneChange.ChangeSceneClear();
     }
 

@@ -20,8 +20,8 @@ public abstract class CharactorPresentor : MonoBehaviour
     protected virtual void Start()
     {
         //view‚©‚çwindow
-        _charactorInput.OnDownHorizontalKey.Subscribe(value => _charactorWindow.Walk(value));
-        _charactorInput.OnDownKey.Subscribe(key => ProcessKey(key));
+        _charactorInput.OnDownHorizontalKey.Subscribe(value => {if(_charactorWindow.getHp() > 0) _charactorWindow.Walk(value); });
+        _charactorInput.OnDownKey.Subscribe(key => { if (_charactorWindow.getHp() > 0) ProcessKey(key); });
 
         //window‚©‚çview
         _charactorWindow.OnChangeIsWalking.Subscribe(value => { _animatorView.SetAnimator("IsWalking", value); });

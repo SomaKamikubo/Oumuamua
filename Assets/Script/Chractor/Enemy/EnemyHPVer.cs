@@ -33,7 +33,7 @@ public class EnemyHPVer : MonoBehaviour
         _slider.value = (float)_currentHp / (float)_maxHp;
         if(_currentHp <= 0)
         {
-            Destroy(_slider);
+            _slider.gameObject.SetActive(false);
         }
     }
 

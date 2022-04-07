@@ -10,7 +10,7 @@ public class EnemyPresentor : CharactorPresentor
     [SerializeField] EnemyController _enemyController;
     [SerializeField] EnemyHPVer _ehb;
     [SerializeField] VsBoss _vsBossTrig;
-
+    [SerializeField] SE _se;
 
     protected void Awake()
     {
@@ -23,7 +23,7 @@ public class EnemyPresentor : CharactorPresentor
         base.Start();
 
         //HPƒo[‚Ì•\Ž¦
-        _enemyWindow.OnHurt.Subscribe(_ => _ehb.HPbar());
+        _enemyWindow.OnHurt.Subscribe(_ => { _ehb.HPbar(); _se.playSE(2); });
         _vsBossTrig.VsBossTrigger.Subscribe(_ => { _ehb.SetActive(true); Debug.Log("boss"); });
 
 

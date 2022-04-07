@@ -17,14 +17,14 @@ public class PleyerPresentor : CharactorPresentor
     protected override void Start()
     {
         base.Start();
-        _inputView.OnDownSKey.Subscribe(isKeyPressS => _playerWindow.Crounch(isKeyPressS));
+        _inputView.OnDownSKey.Subscribe(isKeyPressS =>  _playerWindow.Crounch(isKeyPressS));
         _inputView.OnDownShiftKey.Subscribe(isKeyPressShift => _playerWindow.receiveShift(isKeyPressShift));
 
+        //model‚©‚çview‚Ö
         _playerWindow.OnChangeIsJumping.Subscribe(value => { _playerAnimatorView.SetAnimator("IsJumping", value); });
         _playerWindow.OnChangeIsFalling.Subscribe(value => { _animatorView.SetAnimator("IsFalling", value); });
         _playerWindow.OnChangeIsDashing.Subscribe(value => _animatorView.SetAnimator("IsDashing", value));
         _playerWindow.OnChangeIsCrouching.Subscribe(value => _animatorView.SetAnimator("IsCrouching", value));
-
         _playerWindow.OnHurt.Subscribe(_ => _playerWindow.ViewHurt(_playerWindow.getHp()));
     }
 
