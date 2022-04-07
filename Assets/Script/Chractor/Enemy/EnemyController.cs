@@ -7,13 +7,14 @@ using UniRx.Triggers;
 
 public class EnemyController : CharactorInput
 {
-    [SerializeField] float attackArea; //????????????U??
-    [SerializeField] float posArea;  //??@??????iinitPos??????L????j
+    [SerializeField] float attackArea;
+    [SerializeField] float posArea; 
     [SerializeField] GameObject Player;
     [SerializeField] EnemySearch _enemySearch;
+    [SerializeField] EnemyCanAttack _enemyCanAttack;
 
     bool canMove = false;
-
+    bool _finishCoolDown = true;
 
 
 
@@ -25,50 +26,48 @@ public class EnemyController : CharactorInput
         initPosition = transform.position;
         playPos = Player.transform.position;
 
-        _enemySearch.EnemyMove.Subscribe(value => canMove = value);
+        _enemySearch.EnemyMove.Subscribe(value => { canMove = value; StartCoroutine("Action"); });
 
-        this.UpdateAsObservable().Where(_ => canMove).Subscribe(_ => Action());
+       //this.UpdateAsObservable().Where(_ => canMove).Subscribe(_ => Action());
     }
 
     // Update is called once per frame
 
 
-    public void Action()
-    {
-        //Debug.Log(enePos);
-        playPos = Player.transform.position;
-        enePos = transform.position;
+    //void Action()
+    //{
+    //    //Debug.Log(enePos);
+    //    playPos = Player.transform.position;
+    //    enePos = transform.position;
 
-        _isDownHorizontal.OnNext(0);
+    //    _isDownHorizontal.OnNext(0);
 
-        if (Mathf.Abs(enePos.x - playPos.x) <= attackArea) //?U?????????????U??????        
-        {
-            Debug.Log("kougeki");
-            _DownKey.OnNext("K");
-        }
-        else
-        {
-            Debug.Log("gogogog"+ (enePos.x - playPos.x));
-            GoPlayer();
-        }
+    //    if (Mathf.Abs(enePos.x - playPos.x) <= attackArea) //?U?????????????U??????        
+    //    {
+    //        Debug.Log("kougeki");
+    //        _DownKey.OnNext("K");
+    //    }
+    //    else
+    //    {
+    //        Debug.Log("gogogog" + (enePos.x - playPos.x));
+    //        GoPlayer();
+    //    }
 
+    //}
 
-
-    }
-
-    public void ReturnPos()
-    {
-        if ((enePos.x - initPosition.x) < -posArea)
-        {
-            _isDownHorizontal.OnNext(1);
-        }
-        else if ((enePos.x - initPosition.x) > posArea)
-        {
-           _isDownHorizontal.OnNext(-1);
-        }
-        else
-           _isDownHorizontal.OnNext(0);
-    }
+    //public void ReturnPos()
+    //{
+    //    if ((enePos.x - initPosition.x) < -posArea)
+    //    {
+    //        _isDownHorizontal.OnNext(1);
+    //    }
+    //    else if ((enePos.x - initPosition.x) > posArea)
+    //    {
+    //       _isDownHorizontal.OnNext(-1);
+    //    }
+    //    else
+    //       _isDownHorizontal.OnNext(0);
+    //}
 
     public void GoPlayer()
     {
@@ -76,6 +75,38 @@ public class EnemyController : CharactorInput
            _isDownHorizontal.OnNext(1);
         else
            _isDownHorizontal.OnNext(-1);
+    }
+    IEnumerator Action()
+    {
+        while (canMove)
+        {
+            //Debug.Log(enePos);
+            yield return new WaitForSeconds(0.1f);
+            playPos = Player.transform.position;
+            enePos = transform.position;
+
+
+            if (_enemyCanAttack.getCanAttack() && _finishCoolDown)
+            {
+                _DownKey.OnNext("K");
+                _finishCoolDown = false;
+                StartCoroutine("CoolTime");
+            }
+            else
+            {
+                //Debug.Log("go" + (enePos.x - playPos.x));
+                GoPlayer();
+            }
+        }
+
+    }
+
+    IEnumerator CoolTime()
+    {
+        yield return new WaitForSeconds(4f);
+        Debug.Log("クールタイムが終わった");
+        _finishCoolDown = true;
+
     }
 
 

@@ -4,29 +4,38 @@ using UnityEngine;
 using UniRx;
 using System;
 
+/*
+ * Model
+ * キャラクターのアタックに関する処理
+ */
 public abstract class CharactorAttack : MonoBehaviour
 {
-
-    protected GameObject _attackCollider;
-
-    //TriggerAnimetion _triAni = new TriggerAnimetion();
+    [SerializeField] float _startCollide;
+    [SerializeField] float _finishCollide;
+    [SerializeField] AttackCollider _attackCollider;
     Subject<string> _isAttacking = new Subject<string>();
     public IObservable<string> OnAttack { get { return _isAttacking; } }
 
 
-
+    //アタックイベントを発火させコライダーをOnにする
     public void Attack()
     {
-        //_triAni.AttackAnimation();
         _isAttacking.OnNext("AttackTrigger");
-        Debug.Log("attack");
-        _attackCollider.GetComponent<CapsuleCollider2D>().enabled = true;
-        Invoke("ColliderReset", 0.3f);
+        //当たり判定の調整
+        Invoke("ColliderSet", _startCollide);
+        Invoke("ColliderReset",_finishCollide);
 
     }
 
+    void ColliderSet()
+    {
+        _attackCollider.ColliderOn();
+
+    }
+
+    //コライダーをリセット
     void ColliderReset()
     {
-        _attackCollider.GetComponent<CapsuleCollider2D>().enabled = false;
+        _attackCollider.ColliderOff();
     }
 }

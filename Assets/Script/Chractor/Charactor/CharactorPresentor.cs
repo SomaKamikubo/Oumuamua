@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 
+/*
+ * Presentor
+ * ViewとModelの受け渡しを行うクラス
+ * ・入力をModelに渡す（入力を受け付けるかの処理も含む）
+ * ・Modelの変化をViewに伝える
+ */
 public abstract class CharactorPresentor : MonoBehaviour
 {
     protected CharactorWindow _charactorWindow;
@@ -26,10 +32,10 @@ public abstract class CharactorPresentor : MonoBehaviour
         //viewからここ
         _animatorView.OnFinish.Subscribe(_ => _canAttack = true);
 
-
         
     }
 
+    //押されたキーごとに処理を書く
     protected virtual void ProcessKey(string key)
     {
         switch (key)

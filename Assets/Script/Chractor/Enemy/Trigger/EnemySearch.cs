@@ -7,20 +7,19 @@ using System;
 
 public class EnemySearch : MonoBehaviour
 {
+    ReactiveProperty<bool> _enemyMove = new ReactiveProperty<bool>(false);
 
-    Subject<bool> _enemyMove = new Subject<bool>();
-
-    public IObservable<bool> EnemyMove { get { return _enemyMove; } }
+    public IReadOnlyReactiveProperty<bool> EnemyMove { get { return _enemyMove; } }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Player")
-            _enemyMove.OnNext(true);
+            _enemyMove.Value = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
-                _enemyMove.OnNext(false);
+                _enemyMove.Value = false;
     }
 }

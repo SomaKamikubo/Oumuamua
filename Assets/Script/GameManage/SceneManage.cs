@@ -28,7 +28,7 @@ public class SceneManage : MonoBehaviour
     void Start()
     {
         //ボスが死んだらクリア
-        _enemyWin.OnDeath.Subscribe(_ => _sceneChange.ChangeSceneClear());
+       // _enemyWin.OnDeath.Subscribe(_ => _sceneChange.ChangeSceneClear());
 
         //プレイヤーが死んだらアニメーション再生
         _playerWin.OnDeath.Subscribe(_ => playDeathFlag = true);

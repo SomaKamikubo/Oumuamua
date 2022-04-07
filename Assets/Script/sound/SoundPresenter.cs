@@ -8,6 +8,7 @@ public class SoundPresenter : MonoBehaviour
     [SerializeField] SwitchBGM _sBGM;
     [SerializeField] VsBoss _vsBosstrig;
     [SerializeField]  PlayerWindow _playerWindow;
+    [SerializeField] EnemyWindow _eneWin;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,7 @@ public class SoundPresenter : MonoBehaviour
         _playerWindow.OnDeath.Subscribe(_ =>_sBGM.PlayBGM(4));
 
         _vsBosstrig.VsBossTrigger.Subscribe(_ => _sBGM.PlayBGM(2));
+        _eneWin.OnDeath.Subscribe(_ => _sBGM.PlayBGM(5));
 
     }
 

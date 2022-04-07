@@ -10,11 +10,6 @@ public class PlayerAttack : CharactorAttack
 {
 
 
-    [SerializeField] GameObject _playerAttackCollider;
 
-    private void Start()
-    {
-        _attackCollider = _playerAttackCollider;
-    }
 
 }

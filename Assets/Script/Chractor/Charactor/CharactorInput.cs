@@ -4,6 +4,12 @@ using UnityEngine;
 using UniRx;
 using System;
 
+/*
+ * View
+ * キャラクターを動かすための入力
+ * Presentorはこれをみて入力をmodelに渡す
+ * 実装は子に任せる
+ */
 public abstract class CharactorInput : MonoBehaviour
 {
     protected Subject<string> _DownKey = new Subject<string>();

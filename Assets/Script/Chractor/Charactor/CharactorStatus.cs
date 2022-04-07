@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * キャラクターのステータスを管理するするクラス
+ */
+
 public abstract class CharactorStatus : MonoBehaviour
 {
     [SerializeField] int _maxHp;

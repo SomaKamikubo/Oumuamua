@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74cfa46e8c037614e9a47706d5dd55ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sp: {fileID: 0}
   _enemyStatus: {fileID: 2179107287906705081}
 --- !u!114 &2035634846666012015
 MonoBehaviour:
@@ -226,10 +227,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackArea: 5
-  moveArea: 20
-  searchArea: 100
   posArea: 2
   Player: {fileID: 0}
+  _enemySearch: {fileID: 0}
+  _enemyCanAttack: {fileID: 0}
 --- !u!1 &5503248156158648550
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,7 +322,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7331003631042635944
 Transform:
   m_ObjectHideFlags: 0
@@ -369,8 +370,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3181360562691237555}
-  - component: {fileID: 5181030028379392188}
-  - component: {fileID: 2392099929403907329}
   - component: {fileID: 2122310523260952036}
   m_Layer: 0
   m_Name: Presentor
@@ -393,34 +392,6 @@ Transform:
   m_Father: {fileID: 7331003631042635944}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5181030028379392188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8594621798861177646}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd332bdc3313e9a43af42871b0a560a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enemyWindow: {fileID: 8640832086033166918}
-  _enemyAnimatorView: {fileID: 795628084337858222}
---- !u!114 &2392099929403907329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8594621798861177646}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb0ee793aea8e42478ca227454ef673f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enemyController: {fileID: 5181030028186511109}
-  _enemyWindow: {fileID: 8640832086033166918}
 --- !u!114 &2122310523260952036
 MonoBehaviour:
   m_ObjectHideFlags: 0
