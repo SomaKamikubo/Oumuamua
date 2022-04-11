@@ -34,24 +34,24 @@ Folder Model{
         
     }
     Folder Charactor{
-        class CharactorMove {
+        abstract CharactorMove {
             IReadOnlyReactiveProperty<bool> OnChangeIsWalking
             void Walk()
         }
 
-        class CharactorAttack{
+        abstract CharactorAttack{
             IObservable<string> OnAttack
             void Attack()
         }
 
-        class CharactorHP{
+        abstract CharactorHP{
             IReadOnlyReactiveProperty<bool> OnDeath
             IReadOnlyReactiveProperty<bool> OnHurt
             void Damage()
             void Heal()
         }
 
-        class CharactorStatus{
+        abstract CharactorStatus{
             int _hp
             int _atk
             int _walkSpeed
@@ -110,8 +110,7 @@ Player ..|> Charactor
 Enemy ..|> Charactor
 
 
-EnemyWindow ..|> CharactorWindow
-PlayerWindow ..|> CharactorWindow
+
 
 CharactorAttack --> CharactorStatus
 CharactorHP --> CharactorStatus

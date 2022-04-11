@@ -1,8 +1,0 @@
-@startuml name
-title シーケンス図 
-ユーザーまたは敵の行動プログラム->view:キーボード入力
-view->presenter :キーボード入力&現在の行動
-presenter->model:キーボード入力&現在の行動
-model->presenter:次の行動
-presenter->view:次の行動
-view->ユーザーまたは敵の行動プログラム:行動の表示

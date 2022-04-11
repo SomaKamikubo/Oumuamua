@@ -12,7 +12,7 @@ public class SwitchBGM : MonoBehaviour
         // アタッチしたオーディオソースのうち1番目を使用する
         source = GetComponents<AudioSource>()[0];
     }
-    public void A(int index)
+    public void PlayBGM(int index)
     {
         source.Stop();
 
