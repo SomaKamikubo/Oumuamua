@@ -22,6 +22,8 @@ public class SwitchBGM : MonoBehaviour
         else
             source.loop = false;
 
-        source.PlayOneShot(clips[index]);
+        source.clip = clips[index];
+
+        source.Play();
     }
 }
