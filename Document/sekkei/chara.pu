@@ -1,16 +1,16 @@
 @startuml
-InputView -> InputPresenter :キーが押されたことを伝える
-InputPresenter -> PlayerControl:spaceキーが押された
-InputPresenter -> PlayerControl:Kキーが押された
-InputPresenter -> PlayerControl:方向キーが押された
+InputView -> CharactorPresenter :キーが押されたことを伝える
+CharactorPresenter -> CharactorControl:spaceキーが押された
+CharactorPresenter -> CharactorControl:Kキーが押された
+CharactorPresenter -> CharactorControl:方向キーが押された
 group 状況に応じて
-PlayerControl -> PlayerMove
-PlayerControl -> PlayerAttack
+CharactorControl -> CharactorMove
+CharactorControl -> CharactorAttack
 end
 
-PlayerMove -> PlayerPresenter:動いていることを伝える
-' Player -> PlayerPresenter
-PlayerPresenter <- PlayerAttack:攻撃していることを伝える
-PlayerPresenter -> PlayerView:アニメーションを流させる
+CharactorMove -> CharactorPresenter:動いていることを伝える
+' Charactor -> CharactorPresenter
+CharactorPresenter <- CharactorAttack:攻撃していることを伝える
+CharactorPresenter -> CharactorView:アニメーションを流させる
 
 @enduml
