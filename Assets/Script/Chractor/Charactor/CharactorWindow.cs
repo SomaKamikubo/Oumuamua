@@ -22,6 +22,8 @@ public abstract class CharactorWindow : MonoBehaviour
     public int getWalkSpeed() { return _charactorStatus.getWalkSpeed(); }
     public int getHp() { return _charactorHP.getHp(); }
 
+    public void setHp(int hp) { _charactorHP.setHp(hp); }
+
 
     //---------------------------------------
     //move‚©‚ç‚à‚ç‚¢Žó‚¯‚½‚à‚Ì

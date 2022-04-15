@@ -29,7 +29,7 @@ public class AnimatorView : MonoBehaviour
         yield return new WaitForEndOfFrame();
         // 終了するまで待つ
         yield return new WaitWhile(() => animator.GetCurrentAnimatorStateInfo(0).IsName(animationName));
-        Debug.Log(animationName + "アニメーション 終わったよ。");
+        //Debug.Log(animationName + "アニメーション 終わったよ。");
         _isFinished.OnNext(Unit.Default);
     }
 

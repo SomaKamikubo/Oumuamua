@@ -25,12 +25,11 @@ public abstract class CharactorPresentor : MonoBehaviour
 
         //window‚©‚çview
         _charactorWindow.OnChangeIsWalking.Subscribe(value => { _animatorView.SetAnimator("IsWalking", value); });
-        _charactorWindow.OnAttack.Subscribe(value => {_animatorView.SetAnimatorTrigger(value); _animatorView.StartCoroutine("PlayAnimation", "attack2"); });
+        _charactorWindow.OnAttack.Subscribe(value => {_animatorView.SetAnimatorTrigger(value);  });
         _charactorWindow.OnDeath.Subscribe(value => _animatorView.SetAnimatorTrigger(value));
         _charactorWindow.OnHurt.Subscribe(value => _animatorView.SetAnimatorTrigger(value));
 
-        //view‚©‚ç‚±‚±
-        _animatorView.OnFinish.Subscribe(_ => _canAttack = true);
+       
 
         
     }
@@ -44,7 +43,7 @@ public abstract class CharactorPresentor : MonoBehaviour
                 if (_canAttack)
                 {
                     _charactorWindow.Attack();
-                    _canAttack = false;
+                    //_canAttack = false;
                 }
                 break;
         }

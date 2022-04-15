@@ -17,7 +17,6 @@ public class EnemyController : CharactorInput
     bool _finishCoolDown = true;
 
 
-
     Vector3 initPosition, playPos, enePos;
 
     // Start is called before the first frame update
@@ -90,7 +89,7 @@ public class EnemyController : CharactorInput
             {
                 _DownKey.OnNext("Z");
                 _finishCoolDown = false;
-                StartCoroutine("CoolTime");
+               StartCoroutine("CoolTime");
             }
             else
             {
