@@ -25,8 +25,6 @@ public class EnemyPresentor : CharactorPresentor
         //HPƒo[‚Ì•\Ž¦
         _enemyWindow.OnHurt.Subscribe(_ => { _ehb.HPbar(); _se.playSE(2); });
         _vsBossTrig.VsBossTrigger.Subscribe(_ => { _ehb.SetActive(true); Debug.Log("boss"); });
-
-
     }
 
 

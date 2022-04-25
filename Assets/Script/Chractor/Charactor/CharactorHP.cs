@@ -64,7 +64,10 @@ public abstract class CharactorHP : MonoBehaviour,IApplyDamage
         _nowHp += heal;
     }
 
+
+
     public int getHp() { return _nowHp; }
+    public void setHp(int hp) {_nowHp = hp; }
 
     IEnumerator Blinking()
     {

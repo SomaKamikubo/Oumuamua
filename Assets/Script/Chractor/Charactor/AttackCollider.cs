@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackCollider : MonoBehaviour
 {
-    [SerializeField] CapsuleCollider2D _attackCollider;
+    [SerializeField] protected CapsuleCollider2D _attackCollider;
     bool _isGiveDamage = false;
     
     public void ColliderOn()
