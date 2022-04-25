@@ -70916,8 +70916,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e26d95cb0f80cf14985a6f10a05ee4d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boss1win: {fileID: 410041006}
-  _boss2win: {fileID: 7332808588779279155}
+  _boss1window: {fileID: 410041006}
+  _boss2window: {fileID: 7332808588779279155}
   _boss2: {fileID: 2130873398}
 --- !u!1 &499900003
 GameObject:
@@ -71156,7 +71156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a711cceb1570a224db0c5b44a7a45c7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1004279508}
+  player: {fileID: 1251141301}
   _vsBossTrig: {fileID: 378773815}
   _bossCamera: {x: 53, y: 3.6, z: -10}
   _camera: {fileID: 519420031}
@@ -122520,7 +122520,7 @@ PrefabInstance:
       objectReference: {fileID: 945011147}
     - target: {fileID: 1621479659, guid: fe91db507a18fbb4f86e61cb78d019aa, type: 3}
       propertyPath: _dashSpeed
-      value: 4
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1621479659, guid: fe91db507a18fbb4f86e61cb78d019aa, type: 3}
       propertyPath: _walkSpeed
@@ -122677,7 +122677,7 @@ PrefabInstance:
     - target: {fileID: 6264652073257962545, guid: 36acc7408d7784a40a6f37c6f8bd09f4, type: 3}
       propertyPath: _vsBossTrig
       value: 
-      objectReference: {fileID: 378773815}
+      objectReference: {fileID: 0}
     - target: {fileID: 6474779697003001675, guid: 36acc7408d7784a40a6f37c6f8bd09f4, type: 3}
       propertyPath: _maxHp
       value: 1
@@ -122989,7 +122989,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.986
+  m_Volume: 0.504
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -123309,7 +123309,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9134984070398655554, guid: fe91db507a18fbb4f86e61cb78d019aa, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9134984070398655676, guid: fe91db507a18fbb4f86e61cb78d019aa, type: 3}
       propertyPath: m_RootOrder

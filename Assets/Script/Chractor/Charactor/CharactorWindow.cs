@@ -35,7 +35,7 @@ public abstract class CharactorWindow : MonoBehaviour
     public IObservable<string> OnAttack { get { return _isAttacking; } }
 
     //HPから
-    Subject<string> _isDeath = new Subject<string>();
+    public Subject<string> _isDeath = new Subject<string>(); //publicは致し方なく。後で書き換える。bossが死の共有のために使っている
     Subject<string> _isHurt = new Subject<string>();
     public IObservable<string> OnDeath { get { return _isDeath; } }
     public IObservable<string> OnHurt { get { return _isHurt; } }

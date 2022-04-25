@@ -19,7 +19,7 @@ public class EnemyHP : CharactorHP
     public override void Death()
     {
         base.Death();
-        //Destroy(gameObject, 3f);
+        Destroy(gameObject, 3f);
     }
 
    

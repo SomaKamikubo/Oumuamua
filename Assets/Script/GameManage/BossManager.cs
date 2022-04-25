@@ -6,33 +6,38 @@ using System;
 
 public class BossManager : MonoBehaviour
 {
-    [SerializeField] EnemyWindow _boss1win;
-    [SerializeField] EnemyWindow _boss2win;
+    [SerializeField] EnemyWindow _boss1window;
+    [SerializeField] EnemyWindow _boss2window;
     [SerializeField] GameObject _boss2;
 
     bool first = true;
     int reHP;
     private void Start()
     {
-        reHP = _boss1win.getMaxHp();
+        reHP = _boss1window.getMaxHp();
         
     }
     private void Update()
     {
-        if(_boss1win.getHp() <= (_boss1win.getMaxHp()/2) && first)
+        if(_boss1window.getHp() <= (_boss1window.getMaxHp()/2) && first)
         {
-            Debug.Log(_boss1win.getHp());
+            Debug.Log(_boss1window.getHp());
             first = false;
             _boss2.SetActive(true);
-            _boss1win.setHp(reHP);
-            _boss2win.setHp(reHP);
+            _boss1window.setHp(reHP);
+            _boss2window.setHp(reHP);
             hurtt();
         }
         
     }
     private void hurtt()
     {
-        _boss2win.OnHurt.Subscribe(_ => _boss1win.setHp(_boss1win.getHp() - 1));
-        _boss1win.OnHurt.Subscribe(_ => _boss2win.setHp(_boss2win.getHp() - 1));
+        _boss2window.OnHurt.Subscribe(_ => _boss1window.setHp(_boss1window.getHp() - 1));
+        _boss1window.OnHurt.Subscribe(_ => _boss2window.setHp(_boss2window.getHp() - 1));
+        //‚¤‚í‚ ‚ ‚ ‚ 
+        //â‘Î‘‚«Š·‚¦‚Ü‚µ‚å‚¤
+       // _boss1window.OnDeath.Subscribe(_ => _boss2window._isDeath.OnNext("DeathTrigger"));
+        _boss2window.OnDeath.Subscribe(_ => _boss1window._isDeath.OnNext("DeathTrigger"));
+
     }
 }
