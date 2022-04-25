@@ -125113,7 +125113,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.504
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -126776,11 +126776,11 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: aa994e2865f1a2244a831dd08048df32, type: 3}
     - target: {fileID: 1089409472127605071, guid: 36acc7408d7784a40a6f37c6f8bd09f4, type: 3}
       propertyPath: _startCollide
-      value: 0.9
+      value: 0.76
       objectReference: {fileID: 0}
     - target: {fileID: 1089409472127605071, guid: 36acc7408d7784a40a6f37c6f8bd09f4, type: 3}
       propertyPath: _finishCollide
-      value: 1.3
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 1757378591707601042, guid: 36acc7408d7784a40a6f37c6f8bd09f4, type: 3}
       propertyPath: m_Offset.x
@@ -128056,8 +128056,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa37928c392758c41846226b230e892a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startCollide: 1
-  _finishCollide: 2
+  _startCollide: 2
+  _finishCollide: 3
   _attackCollider: {fileID: 414796560}
   _player: {fileID: 1251141301}
   _boss2AttackCollider: {fileID: 6663120710167132786}
