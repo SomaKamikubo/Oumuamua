@@ -19,7 +19,7 @@ public class SoundPresenter : MonoBehaviour
         _playerWindow.OnDeath.Subscribe(_ =>_sBGM.PlayBGM(4));
 
         _vsBosstrig.VsBossTrigger.Subscribe(_ => _sBGM.PlayBGM(2));
-       // _eneWin.OnDeath.Subscribe(_ => _sBGM.PlayBGM(5));
+        _eneWin.OnDeath.Subscribe(_ => _sBGM.PlayBGM(5));
 
     }
 

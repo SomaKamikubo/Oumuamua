@@ -70,10 +70,11 @@ public class EnemyController : CharactorInput
 
     public void GoPlayer()
     {
-        if ((enePos.x - playPos.x) < 0)
-           _isDownHorizontal.OnNext(1);
-        else
-           _isDownHorizontal.OnNext(-1);
+        if (Math.Abs(enePos.x - playPos.x) > 1)
+            if(enePos.x - playPos.x < 0)
+                _isDownHorizontal.OnNext(1);
+            else
+               _isDownHorizontal.OnNext(-1);
     }
     IEnumerator Action()
     {
