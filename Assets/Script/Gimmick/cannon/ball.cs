@@ -8,16 +8,22 @@ public class ball : MonoBehaviour
     Rigidbody2D _rb;
     [SerializeField] float _speed;
 
+    Vector3 rote;
+
     void Start()
     {
-        _rb = GetComponent<Rigidbody2D>();
-        _rb.AddForce(transform.right * _speed);
+        move();
         Destroy(gameObject, _time);
     }
 
-    // Update is called once per frame
-    void Update()
+     void move()
     {
-        
+        float direction;
+        rote = transform.localEulerAngles;
+        _rb = GetComponent<Rigidbody2D>();
+
+        direction = Mathf.Cos(rote.y * Mathf.Deg2Rad);
+
+        _rb.AddForce(new Vector2(_speed * direction, 0));
     }
 }
