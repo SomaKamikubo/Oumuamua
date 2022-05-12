@@ -17,7 +17,6 @@ public class EnemyController : CharactorInput
     bool _finishCoolDown = true;
 
 
-
     Vector3 initPosition, playPos, enePos;
 
     // Start is called before the first frame update
@@ -71,10 +70,11 @@ public class EnemyController : CharactorInput
 
     public void GoPlayer()
     {
-        if ((enePos.x - playPos.x) < 0)
-           _isDownHorizontal.OnNext(1);
-        else
-           _isDownHorizontal.OnNext(-1);
+        if (Math.Abs(enePos.x - playPos.x) > 1)
+            if(enePos.x - playPos.x < 0)
+                _isDownHorizontal.OnNext(1);
+            else
+               _isDownHorizontal.OnNext(-1);
     }
     IEnumerator Action()
     {
@@ -90,7 +90,7 @@ public class EnemyController : CharactorInput
             {
                 _DownKey.OnNext("Z");
                 _finishCoolDown = false;
-                StartCoroutine("CoolTime");
+               StartCoroutine("CoolTime");
             }
             else
             {
