@@ -17,8 +17,10 @@ public abstract class CharactorHP : MonoBehaviour,IApplyDamage
     //ダメージを受けたときと死んだときのイベント
     Subject<string> _isDeath = new Subject<string>();
     Subject<string> _isHurt = new Subject<string>();
+    Subject<string> _isHeal = new Subject<string>();
     public IObservable<string> OnDeath { get { return _isDeath; } }
     public IObservable<string> OnHurt { get { return _isHurt; } }
+    public IObservable<string> OnHeal { get { return _isHeal; } }
 
     protected bool _damaging = false;
     int _nowHp;
@@ -62,6 +64,7 @@ public abstract class CharactorHP : MonoBehaviour,IApplyDamage
     public void Heal(int heal)
     {
         _nowHp += heal;
+        _isHeal.OnNext("Test");
     }
 
 

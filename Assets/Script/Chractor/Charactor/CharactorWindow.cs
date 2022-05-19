@@ -37,13 +37,16 @@ public abstract class CharactorWindow : MonoBehaviour
     //HPから
     public Subject<string> _isDeath = new Subject<string>(); //publicは致し方なく。後で書き換える。bossが死の共有のために使っている
     Subject<string> _isHurt = new Subject<string>();
+    Subject<string> _isHeal = new Subject<string>();
     public IObservable<string> OnDeath { get { return _isDeath; } }
     public IObservable<string> OnHurt { get { return _isHurt; } }
+    public IObservable<string> OnHeal { get { return _isHeal; } }
 
     //--------------------------------------
     //キャラクターが持つメソッドたち
     public void Walk(float amount) { _charactorMove.Walk(amount); }
     public void Attack() { _charactorAttack.Attack(); }
+    public void Heal(int heal) { _charactorHP.Heal(heal); }
     
     
     protected virtual void Start()
