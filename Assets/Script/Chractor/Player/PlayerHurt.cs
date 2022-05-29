@@ -7,18 +7,11 @@ public class PlayerHurt : MonoBehaviour
     [SerializeField] GameObject HP;//ハートオブジェクト
     [SerializeField] GameObject[] heart;//ハート配列
     [SerializeField] GameObject hart;//ハートを置くキャンバス
-    [SerializeField] PlayerWindow _playerWindow;
-    [SerializeField] float _add_pos;
-    int _maxHp;
-    
+    [SerializeField] float _add_pos;  
 
-    private void Start()
-    {
-        _maxHp = _playerWindow.getMaxHp();
-        generalHeart(_maxHp);
-    }
 
-    public void generalHeart(int maxHp)
+
+    public void generateHeart(int maxHp)
     {
         Vector3 _pos = HP.transform.position; 
         heart = new GameObject[maxHp];

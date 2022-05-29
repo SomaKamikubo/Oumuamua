@@ -39,6 +39,8 @@ public class PlayerWindow :CharactorWindow
     public void DamageViewHeart(int hp) { _playerHurt.DamageViewHeart(hp); }
     public void HealViewHeart(int hp) { _playerHurt.HealViewHeart(hp); }
 
+    public void GenerateHeart() { _playerHurt.generateHeart(_charactorStatus.getMaxHp()); }
+
 
     protected void Awake()
     {
