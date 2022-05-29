@@ -59,6 +59,7 @@ public abstract class CharactorWindow : MonoBehaviour
 
         //Hp‚©‚ç‚ÌƒCƒxƒ“ƒg
         _charactorHP.OnHurt.Subscribe(value => { _isHurt.OnNext(value); });
+        _charactorHP.OnHeal.Subscribe(value => { _isHeal.OnNext(value); });
         _charactorHP.OnDeath.Subscribe(value => { _isDeath.OnNext(value); });
     }
 

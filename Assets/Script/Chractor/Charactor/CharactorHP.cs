@@ -24,11 +24,14 @@ public abstract class CharactorHP : MonoBehaviour,IApplyDamage
 
     protected bool _damaging = false;
     int _nowHp;
+    int _maxHp;
 
     protected virtual void Start()
     {
         //ゲーム開始時にHPを参照する
-        _nowHp = _charactorStatus.getMaxHp();
+        _maxHp = _charactorStatus.getMaxHp();
+        _nowHp = _maxHp;
+
     }
 
 
@@ -62,8 +65,10 @@ public abstract class CharactorHP : MonoBehaviour,IApplyDamage
     }
 
     public void Heal(int heal)
-    {
+    {   
         _nowHp += heal;
+        if (_nowHp > _maxHp)
+            _nowHp = _maxHp;
         _isHeal.OnNext("Test");
     }
 

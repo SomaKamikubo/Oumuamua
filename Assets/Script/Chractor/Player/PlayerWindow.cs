@@ -36,7 +36,8 @@ public class PlayerWindow :CharactorWindow
     public void receiveShift(bool isPressShift) { _playerMove.receiveShift(isPressShift); }
 
     //hurt
-    public void ViewHurt(int hp) { _playerHurt.ViewHurt(hp); }
+    public void DamageViewHeart(int hp) { _playerHurt.DamageViewHeart(hp); }
+    public void HealViewHeart(int hp) { _playerHurt.HealViewHeart(hp); }
 
 
     protected void Awake()

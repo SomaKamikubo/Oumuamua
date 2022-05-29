@@ -25,7 +25,8 @@ public class PleyerPresentor : CharactorPresentor
         _playerWindow.OnChangeIsFalling.Subscribe(value => { _animatorView.SetAnimator("IsFalling", value); });
         _playerWindow.OnChangeIsDashing.Subscribe(value => _animatorView.SetAnimator("IsDashing", value));
         _playerWindow.OnChangeIsCrouching.Subscribe(value => _animatorView.SetAnimator("IsCrouching", value));
-        _playerWindow.OnHurt.Subscribe(_ => _playerWindow.ViewHurt(_playerWindow.getHp()));
+        _playerWindow.OnHurt.Subscribe(_ => _playerWindow.DamageViewHeart(_playerWindow.getHp()));
+        _playerWindow.OnHeal.Subscribe(_ => _playerWindow.HealViewHeart(_playerWindow.getHp())); ;
 
         _playerWindow.OnAttack.Subscribe(_ => _animatorView.StartCoroutine("PlayAnimation", "Attack"));
 
