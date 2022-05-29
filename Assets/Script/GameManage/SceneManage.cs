@@ -13,7 +13,7 @@ public class SceneManage : MonoBehaviour
     [SerializeField] EnemyWindow _enemyWin;
     [SerializeField] GameObject _GameOverView;
 
-    SceneChange _sceneChange = new SceneChange();
+    [SerializeField] SceneChange _sceneChange;
 
     [SerializeField] float fadeOutTime = 6.0f;  //フェードアウトの開始タイミング(秒)
     private float nowTime = 0.0f;     //タイミングカウント用

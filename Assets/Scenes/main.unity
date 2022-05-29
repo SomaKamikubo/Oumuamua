@@ -123085,6 +123085,7 @@ GameObject:
   m_Component:
   - component: {fileID: 882873784}
   - component: {fileID: 882873785}
+  - component: {fileID: 882873786}
   m_Layer: 0
   m_Name: SceneManage
   m_TagString: Untagged
@@ -123121,8 +123122,21 @@ MonoBehaviour:
   _playerWin: {fileID: 1202658974}
   _enemyWin: {fileID: 410041006}
   _GameOverView: {fileID: 420860038}
+  _sceneChange: {fileID: 882873786}
   fadeOutTime: 3
   panel: {fileID: 2003015566}
+--- !u!114 &882873786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 882873783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a3e733a5f136614d8b76f4fd5937a95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &892535590
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -127761,6 +127775,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2123147628}
+  - component: {fileID: 2123147629}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -127786,6 +127801,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2123147629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123147627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2bed04a59903c34386c6e1b969a3355, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerWindow: {fileID: 1202658974}
 --- !u!1 &2130873398 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4040975745432087622, guid: de7a77fdc29fb0c47ad74ef4dbdcbc13, type: 3}
