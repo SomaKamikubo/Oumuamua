@@ -12,6 +12,7 @@ public class SceneManage : MonoBehaviour
     [SerializeField] PlayerWindow _playerWin;
     [SerializeField] EnemyWindow _enemyWin;
     [SerializeField] GameObject _GameOverView;
+    [SerializeField] GameManager _gameManager;
 
     [SerializeField] SceneChange _sceneChange;
 
@@ -22,17 +23,17 @@ public class SceneManage : MonoBehaviour
     private Color color;              //panelのカラー設定
 
 
-    bool playDeathFlag = false;
+    bool _gameOverFlag = false;
 
 
     void Start()
     {
         //ボスが死んだらクリア
-        _enemyWin.OnDeath.Subscribe(_ => { Time.timeScale = 0.3f; Invoke("gameclea", 2f); });
+        _enemyWin.OnDeath.Subscribe(_ => { Time.timeScale = 0.3f; Invoke("gameclear", 2f); });
 
-        //プレイヤーが死んだらアニメーション再生
-        _playerWin.OnDeath.Subscribe(_ => playDeathFlag = true);
-        this.UpdateAsObservable().Where(_ => (playDeathFlag == true)).Subscribe(_ => GameOverAnim());
+        //ゲームオーバーになったらアニメーション再生
+        _gameManager.OnGameOver.Subscribe(_ => _gameOverFlag = true);
+        this.UpdateAsObservable().Where(_ => (_gameOverFlag == true)).Subscribe(_ => GameOverAnim());
 
         //フェードアウト用のパラメータ取得
         image = panel.GetComponent<Image>();
@@ -65,7 +66,7 @@ public class SceneManage : MonoBehaviour
         }
     }
 
-    void gameclea()
+    void gameclear()
     {
         Time.timeScale = 1f;
         _sceneChange.ChangeSceneClear();
