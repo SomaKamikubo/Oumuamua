@@ -47,6 +47,8 @@ public abstract class CharactorWindow : MonoBehaviour
     public void Walk(float amount) { _charactorMove.Walk(amount); }
     public void Attack() { _charactorAttack.Attack(); }
     public void Heal(int heal) { _charactorHP.Heal(heal); }
+
+    public void Damage(int atk) { _charactorHP.Damage(atk); }
     
     
     protected virtual void Start()

@@ -15,8 +15,8 @@ public abstract class CharactorHP : MonoBehaviour,IApplyDamage
     protected CharactorStatus _charactorStatus;
 
     //ダメージを受けたときと死んだときのイベント
-    Subject<string> _isDeath = new Subject<string>();
-    Subject<string> _isHurt = new Subject<string>();
+    protected Subject<string> _isDeath = new Subject<string>();
+    protected Subject<string> _isHurt = new Subject<string>();
     Subject<string> _isHeal = new Subject<string>();
     public IObservable<string> OnDeath { get { return _isDeath; } }
     public IObservable<string> OnHurt { get { return _isHurt; } }
@@ -35,12 +35,12 @@ public abstract class CharactorHP : MonoBehaviour,IApplyDamage
     }
 
 
-    bool isDeath()
+    protected bool isDeath()
     {
         return _nowHp <= 0;
     }
 
-    public void Damage(int enemy_atk)
+    public virtual void Damage(int enemy_atk)
     {
         //Debug.Log("攻撃された");
         //ダメージを受けているときは攻撃を受けない
@@ -49,6 +49,7 @@ public abstract class CharactorHP : MonoBehaviour,IApplyDamage
         {
             _nowHp -= enemy_atk;
             _isHurt.OnNext("HurtTrigger");
+
 
             //点滅させる
             StartCoroutine("Blinking");

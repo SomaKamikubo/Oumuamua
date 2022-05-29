@@ -29,7 +29,7 @@ public class SceneManage : MonoBehaviour
     void Start()
     {
         //ボスが死んだらクリア
-        _enemyWin.OnDeath.Subscribe(_ => { Time.timeScale = 0.3f; Invoke("gameclear", 2f); });
+        _gameManager.OnGameClear.Subscribe(_ => { Time.timeScale = 0.3f; Invoke("gameclear", 2f); });
 
         //ゲームオーバーになったらアニメーション再生
         _gameManager.OnGameOver.Subscribe(_ => _gameOverFlag = true);

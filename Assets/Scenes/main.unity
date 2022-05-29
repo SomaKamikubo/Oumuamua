@@ -124248,15 +124248,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1621479659, guid: fe91db507a18fbb4f86e61cb78d019aa, type: 3}
       propertyPath: _maxHp
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1621479659, guid: fe91db507a18fbb4f86e61cb78d019aa, type: 3}
       propertyPath: _dashSpeed
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1621479659, guid: fe91db507a18fbb4f86e61cb78d019aa, type: 3}
+      propertyPath: _jumpPower
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1621479659, guid: fe91db507a18fbb4f86e61cb78d019aa, type: 3}
       propertyPath: _walkSpeed
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 898618422321570504, guid: fe91db507a18fbb4f86e61cb78d019aa, type: 3}
       propertyPath: m_Enabled
@@ -124274,17 +124278,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 9134984070398655554, guid: fe91db507a18fbb4f86e61cb78d019aa, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9134984070398655676, guid: fe91db507a18fbb4f86e61cb78d019aa, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9134984070398655676, guid: fe91db507a18fbb4f86e61cb78d019aa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.747
+      value: 41.33
       objectReference: {fileID: 0}
     - target: {fileID: 9134984070398655676, guid: fe91db507a18fbb4f86e61cb78d019aa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 91.948
+      value: 6.1
       objectReference: {fileID: 0}
     - target: {fileID: 9134984070398655676, guid: fe91db507a18fbb4f86e61cb78d019aa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -125661,6 +125669,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3624362445000311817, guid: bf98f1a80f42f604a920722adc653416, type: 3}
   m_PrefabInstance: {fileID: 132446272}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &1638545804 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2591108379983318779, guid: de7a77fdc29fb0c47ad74ef4dbdcbc13, type: 3}
+  m_PrefabInstance: {fileID: 1895502716555249258}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1642406401 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3624362445000311817, guid: bf98f1a80f42f604a920722adc653416, type: 3}
@@ -126923,8 +126936,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 378773815}
     - target: {fileID: 6474779697003001675, guid: 36acc7408d7784a40a6f37c6f8bd09f4, type: 3}
+      propertyPath: _atk
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6474779697003001675, guid: 36acc7408d7784a40a6f37c6f8bd09f4, type: 3}
       propertyPath: _maxHp
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6474779697003001675, guid: 36acc7408d7784a40a6f37c6f8bd09f4, type: 3}
       propertyPath: _walkSpeed
@@ -127815,6 +127832,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerWindow: {fileID: 1202658974}
+  _boss1Window: {fileID: 410041006}
+  _boss2Window: {fileID: 7332808588779279155}
 --- !u!1 &2130873398 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4040975745432087622, guid: de7a77fdc29fb0c47ad74ef4dbdcbc13, type: 3}
@@ -127932,6 +127951,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3045275511947933270, guid: de7a77fdc29fb0c47ad74ef4dbdcbc13, type: 3}
+      propertyPath: _enemyHP
+      value: 
+      objectReference: {fileID: 7332808588779279153}
+    - target: {fileID: 3045275511947933270, guid: de7a77fdc29fb0c47ad74ef4dbdcbc13, type: 3}
       propertyPath: _enemyAttack
       value: 
       objectReference: {fileID: 7332808588779279148}
@@ -128000,6 +128023,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4869838677002623657, guid: de7a77fdc29fb0c47ad74ef4dbdcbc13, type: 3}
+      propertyPath: _atk
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869838677002623657, guid: de7a77fdc29fb0c47ad74ef4dbdcbc13, type: 3}
       propertyPath: _maxHp
       value: 6
       objectReference: {fileID: 0}
@@ -128026,6 +128053,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1535852308035400877, guid: de7a77fdc29fb0c47ad74ef4dbdcbc13, type: 3}
     - {fileID: 5530049203767730643, guid: de7a77fdc29fb0c47ad74ef4dbdcbc13, type: 3}
+    - {fileID: 2316685902460574249, guid: de7a77fdc29fb0c47ad74ef4dbdcbc13, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: de7a77fdc29fb0c47ad74ef4dbdcbc13, type: 3}
 --- !u!1001 &3624362445309014241
 PrefabInstance:
@@ -128129,6 +128157,32 @@ MonoBehaviour:
   _attackCollider: {fileID: 414796560}
   _player: {fileID: 1251141301}
   _boss2AttackCollider: {fileID: 6663120710167132786}
+--- !u!114 &7332808588779279153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7332808588779279147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68c481d76f737194bbe45a986cc14713, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sp: {fileID: 1638545804}
+  _enemyStatus: {fileID: 7332808588779279154}
+  _boss1win: {fileID: 410041006}
+--- !u!114 &7332808588779279154 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4869838677002623657, guid: de7a77fdc29fb0c47ad74ef4dbdcbc13, type: 3}
+  m_PrefabInstance: {fileID: 1895502716555249258}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7332808588779279147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64f2fddf1d01a3240ba6c08ac20278ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7332808588779279155 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3045275511947933270, guid: de7a77fdc29fb0c47ad74ef4dbdcbc13, type: 3}

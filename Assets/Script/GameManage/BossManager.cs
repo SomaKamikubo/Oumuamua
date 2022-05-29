@@ -25,19 +25,16 @@ public class BossManager : MonoBehaviour
             first = false;
             _boss2.SetActive(true);
             _boss1window.setHp(reHP);
-            _boss2window.setHp(reHP);
+ 
             hurtt();
         }
         
     }
     private void hurtt()
     {
-        _boss2window.OnHurt.Subscribe(_ => _boss1window.setHp(_boss1window.getHp() - 1));
-        _boss1window.OnHurt.Subscribe(_ => _boss2window.setHp(_boss2window.getHp() - 1));
-        //‚¤‚í‚ ‚ ‚ ‚ 
-        //â‘Î‘‚«Š·‚¦‚Ü‚µ‚å‚¤
-       // _boss1window.OnDeath.Subscribe(_ => _boss2window._isDeath.OnNext("DeathTrigger"));
-        _boss2window.OnDeath.Subscribe(_ => _boss1window._isDeath.OnNext("DeathTrigger"));
+        //2‚ªƒ_ƒ[ƒW‚ðŽó‚¯‚½‚Æ‚«1‚Ì‘Ì—Í‚ªŒ¸‚é‚©‚ç1‚ªŽ€‚ñ‚¾‚ç2‚àŽ€‚Ê
+        _boss1window.OnDeath.Subscribe(_ =>{ _boss2window._isDeath.OnNext("DeathTrigger"); Debug.Log("death"); }) ;
+
 
     }
 }

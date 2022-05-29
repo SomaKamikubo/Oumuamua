@@ -27,7 +27,6 @@ public class Boss2Presentor :CharactorPresentor
         base.Start();
 
         //HPƒo[‚Ì•\Ž¦
-        _enemyWindow.OnHurt.Subscribe(_ => { _ehb.HPbar(); _se.playSE(2); });
         _enemyWindow.OnAttack.Subscribe(value => _attackAnimatorView.SetAnimatorTrigger(value));
         _ba2.OnChasing.Subscribe(value => { _animatorView.SetAnimator("IsChase", value); _attackAnimatorView.SetAnimator("IsChase", value); });
 

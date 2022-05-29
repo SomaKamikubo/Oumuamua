@@ -23,7 +23,7 @@ public class EnemyPresentor : CharactorPresentor
         base.Start();
 
         //HPƒo[‚Ì•\Ž¦
-        _enemyWindow.OnHurt.Subscribe(_ => { _ehb.HPbar(); _se.playSE(2); });
+        _enemyWindow.OnHurt.Subscribe(_ => { _ehb.HPbar(); _se.playSE(2); Debug.Log("damage"); });
         _vsBossTrig.VsBossTrigger.Subscribe(_ => { _ehb.SetActive(true); Debug.Log("boss"); });
     }
 
