@@ -123122,6 +123122,7 @@ MonoBehaviour:
   _playerWin: {fileID: 1202658974}
   _enemyWin: {fileID: 410041006}
   _GameOverView: {fileID: 420860038}
+  _gameManager: {fileID: 2123147629}
   _sceneChange: {fileID: 882873786}
   fadeOutTime: 3
   panel: {fileID: 2003015566}
@@ -124247,7 +124248,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1621479659, guid: fe91db507a18fbb4f86e61cb78d019aa, type: 3}
       propertyPath: _maxHp
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1621479659, guid: fe91db507a18fbb4f86e61cb78d019aa, type: 3}
       propertyPath: _dashSpeed
