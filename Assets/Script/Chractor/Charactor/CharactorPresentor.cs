@@ -20,14 +20,14 @@ public abstract class CharactorPresentor : MonoBehaviour
     protected virtual void Start()
     {
         //view‚©‚çwindow
-        _charactorInput.OnDownHorizontalKey.Subscribe(value => {if(_charactorWindow.getHp() > 0) _charactorWindow.Walk(value); });
+        _charactorInput.OnDownHorizontalKey.Subscribe(value => { if (_charactorWindow.getHp() > 0) _charactorWindow.Walk(value); });
         _charactorInput.OnDownKey.Subscribe(key => { if (_charactorWindow.getHp() > 0) ProcessKey(key); });
 
         //window‚©‚çview
         _charactorWindow.OnChangeIsWalking.Subscribe(value => { _animatorView.SetAnimator("IsWalking", value); });
-        _charactorWindow.OnAttack.Subscribe(value => {_animatorView.SetAnimatorTrigger(value);  });
-        _charactorWindow.OnDeath.Subscribe(value => _animatorView.SetAnimatorTrigger(value));
-        _charactorWindow.OnHurt.Subscribe(value => _animatorView.SetAnimatorTrigger(value));
+        _charactorWindow.OnAttack.Subscribe(_ => { _animatorView.SetAnimatorTrigger("AttackTrigger"); });
+        _charactorWindow.OnDeath.Subscribe(_ => { _animatorView.SetAnimatorTrigger("DeathTrigger"); });
+        _charactorWindow.OnHurt.Subscribe(_ => _animatorView.SetAnimatorTrigger("HurtTrigger"));
 
        
 

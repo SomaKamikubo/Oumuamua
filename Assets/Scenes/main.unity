@@ -124252,7 +124252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1621479659, guid: fe91db507a18fbb4f86e61cb78d019aa, type: 3}
       propertyPath: _dashSpeed
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1621479659, guid: fe91db507a18fbb4f86e61cb78d019aa, type: 3}
       propertyPath: _jumpPower
@@ -126941,7 +126941,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6474779697003001675, guid: 36acc7408d7784a40a6f37c6f8bd09f4, type: 3}
       propertyPath: _maxHp
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6474779697003001675, guid: 36acc7408d7784a40a6f37c6f8bd09f4, type: 3}
       propertyPath: _walkSpeed
@@ -127245,6 +127245,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3624362445000311817, guid: bf98f1a80f42f604a920722adc653416, type: 3}
   m_PrefabInstance: {fileID: 1793048352}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2009063892 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 571713254, guid: 36acc7408d7784a40a6f37c6f8bd09f4, type: 3}
+  m_PrefabInstance: {fileID: 1898093100}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e4ea741850789f489d725de2ff1c20c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2023457714
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -127834,6 +127845,9 @@ MonoBehaviour:
   _playerWindow: {fileID: 1202658974}
   _boss1Window: {fileID: 410041006}
   _boss2Window: {fileID: 7332808588779279155}
+  _vsBossTrig: {fileID: 378773815}
+  _ehb: {fileID: 2009063892}
+  _bossManager: {fileID: 425759297}
 --- !u!1 &2130873398 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4040975745432087622, guid: de7a77fdc29fb0c47ad74ef4dbdcbc13, type: 3}
@@ -127909,6 +127923,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: taihou
       objectReference: {fileID: 0}
+    - target: {fileID: 1892371771332566739, guid: 441f336681590874a8f970b5c1a377b6, type: 3}
+      propertyPath: m_Color.b
+      value: 0.21960786
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892371771332566739, guid: 441f336681590874a8f970b5c1a377b6, type: 3}
+      propertyPath: m_Color.g
+      value: 0.21960786
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892371771332566739, guid: 441f336681590874a8f970b5c1a377b6, type: 3}
+      propertyPath: m_Color.r
+      value: 0.21960786
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892371771332566739, guid: 441f336681590874a8f970b5c1a377b6, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892371771332566739, guid: 441f336681590874a8f970b5c1a377b6, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 441f336681590874a8f970b5c1a377b6, type: 3}
 --- !u!1001 &1895502716555249258
@@ -127938,6 +127972,10 @@ PrefabInstance:
       propertyPath: _slider
       value: 
       objectReference: {fileID: 357771802}
+    - target: {fileID: 1895502717794044676, guid: de7a77fdc29fb0c47ad74ef4dbdcbc13, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1895502718141688626, guid: de7a77fdc29fb0c47ad74ef4dbdcbc13, type: 3}
       propertyPath: Player
       value: 
@@ -128028,7 +128066,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4869838677002623657, guid: de7a77fdc29fb0c47ad74ef4dbdcbc13, type: 3}
       propertyPath: _maxHp
-      value: 6
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 5379863298371826380, guid: de7a77fdc29fb0c47ad74ef4dbdcbc13, type: 3}
       propertyPath: m_Size.x
@@ -128054,6 +128092,7 @@ PrefabInstance:
     - {fileID: 1535852308035400877, guid: de7a77fdc29fb0c47ad74ef4dbdcbc13, type: 3}
     - {fileID: 5530049203767730643, guid: de7a77fdc29fb0c47ad74ef4dbdcbc13, type: 3}
     - {fileID: 2316685902460574249, guid: de7a77fdc29fb0c47ad74ef4dbdcbc13, type: 3}
+    - {fileID: 1895502717794044676, guid: de7a77fdc29fb0c47ad74ef4dbdcbc13, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: de7a77fdc29fb0c47ad74ef4dbdcbc13, type: 3}
 --- !u!1001 &3624362445309014241
 PrefabInstance:

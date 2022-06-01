@@ -21,7 +21,6 @@ public abstract class CharactorWindow : MonoBehaviour
     public int getATK() { return _charactorStatus.getATK(); }
     public int getWalkSpeed() { return _charactorStatus.getWalkSpeed(); }
     public int getHp() { return _charactorHP.getHp(); }
-
     public void setHp(int hp) { _charactorHP.setHp(hp); }
 
 
@@ -31,23 +30,22 @@ public abstract class CharactorWindow : MonoBehaviour
     public IReadOnlyReactiveProperty<bool> OnChangeIsWalking { get { return _isWalking; } }
 
     //attackからもらい受けたもの
-    Subject<string> _isAttacking = new Subject<string>();
-    public IObservable<string> OnAttack { get { return _isAttacking; } }
+    Subject<Unit> _isAttacking = new Subject<Unit>();
+    public IObservable<Unit> OnAttack { get { return _isAttacking; } }
 
     //HPから
-    public Subject<string> _isDeath = new Subject<string>(); //publicは致し方なく。後で書き換える。bossが死の共有のために使っている
-    Subject<string> _isHurt = new Subject<string>();
-    Subject<string> _isHeal = new Subject<string>();
-    public IObservable<string> OnDeath { get { return _isDeath; } }
-    public IObservable<string> OnHurt { get { return _isHurt; } }
-    public IObservable<string> OnHeal { get { return _isHeal; } }
+    Subject<Unit> _isDeath = new Subject<Unit>(); //publicは致し方なく。後で書き換える。bossが死の共有のために使っている
+    Subject<Unit> _isHurt = new Subject<Unit>();
+    Subject<Unit> _isHeal = new Subject<Unit>();
+    public IObservable<Unit> OnDeath { get { return _isDeath; } }
+    public IObservable<Unit> OnHurt { get { return _isHurt; } }
+    public IObservable<Unit> OnHeal { get { return _isHeal; } }
 
     //--------------------------------------
     //キャラクターが持つメソッドたち
     public void Walk(float amount) { _charactorMove.Walk(amount); }
     public void Attack() { _charactorAttack.Attack(); }
     public void Heal(int heal) { _charactorHP.Heal(heal); }
-
     public void Damage(int atk) { _charactorHP.Damage(atk); }
     
     
@@ -57,12 +55,28 @@ public abstract class CharactorWindow : MonoBehaviour
         _charactorMove.OnChangeIsWalking.Subscribe(value => {_isWalking.Value = value;});
 
         //attackからのイベントを受け取る
-        _charactorAttack.OnAttack.Subscribe(value => { _isAttacking.OnNext(value); });
+        _charactorAttack.OnAttack.Subscribe(_ => { _isAttacking.OnNext(Unit.Default); });
 
         //Hpからのイベント
-        _charactorHP.OnHurt.Subscribe(value => { _isHurt.OnNext(value); });
-        _charactorHP.OnHeal.Subscribe(value => { _isHeal.OnNext(value); });
-        _charactorHP.OnDeath.Subscribe(value => { _isDeath.OnNext(value); });
+        _charactorHP.OnDeath.Subscribe(_ => { _isDeath.OnNext(Unit.Default); });
+        int beforHp = _charactorStatus.getMaxHp();
+        _charactorHP.OnChangeHP.Subscribe(nowHp => {
+            Debug.Log("現在HP:" + nowHp);
+            if (nowHp > beforHp)//HPが増えてるなら
+                _isHeal.OnNext(Unit.Default);
+            else if (nowHp < beforHp && !_charactorHP.isDeath())    //HPが減って死んでないならダメージを受ける
+                _isHurt.OnNext(Unit.Default);
+            else if (_charactorHP.isDeath())
+            {
+                Debug.Log("死んだ"+ nowHp+":" + beforHp);
+                _isDeath.OnNext(Unit.Default);
+            }
+                
+            else
+                Debug.Log("nowHP==beforHP");
+            beforHp = nowHp;
+                
+            });
     }
 
 

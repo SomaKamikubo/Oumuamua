@@ -11,7 +11,6 @@ public class Boss2HP : EnemyHP
         if (!_damaging && !isDeath())
         {
             _boss1win.Damage(enemy_atk);
-            _isHurt.OnNext("HurtTrigger");
 
             
 

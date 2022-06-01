@@ -13,14 +13,14 @@ public abstract class CharactorAttack : MonoBehaviour
     [SerializeField] protected float _startCollide;
     [SerializeField] protected float _finishCollide;
     [SerializeField] protected AttackCollider _attackCollider;
-    protected Subject<string> _isAttacking = new Subject<string>();
-    public IObservable<string> OnAttack { get { return _isAttacking; } }
+    protected Subject<Unit> _isAttacking = new Subject<Unit>();
+    public IObservable<Unit> OnAttack { get { return _isAttacking; } }
 
 
     //アタックイベントを発火させコライダーをOnにする
     public virtual void Attack()
     {
-        _isAttacking.OnNext("AttackTrigger");
+        _isAttacking.OnNext(Unit.Default);
         //当たり判定の調整
         Invoke("ColliderSet", _startCollide);
         Invoke("ColliderReset",_finishCollide);

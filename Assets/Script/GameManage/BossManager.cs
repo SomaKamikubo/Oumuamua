@@ -15,26 +15,17 @@ public class BossManager : MonoBehaviour
     private void Start()
     {
         reHP = _boss1window.getMaxHp();
-        
-    }
-    private void Update()
-    {
-        if(_boss1window.getHp() <= (_boss1window.getMaxHp()/2) && first)
-        {
-            Debug.Log(_boss1window.getHp());
-            first = false;
-            _boss2.SetActive(true);
-            _boss1window.setHp(reHP);
- 
-            hurtt();
-        }
-        
-    }
-    private void hurtt()
-    {
         //2がダメージを受けたとき1の体力が減るから1が死んだら2も死ぬ
-        _boss1window.OnDeath.Subscribe(_ =>{ _boss2window._isDeath.OnNext("DeathTrigger"); Debug.Log("death"); }) ;
-
+        //_boss1window.OnDeath.Subscribe(_ => { _boss2window.setHp(0); });
 
     }
+
+    //後半戦、Boss2を出現
+    public void Appear()
+    {
+        //_boss2.SetActive(true);
+        _boss1window.setHp(reHP);
+        Debug.Log("Appear");
+    }
+
 }
