@@ -124248,7 +124248,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1621479659, guid: fe91db507a18fbb4f86e61cb78d019aa, type: 3}
       propertyPath: _maxHp
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1621479659, guid: fe91db507a18fbb4f86e61cb78d019aa, type: 3}
       propertyPath: _dashSpeed
@@ -128066,7 +128066,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4869838677002623657, guid: de7a77fdc29fb0c47ad74ef4dbdcbc13, type: 3}
       propertyPath: _maxHp
-      value: 60
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5379863298371826380, guid: de7a77fdc29fb0c47ad74ef4dbdcbc13, type: 3}
       propertyPath: m_Size.x
