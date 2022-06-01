@@ -21,4 +21,5 @@ public class Boss2HP : EnemyHP
                 Death();
         }
     }
+
 }

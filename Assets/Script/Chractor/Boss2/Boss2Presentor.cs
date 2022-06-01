@@ -10,8 +10,7 @@ public class Boss2Presentor :CharactorPresentor
     [SerializeField] AnimatorView _enemyAnimatorView;
     [SerializeField] AnimatorView _attackAnimatorView;
     [SerializeField] Boss2Input _boss2input;
-    [SerializeField] EnemyHPVer _ehb;
-    [SerializeField] SE _se;
+
 
     //ÇﬂÇÒÇ«Ç≠Ç≥Ç¢ÇÃÇ≈Ç±Ç¡ÇøÇ…ÅiwindowÇ…èëÇ´Ç‹ÇµÇÂÇ§Åj
     [SerializeField] Boss2Attack _ba2;

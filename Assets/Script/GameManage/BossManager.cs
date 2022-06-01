@@ -23,7 +23,7 @@ public class BossManager : MonoBehaviour
     //Œã”¼íABoss2‚ğoŒ»
     public void Appear()
     {
-        //_boss2.SetActive(true);
+        _boss2.SetActive(true);
         _boss1window.setHp(reHP);
         Debug.Log("Appear");
     }

@@ -59,22 +59,32 @@ public abstract class CharactorWindow : MonoBehaviour
 
         //Hpからのイベント
         _charactorHP.OnDeath.Subscribe(_ => { _isDeath.OnNext(Unit.Default); });
+        bool first = true;
         int beforHp = _charactorStatus.getMaxHp();
         _charactorHP.OnChangeHP.Subscribe(nowHp => {
-            Debug.Log("現在HP:" + nowHp);
-            if (nowHp > beforHp)//HPが増えてるなら
-                _isHeal.OnNext(Unit.Default);
-            else if (nowHp < beforHp && !_charactorHP.isDeath())    //HPが減って死んでないならダメージを受ける
-                _isHurt.OnNext(Unit.Default);
-            else if (_charactorHP.isDeath())
+            if (!first)
             {
-                Debug.Log("死んだ"+ nowHp+":" + beforHp);
-                _isDeath.OnNext(Unit.Default);
+                Debug.Log("現在HP:" + nowHp);
+                if (nowHp > beforHp)//HPが増えてるなら
+                    _isHeal.OnNext(Unit.Default);
+                else if (nowHp < beforHp && !_charactorHP.isDeath())    //HPが減って死んでないならダメージを受ける
+                    _isHurt.OnNext(Unit.Default);
+                else if (_charactorHP.isDeath())
+                {
+                    Debug.Log("死んだ" + nowHp + ":" + beforHp);
+                    _isDeath.OnNext(Unit.Default);
+                }
+
+                else
+                    Debug.Log("nowHP==beforHP");
+                beforHp = nowHp;
+               
             }
-                
             else
-                Debug.Log("nowHP==beforHP");
-            beforHp = nowHp;
+            {
+                first = false;
+            }
+            
                 
             });
     }

@@ -15,7 +15,7 @@ public abstract class CharactorHP : MonoBehaviour,IApplyDamage
     protected CharactorStatus _charactorStatus;
 
 
-    ReactiveProperty<int> _nowHp = new ReactiveProperty<int>();
+    protected ReactiveProperty<int> _nowHp = new ReactiveProperty<int>();
     Subject<Unit> _isDeath = new Subject<Unit>();
     public IReadOnlyReactiveProperty<int> OnChangeHP { get { return _nowHp; } }
     public IObservable<Unit> OnDeath { get { return _isDeath; } }
