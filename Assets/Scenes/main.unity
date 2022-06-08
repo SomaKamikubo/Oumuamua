@@ -123993,7 +123993,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1621479659, guid: fe91db507a18fbb4f86e61cb78d019aa, type: 3}
       propertyPath: _maxHp
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1621479659, guid: fe91db507a18fbb4f86e61cb78d019aa, type: 3}
       propertyPath: _dashSpeed
@@ -124009,7 +124009,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 898618422321570504, guid: fe91db507a18fbb4f86e61cb78d019aa, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 898618422321570504, guid: fe91db507a18fbb4f86e61cb78d019aa, type: 3}
+      propertyPath: m_Offset.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4133432240858940741, guid: fe91db507a18fbb4f86e61cb78d019aa, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6786441844135675652, guid: fe91db507a18fbb4f86e61cb78d019aa, type: 3}
       propertyPath: clips.Array.data[1]
@@ -124164,7 +124172,7 @@ PrefabInstance:
     - target: {fileID: 571713254, guid: 36acc7408d7784a40a6f37c6f8bd09f4, type: 3}
       propertyPath: _slider
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2133086572}
     - target: {fileID: 1901252343, guid: 36acc7408d7784a40a6f37c6f8bd09f4, type: 3}
       propertyPath: Player
       value: 
@@ -124219,7 +124227,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2475365343598969252, guid: 36acc7408d7784a40a6f37c6f8bd09f4, type: 3}
       propertyPath: m_TagString
-      value: model
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7332808590756575395, guid: 36acc7408d7784a40a6f37c6f8bd09f4, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36acc7408d7784a40a6f37c6f8bd09f4, type: 3}
@@ -127267,6 +127279,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4040975745432087736, guid: de7a77fdc29fb0c47ad74ef4dbdcbc13, type: 3}
   m_PrefabInstance: {fileID: 1895502716555249258}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2133086572 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1025500267, guid: 36acc7408d7784a40a6f37c6f8bd09f4, type: 3}
+  m_PrefabInstance: {fileID: 1209388629}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2145387827 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3624362445000311817, guid: bf98f1a80f42f604a920722adc653416, type: 3}
@@ -127413,6 +127436,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4040975745432087622, guid: de7a77fdc29fb0c47ad74ef4dbdcbc13, type: 3}
+      propertyPath: m_TagString
+      value: model
+      objectReference: {fileID: 0}
     - target: {fileID: 4040975745432087736, guid: de7a77fdc29fb0c47ad74ef4dbdcbc13, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -127497,6 +127524,10 @@ PrefabInstance:
       propertyPath: _vsBossTrig
       value: 
       objectReference: {fileID: 378773815}
+    - target: {fileID: 9191129004651779393, guid: de7a77fdc29fb0c47ad74ef4dbdcbc13, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1535852308035400877, guid: de7a77fdc29fb0c47ad74ef4dbdcbc13, type: 3}
     - {fileID: 5530049203767730643, guid: de7a77fdc29fb0c47ad74ef4dbdcbc13, type: 3}
@@ -127589,7 +127620,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1919492275599128114, guid: e7d9ce5c4b3171348921c0d15bcbb436, type: 3}
       propertyPath: m_TagString
-      value: model
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1919492275599128268, guid: e7d9ce5c4b3171348921c0d15bcbb436, type: 3}
       propertyPath: m_RootOrder
@@ -127651,6 +127682,18 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 1251141301}
+    - target: {fileID: 4105360520561350457, guid: e7d9ce5c4b3171348921c0d15bcbb436, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6717810625064259381, guid: e7d9ce5c4b3171348921c0d15bcbb436, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7502463867723638968, guid: e7d9ce5c4b3171348921c0d15bcbb436, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7d9ce5c4b3171348921c0d15bcbb436, type: 3}
 --- !u!70 &5829681599243711654 stripped

@@ -104,7 +104,7 @@ public class EnemyController : CharactorInput
     IEnumerator CoolTime()
     {
         yield return new WaitForSeconds(4f);
-        Debug.Log("クールタイムが終わった");
+        //Debug.Log("クールタイムが終わった");
         _finishCoolDown = true;
 
     }
