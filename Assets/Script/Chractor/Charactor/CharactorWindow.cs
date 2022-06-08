@@ -62,17 +62,22 @@ public abstract class CharactorWindow : MonoBehaviour
         bool first = true;
         int beforHp = _charactorStatus.getMaxHp();
         _charactorHP.OnChangeHP.Subscribe(nowHp => {
-            if (!first)
+            if (!first)　//boss2のバグ対策(登場時に体力が0になる)
             {
+                if (beforHp <= 0) //元々死んでたら処理は行わない
+                    return;
+
                 Debug.Log("現在HP:" + nowHp);
                 if (nowHp > beforHp)//HPが増えてるなら
                     _isHeal.OnNext(Unit.Default);
-                else if (nowHp < beforHp && !_charactorHP.isDeath())    //HPが減って死んでないならダメージを受ける
+                else if (nowHp < beforHp )
+                {    
                     _isHurt.OnNext(Unit.Default);
-                else if (_charactorHP.isDeath())
-                {
-                    Debug.Log("死んだ" + nowHp + ":" + beforHp);
-                    _isDeath.OnNext(Unit.Default);
+                    if (_charactorHP.isDeath())
+                    {
+                        Debug.Log("死んだ" + nowHp + ":" + beforHp);
+                        _isDeath.OnNext(Unit.Default);
+                    }
                 }
 
                 else
@@ -80,7 +85,7 @@ public abstract class CharactorWindow : MonoBehaviour
                 beforHp = nowHp;
                
             }
-            else
+            else　//boss2のバグ対策(登場時に体力が0になる)
             {
                 first = false;
             }
