@@ -7,7 +7,7 @@ public class PlayerController :CharactorController
 {
     [SerializeField] PlayerWindow _playerWindow;
     [SerializeField] protected AnimatorView _playerAnimatorView;
-   // bool _canJump = false;
+    bool _canJump = false;
    protected virtual void Awake()
     {
         _animatorView = _playerAnimatorView;
@@ -16,7 +16,7 @@ public class PlayerController :CharactorController
 
     protected override void Start() {
         base.Start();
-        _playerWindow.OnChangeIsJumping.Subscribe(value => { _canAct = !value; });
+        _playerWindow.OnChangeIsJumping.Subscribe(value => { _canJump = !value; });
     }
 
     public override void Control(string key)
@@ -25,13 +25,14 @@ public class PlayerController :CharactorController
         switch (key)
         {
             case "Jump":
-                if (_canAct)
+                if (_canJump)
                 {
                     _playerWindow.Jump();
-                    _canAct = false;
+                    _canJump = false;
                     _animatorView.StartCoroutine("PlayAnimation", "JumptoFall");
                 }
                 break;
+            
         }
     }
 }
