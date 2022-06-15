@@ -44,7 +44,7 @@ public class PleyerPresentor : CharactorPresentor
         switch (key)
         {
             case "Space":
-                _playerWindow.Jump();
+                _playerController.Control("Jump");
                 break;
         }
 
