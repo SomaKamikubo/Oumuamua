@@ -7,12 +7,14 @@ public class PleyerPresentor : CharactorPresentor
     [SerializeField] PlayerWindow _playerWindow;
     [SerializeField] AnimatorView _playerAnimatorView;
     [SerializeField] InputView _inputView;
+    [SerializeField] PlayerController _playerController;
 
     protected void Awake()
     {
         _charactorWindow = _playerWindow;
         _animatorView = _playerAnimatorView;
         _charactorInput = _inputView;
+        _charactorController = _playerController;
     }
     protected override void Start()
     {

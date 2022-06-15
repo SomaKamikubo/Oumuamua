@@ -150,4 +150,9 @@ public class PlayerMove : CharactorMove
         _isDashing.Value = value;
         //Debug.Log("Dash:" + value);
     }
+
+    public bool getIsJumping()
+    {
+        return _isJumping.Value;
+    }
 }

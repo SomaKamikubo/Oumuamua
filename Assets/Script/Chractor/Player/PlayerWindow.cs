@@ -34,6 +34,7 @@ public class PlayerWindow :CharactorWindow
     public void Jump() { _playerMove.Jump(); }
     public void Crounch(bool value) { _playerMove.Crounch(value); }
     public void receiveShift(bool isPressShift) { _playerMove.receiveShift(isPressShift); }
+    public bool getIsJumping(){return _playerMove.getIsJumping(); }
 
     //hurt
     public void DamageViewHeart(int hp) { _playerHurt.DamageViewHeart(hp); }

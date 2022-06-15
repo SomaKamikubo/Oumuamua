@@ -6,15 +6,13 @@ public class AttackCollider : MonoBehaviour
 {
     [SerializeField] protected CapsuleCollider2D _attackCollider;
     bool _isGiveDamage = false;
-
-    Vector3 _position;
-
+    float _stayMove = 3f;
     public void ColliderOn()
     {
-        _position = transform.position;
+       
         _attackCollider.enabled = true;
 
-        transform.Translate(0.1f, 0, 0); //stay‚Í“¯‚¶‚Æ‚±‚ë‚É‚¢‚é‚Æ”½‰‚µ‚È‚¢‚©‚ç‚¸‚ç‚µ‚Ä‘Îô
+        transform.Translate(_stayMove, 0, 0); //stay‚Í“¯‚¶‚Æ‚±‚ë‚É‚¢‚é‚Æ”½‰‚µ‚È‚¢‚©‚ç‚¸‚ç‚µ‚Ä‘Îô
 
     }
 
@@ -22,7 +20,7 @@ public class AttackCollider : MonoBehaviour
     {
         _isGiveDamage = false;
         _attackCollider.enabled = false;
-        transform.position = _position;
+        transform.Translate(-1 * _stayMove, 0, 0);
     }
 
     //Enter‚Ì•û‚ğg‚¤‚Æ~‚Ü‚Á‚Ä‚¢‚éŠÔ‚ÍUŒ‚‚ğó‚¯‚È‚¢‚½‚ßAStay‚ğg‚¤

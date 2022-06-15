@@ -14,6 +14,7 @@ public abstract class CharactorPresentor : MonoBehaviour
     protected CharactorWindow _charactorWindow;
     protected AnimatorView _animatorView;
     protected CharactorInput _charactorInput;
+    protected CharactorController _charactorController;
 
     protected bool _canAttack = true;
 
@@ -42,8 +43,7 @@ public abstract class CharactorPresentor : MonoBehaviour
             case "Z":
                 if (_canAttack)
                 {
-                    _charactorWindow.Attack();
-                    //_canAttack = false;
+                    _charactorController.Control("Attack");
                 }
                 break;
         }
