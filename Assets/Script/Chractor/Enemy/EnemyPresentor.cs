@@ -10,12 +10,13 @@ public class EnemyPresentor : CharactorPresentor
     [SerializeField] EnemyController _enemyController;
     [SerializeField] EnemyHPVer _ehb;
     [SerializeField] SE _se;
+    [SerializeField] EnemyInput _enemyInput;
 
     protected void Awake()
     {
         _animatorView = _enemyAnimatorView;
         _charactorWindow = _enemyWindow;
-        _charactorInput = _enemyController;
+        _charactorController = _enemyController;
     }
     protected override void Start()
     {
