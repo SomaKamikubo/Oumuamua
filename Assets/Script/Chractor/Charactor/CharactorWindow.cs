@@ -44,6 +44,8 @@ public abstract class CharactorWindow : MonoBehaviour
     //--------------------------------------
     //キャラクターが持つメソッドたち
     public void Walk(float amount) { _charactorMove.Walk(amount); }
+    public void Stop() { _charactorMove.Stop(); }
+
     public void Attack() { _charactorAttack.Attack(); }
     public void Heal(int heal) { _charactorHP.Heal(heal); }
     public void Damage(int atk) { _charactorHP.Damage(atk); }

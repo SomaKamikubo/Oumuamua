@@ -292,6 +292,17 @@ MonoBehaviour:
   Player: {fileID: 1471772384}
   _enemySearch: {fileID: 566161535}
   _enemyCanAttack: {fileID: 1332304411}
+--- !u!114 &15301624 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3462371309146561460, guid: 36acc7408d7784a40a6f37c6f8bd09f4, type: 3}
+  m_PrefabInstance: {fileID: 1209388629}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15301616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d917329093fdcef43a56c156edcb746d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &38642889 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3624362445000311817, guid: bf98f1a80f42f604a920722adc653416, type: 3}
@@ -124238,6 +124249,14 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 1471772384}
+    - target: {fileID: 1901252343, guid: 36acc7408d7784a40a6f37c6f8bd09f4, type: 3}
+      propertyPath: _enemyWindow
+      value: 
+      objectReference: {fileID: 15301624}
+    - target: {fileID: 1901252343, guid: 36acc7408d7784a40a6f37c6f8bd09f4, type: 3}
+      propertyPath: _enemyAnimatorView
+      value: 
+      objectReference: {fileID: 2053790810}
     - target: {fileID: 2475365343598969178, guid: 36acc7408d7784a40a6f37c6f8bd09f4, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -125865,6 +125884,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf98f1a80f42f604a920722adc653416, type: 3}
+--- !u!114 &1691518598 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8364661697387710666, guid: e7d9ce5c4b3171348921c0d15bcbb436, type: 3}
+  m_PrefabInstance: {fileID: 4105360520034659770}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37558428312f997498c960b646b8bd98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1697314966
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -126953,6 +126983,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3624362445000311817, guid: bf98f1a80f42f604a920722adc653416, type: 3}
   m_PrefabInstance: {fileID: 728616706}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2053790810 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5542828171372199772, guid: 36acc7408d7784a40a6f37c6f8bd09f4, type: 3}
+  m_PrefabInstance: {fileID: 1209388629}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37558428312f997498c960b646b8bd98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2061866684
 GameObject:
   m_ObjectHideFlags: 0
@@ -127803,6 +127844,14 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 1251141301}
+    - target: {fileID: 4105360520039922017, guid: e7d9ce5c4b3171348921c0d15bcbb436, type: 3}
+      propertyPath: _enemyWindow
+      value: 
+      objectReference: {fileID: 3462371307282088344}
+    - target: {fileID: 4105360520039922017, guid: e7d9ce5c4b3171348921c0d15bcbb436, type: 3}
+      propertyPath: _enemyAnimatorView
+      value: 
+      objectReference: {fileID: 1691518598}
     - target: {fileID: 4105360520561350457, guid: e7d9ce5c4b3171348921c0d15bcbb436, type: 3}
       propertyPath: m_IsTrigger
       value: 1

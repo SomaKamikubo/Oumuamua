@@ -53,6 +53,8 @@ public class PlayerMove : CharactorMove
             //Debug.Log("“®‚¢‚Ä‚¢‚È‚¢");
             SetIsWalking(false);
             SetIsDashing(false);
+            _rb.velocity = new Vector2(amount * _moveSpeed, _rb.velocity.y);
+
             return;
 
         }

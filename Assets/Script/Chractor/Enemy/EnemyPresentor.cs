@@ -27,10 +27,4 @@ public class EnemyPresentor : CharactorPresentor
         _enemyWindow.OnHeal.Subscribe(_ => { _ehb.HPbar();});
     }
 
-
-
-
-
 }
-    
-

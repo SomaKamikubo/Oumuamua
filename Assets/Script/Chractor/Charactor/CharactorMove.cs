@@ -45,4 +45,10 @@ public abstract class CharactorMove : MonoBehaviour
     {
         _isWalking.Value = value;
     }
+
+    public void Stop()
+    {
+        _rb.velocity = new Vector2(0, _rb.velocity.y);
+
+    }
 }

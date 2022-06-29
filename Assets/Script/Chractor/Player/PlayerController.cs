@@ -17,6 +17,7 @@ public class PlayerController :CharactorController
     protected override void Start() {
         base.Start();
         _playerWindow.OnChangeIsJumping.Subscribe(value => { _canJump = !value; });
+        _canAttack.Subscribe(value => { _canJump = value; });
     }
 
     public override void Control(string key)
@@ -25,6 +26,7 @@ public class PlayerController :CharactorController
         switch (key)
         {
             case "Jump":
+                //canSwitch();
                 if (_canJump)
                 {
                     _playerWindow.Jump();
@@ -35,4 +37,6 @@ public class PlayerController :CharactorController
             
         }
     }
+
+
 }
