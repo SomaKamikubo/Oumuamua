@@ -19,7 +19,7 @@ public class PleyerPresentor : CharactorPresentor
     protected override void Start()
     {
         base.Start();
-        _inputView.OnDownSKey.Subscribe(isKeyPressS =>  _playerWindow.Crounch(isKeyPressS));
+        _inputView.OnDownSKey.Subscribe(isKeyPressS =>  _playerController.Crounch(isKeyPressS));
         _inputView.OnDownShiftKey.Subscribe(isKeyPressShift => _playerWindow.receiveShift(isKeyPressShift));
 
         //model‚©‚çview‚Ö

@@ -58,12 +58,12 @@ public class PlayerMove : CharactorMove
             return;
 
         }
-        if (_isCrouching.Value)
-        {
-            //éûä‘Ç†ÇÈÇ∆Ç´Ç…Ç‚ÇÎÇ§Ç©Ç»
-            //Sliding();
-            return;
-        }
+        //if (_isCrouching.Value)
+        //{
+        //    //éûä‘Ç†ÇÈÇ∆Ç´Ç…Ç‚ÇÎÇ§Ç©Ç»
+        //    //Sliding();
+        //    return;
+        //}
         if (_preparationDash)
         {
             //Debug.Log("dash");
@@ -105,11 +105,11 @@ public class PlayerMove : CharactorMove
 
     public void Crounch(bool value)
     {
-        if (value)
-        {
-            //ÇøÇÂÇ¡Ç∆Ç≤ÇËâüÇµâﬂÇ¨ÇÈÅH
-            _rb.velocity = new Vector2(0, _rb.velocity.y);
-        }
+        //if (value)
+        //{
+        //    //ÇøÇÂÇ¡Ç∆Ç≤ÇËâüÇµâﬂÇ¨ÇÈÅH
+        //    _rb.velocity = new Vector2(0, _rb.velocity.y);
+        //}
         SetIsCrouching(value);
     }
 

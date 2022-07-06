@@ -11,7 +11,7 @@ public abstract class CharactorController : MonoBehaviour
     protected ReactiveProperty<bool> _canAttack = new ReactiveProperty<bool>(true);
     protected bool _canWalk;
     //public IReadOnlyReactiveProperty<bool> OnChangeCanAttack { get { return _canAttack; } }
-    List<ReactiveProperty<bool>> _walkChangeList = new List<ReactiveProperty<bool>>();
+    protected List<ReactiveProperty<bool>> _walkChangeList = new List<ReactiveProperty<bool>>();
 
 
 
@@ -45,12 +45,9 @@ public abstract class CharactorController : MonoBehaviour
     }
 
     public virtual void ControlWalk(float value)
-    //
     {
-
         _canWalk = isAllTrue(_walkChangeList);
-        Debug.Log("Walk:" + _canWalk);
-        _canWalk = _canAttack.Value;
+        Debug.Log("_canWalk:" + _canWalk);
         if (_canWalk)
         {
             _charactorWindow.Walk(value);
