@@ -31,19 +31,12 @@ public class PleyerPresentor : CharactorPresentor
         _playerWindow.OnHeal.Subscribe(_ => _playerWindow.HealViewHeart(_playerWindow.getHp())); ;
 
         _playerWindow.OnAttack.Subscribe(_ => _animatorView.StartCoroutine("PlayAnimation", "Attack"));
+
+       //«‘‚És“®‚ğ“o˜^
+        keys.Add("Space","Jump");
     }
 
     
 
-    protected override void ProcessKey(string key)
-    {
-        base.ProcessKey(key);
-        switch (key)
-        {
-            case "Space":
-                _playerController.Control("Jump");
-                break;
-        }
-
-    }
+ 
 }

@@ -36,7 +36,7 @@ public abstract class CharactorPresentor : MonoBehaviour
         
     }
 
-    Dictionary<string, string> keys = new Dictionary<string, string>() 
+    protected Dictionary<string, string> keys = new Dictionary<string, string>() 
     {
         {"Z", "Attack"},
     };

@@ -48,13 +48,13 @@ public class PlayerMove : CharactorMove
             _tempScale.x *= -1;
         }
         gameObject.transform.localScale = _tempScale;
+
+
         if (amount == 0)
         {
             //Debug.Log("“®‚¢‚Ä‚¢‚È‚¢");
             SetIsWalking(false);
             SetIsDashing(false);
-            _rb.velocity = new Vector2(amount * _moveSpeed, _rb.velocity.y);
-
             return;
 
         }

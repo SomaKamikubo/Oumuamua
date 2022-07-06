@@ -9,16 +9,25 @@ public abstract class CharactorController : MonoBehaviour
     protected AnimatorView _animatorView;
 
     protected ReactiveProperty<bool> _canAttack = new ReactiveProperty<bool>(true);
+    protected bool _canWalk;
     //public IReadOnlyReactiveProperty<bool> OnChangeCanAttack { get { return _canAttack; } }
+    List<ReactiveProperty<bool>> _walkChangeList = new List<ReactiveProperty<bool>>();
+
 
 
     protected virtual void Start()
     {
+        //Walkの値を変化させる変数をリストに加える
+        _walkChangeList.Add(_canAttack);
+
         //アニメーションが終わったことをうけとり、フラグをtureにする
         _animatorView.OnFinish.Subscribe(finishAnimation => { 
             _canAttack.Value = true;
         });
+
+        
     }
+    
     public virtual void Control(string key)
     {
         switch (key)
@@ -26,7 +35,6 @@ public abstract class CharactorController : MonoBehaviour
             case "Attack"://攻撃
                 if (_canAttack.Value)
                 {
-                    
                     //動けるなら動き、フラグをfalseにする
                     _charactorWindow.Attack();
                     _canAttack.Value = false;
@@ -37,8 +45,13 @@ public abstract class CharactorController : MonoBehaviour
     }
 
     public virtual void ControlWalk(float value)
+    //
     {
-        if (_canAttack.Value)
+
+        _canWalk = isAllTrue(_walkChangeList);
+        Debug.Log("Walk:" + _canWalk);
+        _canWalk = _canAttack.Value;
+        if (_canWalk)
         {
             _charactorWindow.Walk(value);
         }
@@ -48,4 +61,20 @@ public abstract class CharactorController : MonoBehaviour
         }
         
     }
+    
+    
+    protected bool isAllTrue(List<ReactiveProperty<bool>> myList)
+    {
+        //引数のリストにfalseが入っていたらtrueを返す
+        foreach(ReactiveProperty<bool> item in myList)
+        {
+            if (!item.Value)
+            {
+                return false;
+            }
+        }
+        return true;
+        
+
+    } 
 }
