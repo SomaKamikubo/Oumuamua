@@ -31,9 +31,6 @@ public class PleyerPresentor : CharactorPresentor
         _playerWindow.OnHeal.Subscribe(_ => _playerWindow.HealViewHeart(_playerWindow.getHp())); ;
 
         _playerWindow.OnAttack.Subscribe(_ => _animatorView.StartCoroutine("PlayAnimation", "Attack"));
-
-        //view‚©‚ç‚±‚±
-        _playerAnimatorView.OnFinish.Subscribe(_ => _canAttack = true);
     }
 
     

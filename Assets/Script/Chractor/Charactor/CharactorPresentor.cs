@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
+using System.Collections;
+using System.Collections.Generic;
 
 /*
  * Presentor
@@ -16,7 +18,6 @@ public abstract class CharactorPresentor : MonoBehaviour
     protected CharactorInput _charactorInput;
     protected CharactorController _charactorController;
 
-    protected bool _canAttack = true;
 
     protected virtual void Start()
     {
@@ -35,18 +36,23 @@ public abstract class CharactorPresentor : MonoBehaviour
         
     }
 
+    Dictionary<string, string> keys = new Dictionary<string, string>() 
+    {
+        {"Z", "Attack"},
+    };
+
+
+
     //押されたキーごとに処理を書く
     protected virtual void ProcessKey(string key)
     {
-        switch (key)
+        try
         {
-            case "Z":
-                if (_canAttack)
-                {
-                    _charactorController.Control("Attack");
-                }
-                break;
+            _charactorController.Control(keys[key]);
         }
-
+        catch(KeyNotFoundException)
+        {
+            Debug.Log("キー'"+key+"'は登録されていません。");
+        }
     }
 }
