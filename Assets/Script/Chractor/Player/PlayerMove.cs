@@ -120,10 +120,13 @@ public class PlayerMove : CharactorMove
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.tag == "Stage")
+        {
             Debug.Log("íÖínÇµÇΩÅB");
             SetIsJumping(false);
             SetIsFalling(false);
             _isGraunding.Value = true;
+        }
         
     }
     private void OnTriggerExit2D(Collider2D collision)

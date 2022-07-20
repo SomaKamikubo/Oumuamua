@@ -10,7 +10,7 @@ public class PlayerController :CharactorController
     ReactiveProperty<bool> _canJump = new ReactiveProperty<bool>(true);
     ReactiveProperty<bool> _canCrouch = new ReactiveProperty<bool>(true);
     protected List<ReactiveProperty<bool>> _jumpChangeList = new List<ReactiveProperty<bool>>();
-
+    List<ReactiveProperty<bool>> _dashChangeList = new List<ReactiveProperty<bool>>();
     protected virtual void Awake()
     {
         _animatorView = _playerAnimatorView;
@@ -28,9 +28,16 @@ public class PlayerController :CharactorController
         _jumpChangeList.Add(_canCrouch);　//しゃがみ
         _jumpChangeList.Add(_canJump);  //ジャンプ
 
+        //以下の動作中に攻撃できない
+        _attackChangeList.Add(_canJump); //ジャンプ
+        _attackChangeList.Add(_canCrouch); //しゃがみ
+
+        //ジャンプ中に攻撃できない
+        _dashChangeList.Add(_canJump);
 
         _playerWindow.OnChangeIsGraunding.Subscribe(value => {
             _canJump.Value = value;
+
         });
 
     }
@@ -41,6 +48,16 @@ public class PlayerController :CharactorController
         //canのためしゃがんでいる間はfalseになる
         _canCrouch.Value = !value;
         _playerWindow.Crounch(value);
+    }
+
+    public void ControllDash(bool isShift)
+    {
+        if (isAllTrue(_dashChangeList) || isShift == false)
+        {
+            _playerWindow.receiveShift(isShift);
+        }
+
+
     }
 
     public override void Control(string key)

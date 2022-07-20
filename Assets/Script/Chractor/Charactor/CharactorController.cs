@@ -12,6 +12,7 @@ public abstract class CharactorController : MonoBehaviour
     protected bool _canWalk;
     //public IReadOnlyReactiveProperty<bool> OnChangeCanAttack { get { return _canAttack; } }
     protected List<ReactiveProperty<bool>> _walkChangeList = new List<ReactiveProperty<bool>>();
+    protected List<ReactiveProperty<bool>> _attackChangeList = new List<ReactiveProperty<bool>>();
 
 
 
@@ -19,6 +20,8 @@ public abstract class CharactorController : MonoBehaviour
     {
         //Walkの値を変化させる変数をリストに加える
         _walkChangeList.Add(_canAttack);
+
+        _attackChangeList.Add(_canAttack);
 
         //アニメーションが終わったことをうけとり、フラグをtureにする
         _animatorView.OnFinish.Subscribe(finishAnimation => { 
@@ -33,7 +36,7 @@ public abstract class CharactorController : MonoBehaviour
         switch (key)
         {
             case "Attack"://攻撃
-                if (_canAttack.Value)
+                if (isAllTrue(_attackChangeList))
                 {
                     //動けるなら動き、フラグをfalseにする
                     _charactorWindow.Attack();
@@ -47,7 +50,7 @@ public abstract class CharactorController : MonoBehaviour
     public virtual void ControlWalk(float value)
     {
         _canWalk = isAllTrue(_walkChangeList);
-        Debug.Log("_canWalk:" + _canWalk);
+        //Debug.Log("_canWalk:" + _canWalk);
         if (_canWalk)
         {
             _charactorWindow.Walk(value);
