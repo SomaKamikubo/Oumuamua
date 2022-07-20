@@ -9,6 +9,7 @@ public class PlayerStatus :CharactorStatus
     [SerializeField] int _dashSpeed;
     [SerializeField] int _jumpPower;
 
+
     public int getDashSpeed() { return _dashSpeed; }
     public int getJumpPower() { return _jumpPower; }
 

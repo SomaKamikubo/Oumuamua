@@ -17,6 +17,7 @@ public class EnemyPresentor : CharactorPresentor
         _animatorView = _enemyAnimatorView;
         _charactorWindow = _enemyWindow;
         _charactorController = _enemyController;
+        _charactorInput = _enemyInput;
     }
     protected override void Start()
     {

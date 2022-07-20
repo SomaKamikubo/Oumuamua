@@ -24,7 +24,7 @@ public class EnemyInput : CharactorInput
         initPosition = transform.position;
         playPos = Player.transform.position;
 
-        _enemySearch.EnemyMove.Subscribe(value => { canMove = value; StartCoroutine("Action"); });
+        _enemySearch.EnemyMove.Subscribe(value => { canMove = value; StartCoroutine("Action");});
 
         //this.UpdateAsObservable().Where(_ => canMove).Subscribe(_ => Action());
     }
@@ -35,9 +35,14 @@ public class EnemyInput : CharactorInput
     {
         if (Math.Abs(enePos.x - playPos.x) > 1)
             if (enePos.x - playPos.x < 0)
+            {
                 _isDownHorizontal.OnNext(1);
+                //Debug.Log("goRight");
+            }
             else
+            {
                 _isDownHorizontal.OnNext(-1);
+            }
     }
     IEnumerator Action()
     {
