@@ -28,8 +28,9 @@ public class PlayerMove : CharactorMove
     int _moveSpeed = 0;
     Vector3 _tempScale;
 
-    void Start()
+    public override void Start()
     {
+        base.Start();
         _charactorStatus = _playerStatus;
         this.UpdateAsObservable()
             .Where(_ => _isGraunding.Value == false && _rb.velocity.y < -1.0f)
@@ -42,12 +43,12 @@ public class PlayerMove : CharactorMove
     public void Move(float amount)
     {
 
-        _tempScale = gameObject.transform.localScale;
+        _tempScale = patentobject.transform.localScale;
         if (amount < 0 && _tempScale.x > 0 || amount > 0 && _tempScale.x < 0)
         {
             _tempScale.x *= -1;
         }
-        gameObject.transform.localScale = _tempScale;
+        patentobject.transform.localScale = _tempScale;
 
 
         if (amount == 0)
