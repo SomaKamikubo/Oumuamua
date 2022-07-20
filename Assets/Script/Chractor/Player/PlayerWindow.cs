@@ -16,6 +16,7 @@ public class PlayerWindow :CharactorWindow
     ReactiveProperty<bool> _isFalling = new ReactiveProperty<bool>(false);
     ReactiveProperty<bool> _isCrouching = new ReactiveProperty<bool>(false);
     ReactiveProperty<bool> _isDashing = new ReactiveProperty<bool>(false);
+    ReactiveProperty<bool> _isGraunding = new ReactiveProperty<bool>(false);
 
     //Subject<string> _isAttacking = new Subject<string>();
     //public IObservable<string> OnAttack { get { return _isAttacking; } }
@@ -23,6 +24,7 @@ public class PlayerWindow :CharactorWindow
     public IReadOnlyReactiveProperty<bool> OnChangeIsFalling { get { return _isFalling; } }
     public IReadOnlyReactiveProperty<bool> OnChangeIsDashing { get { return _isDashing; } }
     public IReadOnlyReactiveProperty<bool> OnChangeIsCrouching { get { return _isCrouching; } }
+    public IReadOnlyReactiveProperty<bool> OnChangeIsGraunding { get { return _isGraunding; } }
 
 
     //playerStatus‚Ì•ûX
@@ -58,6 +60,7 @@ public class PlayerWindow :CharactorWindow
         _playerMove.OnChangeIsFalling.Subscribe(value =>  _isFalling.Value = value);
         _playerMove.OnChangeIsDashing.Subscribe(value => _isDashing.Value = value);
         _playerMove.OnChangeIsCrouching.Subscribe(value => _isCrouching.Value = value);
+        _playerMove.OnChangeIsGraunding.Subscribe(value => _isGraunding.Value = value);
 
     }
 }

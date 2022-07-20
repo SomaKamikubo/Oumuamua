@@ -7,8 +7,10 @@ public class PlayerController :CharactorController
 {
     [SerializeField] PlayerWindow _playerWindow;
     [SerializeField] protected AnimatorView _playerAnimatorView;
-    bool _canJump = false;
+    ReactiveProperty<bool> _canJump = new ReactiveProperty<bool>(true);
     ReactiveProperty<bool> _canCrouch = new ReactiveProperty<bool>(true);
+    protected List<ReactiveProperty<bool>> _jumpChangeList = new List<ReactiveProperty<bool>>();
+
     protected virtual void Awake()
     {
         _animatorView = _playerAnimatorView;
@@ -21,8 +23,16 @@ public class PlayerController :CharactorController
         //しゃがんでいるときは歩けない
         _walkChangeList.Add(_canCrouch);
 
-        _playerWindow.OnChangeIsJumping.Subscribe(value => { _canJump = !value; });
-        _canAttack.Subscribe(value => { _canJump = value; });
+        //以下の動作中にジャンプできない
+        _jumpChangeList.Add(_canAttack);　//攻撃
+        _jumpChangeList.Add(_canCrouch);　//しゃがみ
+        _jumpChangeList.Add(_canJump);  //ジャンプ
+
+
+        _playerWindow.OnChangeIsGraunding.Subscribe(value => {
+            _canJump.Value = value;
+        });
+
     }
 
 
@@ -40,10 +50,10 @@ public class PlayerController :CharactorController
         {
             case "Jump":
                 //canSwitch();
-                if (_canJump)
+                if (isAllTrue(_jumpChangeList))
                 {
                     _playerWindow.Jump();
-                    _canJump = false;
+                    _canJump.Value = false;
                     _animatorView.StartCoroutine("PlayAnimation", "JumptoFall");
                 }
                 break;
