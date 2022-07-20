@@ -13,6 +13,7 @@ public class EnemyController : CharactorController
     {
         _animatorView = _enemyAnimatorView;
         _charactorWindow = _enemyWindow;
+
     }
 
 }

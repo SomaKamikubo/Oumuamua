@@ -6,7 +6,7 @@ public class AttackCollider : MonoBehaviour
 {
     [SerializeField] protected CapsuleCollider2D _attackCollider;
     bool _isGiveDamage = false;
-    float _stayMove = 3f;
+    float _stayMove = 0.1f;
     public void ColliderOn()
     {
        
