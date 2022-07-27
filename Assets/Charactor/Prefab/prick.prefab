@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3624362445000311817}
   - component: {fileID: 3624362445000311814}
-  - component: {fileID: 3624362445000311819}
   - component: {fileID: 3624362445000311816}
+  - component: {fileID: 4105710160462729131}
   m_Layer: 0
   m_Name: prick
-  m_TagString: Untagged
+  m_TagString: Stage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,19 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3624362445000311819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3624362445000311815}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5fa245800129d14cb82a95e945f163c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _attackCollider: {fileID: 0}
 --- !u!61 &3624362445000311816
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -123,3 +110,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.62, y: 2.61}
   m_EdgeRadius: 0
+--- !u!114 &4105710160462729131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3624362445000311815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4da702fe0ec220b40b38aaf9f57442e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
