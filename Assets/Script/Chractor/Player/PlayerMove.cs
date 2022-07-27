@@ -123,7 +123,7 @@ public class PlayerMove : CharactorMove
     {
         if (collision.tag == "Stage")
         {
-            Debug.Log("着地した。");
+            //Debug.Log("着地した。");
             SetIsJumping(false);
             SetIsFalling(false);
             _isGraunding.Value = true;
@@ -132,7 +132,10 @@ public class PlayerMove : CharactorMove
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        _isGraunding.Value = false;
+        if (collision.tag == "Stage")
+        {
+            _isGraunding.Value = false;
+        }
     }
 
 

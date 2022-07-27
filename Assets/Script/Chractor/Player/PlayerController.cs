@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
-
+using UniRx.Triggers;
 public class PlayerController :CharactorController
 {
     [SerializeField] PlayerWindow _playerWindow;
@@ -15,6 +15,13 @@ public class PlayerController :CharactorController
     {
         _animatorView = _playerAnimatorView;
         _charactorWindow = _playerWindow;
+
+        this.UpdateAsObservable()
+            .Where(_ => Input.GetKeyDown(KeyCode.Q))
+            .Subscribe(_ => {
+                
+
+            });
     }
 
     protected override void Start() {
@@ -37,6 +44,7 @@ public class PlayerController :CharactorController
 
         _playerWindow.OnChangeIsGraunding.Subscribe(value => {
             _canJump.Value = value;
+            //Debug.Log("地面イルカ："+value);
 
         });
 

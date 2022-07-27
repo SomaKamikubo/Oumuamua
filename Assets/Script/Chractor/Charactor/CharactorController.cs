@@ -68,8 +68,10 @@ public abstract class CharactorController : MonoBehaviour
         //ˆø”‚ÌƒŠƒXƒg‚Éfalse‚ª“ü‚Á‚Ä‚¢‚½‚çtrue‚ğ•Ô‚·
         foreach(ReactiveProperty<bool> item in myList)
         {
+            //Debug.Log("false‚Ì‚à‚Ì:" + item);
             if (!item.Value)
             {
+                
                 return false;
             }
         }
