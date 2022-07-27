@@ -9,14 +9,15 @@ public class EnemyPresentor : CharactorPresentor
     [SerializeField] AnimatorView _enemyAnimatorView;
     [SerializeField] EnemyController _enemyController;
     [SerializeField] EnemyHPVer _ehb;
-    [SerializeField] VsBoss _vsBossTrig;
     [SerializeField] SE _se;
+    [SerializeField] EnemyInput _enemyInput;
 
     protected void Awake()
     {
         _animatorView = _enemyAnimatorView;
         _charactorWindow = _enemyWindow;
-        _charactorInput = _enemyController;
+        _charactorController = _enemyController;
+        _charactorInput = _enemyInput;
     }
     protected override void Start()
     {
@@ -24,13 +25,7 @@ public class EnemyPresentor : CharactorPresentor
 
         //HPƒo[‚Ì•\Ž¦
         _enemyWindow.OnHurt.Subscribe(_ => { _ehb.HPbar(); _se.playSE(2); });
-        _vsBossTrig.VsBossTrigger.Subscribe(_ => { _ehb.SetActive(true); Debug.Log("boss"); });
+        _enemyWindow.OnHeal.Subscribe(_ => { _ehb.HPbar();});
     }
 
-
-
-
-
 }
-    
-

@@ -25,8 +25,8 @@ public class EnemyHPVer : MonoBehaviour
     public void HPbar() 
     {
         _currentHp = _enemyWindow.getHp();
-        Debug.Log( (float)_maxHp);
-        Debug.Log((float)_currentHp / (float)_maxHp);
+        //Debug.Log( (float)_maxHp);
+        //Debug.Log((float)_currentHp / (float)_maxHp);
         //Å‘åHP‚É‚¨‚¯‚éŒ»İ‚ÌHP‚ğSlider‚É”½‰fB
         //int“¯m‚ÌŠ„‚èZ‚Í¬”“_ˆÈ‰º‚Í0‚É‚È‚é‚Ì‚ÅA
         //(float)‚ğ‚Â‚¯‚Äfloat‚Ì•Ï”‚Æ‚µ‚ÄU•‘‚í‚¹‚éB

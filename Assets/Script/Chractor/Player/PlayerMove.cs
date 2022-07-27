@@ -28,8 +28,9 @@ public class PlayerMove : CharactorMove
     int _moveSpeed = 0;
     Vector3 _tempScale;
 
-    void Start()
+    public override void Start()
     {
+        base.Start();
         _charactorStatus = _playerStatus;
         this.UpdateAsObservable()
             .Where(_ => _isGraunding.Value == false && _rb.velocity.y < -1.0f)
@@ -42,12 +43,14 @@ public class PlayerMove : CharactorMove
     public void Move(float amount)
     {
 
-        _tempScale = gameObject.transform.localScale;
+        _tempScale = patentobject.transform.localScale;
         if (amount < 0 && _tempScale.x > 0 || amount > 0 && _tempScale.x < 0)
         {
             _tempScale.x *= -1;
         }
-        gameObject.transform.localScale = _tempScale;
+        patentobject.transform.localScale = _tempScale;
+
+
         if (amount == 0)
         {
             //Debug.Log("動いていない");
@@ -56,12 +59,12 @@ public class PlayerMove : CharactorMove
             return;
 
         }
-        if (_isCrouching.Value)
-        {
-            //時間あるときにやろうかな
-            //Sliding();
-            return;
-        }
+        //if (_isCrouching.Value)
+        //{
+        //    //時間あるときにやろうかな
+        //    //Sliding();
+        //    return;
+        //}
         if (_preparationDash)
         {
             //Debug.Log("dash");
@@ -103,11 +106,11 @@ public class PlayerMove : CharactorMove
 
     public void Crounch(bool value)
     {
-        if (value)
-        {
-            //ちょっとごり押し過ぎる？
-            _rb.velocity = new Vector2(0, _rb.velocity.y);
-        }
+        //if (value)
+        //{
+        //    //ちょっとごり押し過ぎる？
+        //    _rb.velocity = new Vector2(0, _rb.velocity.y);
+        //}
         SetIsCrouching(value);
     }
 
@@ -118,15 +121,21 @@ public class PlayerMove : CharactorMove
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-            Debug.Log("着地した。");
+        if (collision.tag == "Stage")
+        {
+            //Debug.Log("着地した。");
             SetIsJumping(false);
             SetIsFalling(false);
             _isGraunding.Value = true;
+        }
         
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        _isGraunding.Value = false;
+        if (collision.tag == "Stage")
+        {
+            _isGraunding.Value = false;
+        }
     }
 
 
@@ -149,5 +158,10 @@ public class PlayerMove : CharactorMove
     {
         _isDashing.Value = value;
         //Debug.Log("Dash:" + value);
+    }
+
+    public bool getIsJumping()
+    {
+        return _isJumping.Value;
     }
 }

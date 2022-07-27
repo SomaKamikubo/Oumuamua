@@ -12,7 +12,7 @@ public class VsBoss : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("ÚG‚µ‚½");
+        //Debug.Log("ÚG‚µ‚½");
         if (other.gameObject.tag == "Player")
             vsBossTrig.OnNext(Unit.Default);
     }

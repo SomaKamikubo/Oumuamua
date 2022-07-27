@@ -7,8 +7,9 @@ public class EnemyMove :CharactorMove
     [SerializeField] EnemyStatus _enemyStatus;
 
 
-    void Start()
+    public override void Start()
     {
+        base.Start();
         _charactorStatus = _enemyStatus;
 
     }

@@ -14,60 +14,68 @@ public abstract class CharactorHP : MonoBehaviour,IApplyDamage
     [SerializeField] SpriteRenderer sp;
     protected CharactorStatus _charactorStatus;
 
-    //ダメージを受けたときと死んだときのイベント
-    Subject<string> _isDeath = new Subject<string>();
-    Subject<string> _isHurt = new Subject<string>();
-    public IObservable<string> OnDeath { get { return _isDeath; } }
-    public IObservable<string> OnHurt { get { return _isHurt; } }
+
+    protected ReactiveProperty<int> _nowHp = new ReactiveProperty<int>();
+    Subject<Unit> _isDeath = new Subject<Unit>();
+    public IReadOnlyReactiveProperty<int> OnChangeHP { get { return _nowHp; } }
+    public IObservable<Unit> OnDeath { get { return _isDeath; } }
 
     protected bool _damaging = false;
-    int _nowHp;
+    int _maxHp;
 
     protected virtual void Start()
     {
         //ゲーム開始時にHPを参照する
-        _nowHp = _charactorStatus.getMaxHp();
+        _maxHp = _charactorStatus.getMaxHp();
+        _nowHp.Value = _maxHp;
+
     }
 
 
-    bool isDeath()
+    public bool isDeath()
     {
-        return _nowHp <= 0;
+        return _nowHp.Value <= 0;
+    }
+    public virtual void Death()
+    {
+        //_isDeath.OnNext(Unit.Default);
     }
 
-    public void Damage(int enemy_atk)
+
+    public virtual void Damage(int enemy_atk)
     {
-        //Debug.Log("攻撃された");
         //ダメージを受けているときは攻撃を受けない
         //死んだ後に攻撃を受けないようにする
         if (!_damaging && !isDeath())
         {
-            _nowHp -= enemy_atk;
-            _isHurt.OnNext("HurtTrigger");
+            _nowHp.Value -= enemy_atk;
 
+            if (isDeath())
+            {
+                Death();
+                return;
+            }
             //点滅させる
             StartCoroutine("Blinking");
             StartCoroutine("CountSecoond", 2.0f);
-            if (isDeath())
-                Death();
         }
         
     }
 
-    public virtual void Death()
-    {
-        _isDeath.OnNext("DeathTrigger");//Triggerを直接指定するのはいかがなものか
-    }
+
+
 
     public void Heal(int heal)
-    {
-        _nowHp += heal;
+    {   
+        _nowHp.Value += heal;
+        if (_nowHp.Value > _maxHp)
+            _nowHp.Value = _maxHp;
     }
 
 
 
-    public int getHp() { return _nowHp; }
-    public void setHp(int hp) {_nowHp = hp; }
+    public int getHp() { return _nowHp.Value; }
+    public void setHp(int hp) {_nowHp.Value = hp; }
 
     IEnumerator Blinking()
     {
