@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class AttackCollider : MonoBehaviour
 {
     [SerializeField] protected CapsuleCollider2D _attackCollider;
     bool _isGiveDamage = false;
     float _stayMove = 0.1f;
+
     public void ColliderOn()
     {
        
@@ -30,7 +33,7 @@ public class AttackCollider : MonoBehaviour
 
        if(!_isGiveDamage && (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Enemy") )
        {
-             collision.gameObject.GetComponent<IApplyDamage>()?.Damage(1);
+             collision.gameObject.GetComponent<IApplyDamage>()?.Damage(transform.parent.gameObject.transform.parent.gameObject.GetComponent<CharactorStatus>().getATK());
             _isGiveDamage = true;
        }
     }

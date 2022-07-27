@@ -10,7 +10,6 @@ public class BossManager : MonoBehaviour
     [SerializeField] EnemyWindow _boss2window;
     [SerializeField] GameObject _boss2;
 
-    bool first = true;
     int reHP;
     private void Start()
     {
@@ -25,7 +24,7 @@ public class BossManager : MonoBehaviour
     {
         _boss2.SetActive(true);
         _boss1window.setHp(reHP);
-        Debug.Log("Appear");
+        //Debug.Log("Appear");
     }
 
 }

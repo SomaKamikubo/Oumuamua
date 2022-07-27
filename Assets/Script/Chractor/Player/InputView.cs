@@ -6,7 +6,7 @@ using UniRx;
 using UniRx.Triggers;
 public class InputView : CharactorInput
 {
-    public event Action<bool> OnShiftKeydownedListener;
+    //public event Action<bool> OnShiftKeydownedListener;
 
     ReactiveProperty<bool> _isDownSKey = new ReactiveProperty<bool>();
     ReactiveProperty<bool> _isDownShiftKey = new ReactiveProperty<bool>();

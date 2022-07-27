@@ -49,8 +49,17 @@ public abstract class CharactorWindow : MonoBehaviour
     public void Attack() { _charactorAttack.Attack(); }
     public void Heal(int heal) { _charactorHP.Heal(heal); }
     public void Damage(int atk) { _charactorHP.Damage(atk); }
-    
-    
+
+    //--------------------------------------
+    //Window固有のメソッド
+    public string getObjectName()
+    {
+        string parent = transform.parent.gameObject.ToString();
+        string object_name = parent.Replace("(UnityEngine.GameObject)", "");
+        return object_name;
+    }
+
+
     protected virtual void Start()
     {
         //Moveのboolを受け取る
@@ -68,8 +77,8 @@ public abstract class CharactorWindow : MonoBehaviour
             {
                 if (beforHp <= 0) //元々死んでたら処理は行わない
                     return;
-
-                Debug.Log("現在HP:" + nowHp);
+               
+                Debug.Log(getObjectName() + ":"+"現在HP:" + nowHp);
                 if (nowHp > beforHp)//HPが増えてるなら
                     _isHeal.OnNext(Unit.Default);
                 else if (nowHp < beforHp )
@@ -77,7 +86,7 @@ public abstract class CharactorWindow : MonoBehaviour
                     _isHurt.OnNext(Unit.Default);
                     if (_charactorHP.isDeath())
                     {
-                        Debug.Log("死んだ" + nowHp + ":" + beforHp);
+                        Debug.Log(getObjectName() + ":"+ "死んだ" + nowHp + ":" + beforHp);
                         _isDeath.OnNext(Unit.Default);
                     }
                 }

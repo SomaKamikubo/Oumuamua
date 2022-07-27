@@ -9,6 +9,7 @@ public class Boss2Presentor :CharactorPresentor
     [SerializeField] EnemyWindow _enemyWindow;
     [SerializeField] AnimatorView _enemyAnimatorView;
     [SerializeField] AnimatorView _attackAnimatorView;
+    [SerializeField] EnemyController _enemyController;
     [SerializeField] Boss2Input _boss2input;
 
 
@@ -19,6 +20,7 @@ public class Boss2Presentor :CharactorPresentor
     {
         _animatorView = _enemyAnimatorView;
         _charactorWindow = _enemyWindow;
+        _charactorController = _enemyController;
         _charactorInput = _boss2input;
     }
     protected override void Start()
