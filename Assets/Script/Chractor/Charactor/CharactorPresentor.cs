@@ -50,7 +50,7 @@ public abstract class CharactorPresentor : MonoBehaviour
         }
         catch(KeyNotFoundException)
         {
-            //Debug.Log("キー'"+key+"'は登録されていません。");
+            Debug.Log("キー'"+key+"'は登録されていません。");
         }
     }
 }
