@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
+using UniRx.Triggers;
+
 /*
  * Model
  * キャラクターが動く処理
@@ -25,6 +27,9 @@ public abstract class CharactorMove : MonoBehaviour
     public virtual void Start()
     {
         _rb.centerOfMass = AxisOfRotation;
+
+        this.UpdateAsObservable().Where(_ => _rb.velocity.y <= -10f).Subscribe(_ => _rb.velocity = new Vector2(_rb.velocity.x, -10f));
+
     }
 
     public virtual void Walk(float amount)

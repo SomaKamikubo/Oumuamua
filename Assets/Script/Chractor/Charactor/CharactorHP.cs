@@ -66,10 +66,14 @@ public abstract class CharactorHP : MonoBehaviour,IApplyDamage
 
 
     public void Heal(int heal)
-    {   
-        _nowHp.Value += heal;
-        if (_nowHp.Value > _maxHp)
+    {
+        if (_nowHp.Value >= _maxHp)
+        {
             _nowHp.Value = _maxHp;
+            return;
+        }
+        _nowHp.Value += heal;
+       
     }
 
 
