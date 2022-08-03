@@ -28,7 +28,7 @@ public abstract class CharactorMove : MonoBehaviour
     {
         _rb.centerOfMass = AxisOfRotation;
 
-        this.UpdateAsObservable().Where(_ => _rb.velocity.y <= -10f).Subscribe(_ => _rb.velocity = new Vector2(_rb.velocity.x, -10f));
+        this.UpdateAsObservable().Where(_ => _rb.velocity.y <= -10f).Subscribe(_ => _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y*(1f-0.01f)));
 
     }
 

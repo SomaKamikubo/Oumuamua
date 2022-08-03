@@ -14,9 +14,6 @@ public class BossManager : MonoBehaviour
     private void Start()
     {
         reHP = _boss1window.getMaxHp();
-        //2がダメージを受けたとき1の体力が減るから1が死んだら2も死ぬ
-        //_boss1window.OnDeath.Subscribe(_ => { _boss2window.setHp(0); });
-
     }
 
     //後半戦、Boss2を出現

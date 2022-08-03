@@ -11,6 +11,7 @@ public class Boss2Presentor :CharactorPresentor
     [SerializeField] AnimatorView _attackAnimatorView;
     [SerializeField] EnemyController _enemyController;
     [SerializeField] Boss2Input _boss2input;
+    [SerializeField] EnemyWindow _boss1window;
 
 
     //‚ß‚ñ‚Ç‚­‚³‚¢‚Ì‚Å‚±‚Á‚¿‚Éiwindow‚É‘‚«‚Ü‚µ‚å‚¤j
@@ -30,6 +31,7 @@ public class Boss2Presentor :CharactorPresentor
         
         _enemyWindow.OnAttack.Subscribe(_ => _attackAnimatorView.SetAnimatorTrigger("AttackTrigger"));
         _ba2.OnChasing.Subscribe(value => { _animatorView.SetAnimator("IsChase", value); _attackAnimatorView.SetAnimator("IsChase", value); });
+        _boss1window.OnDeath.Subscribe(_ => { _animatorView.SetAnimatorTrigger("DeathTrigger"); });
 
     }
 }
